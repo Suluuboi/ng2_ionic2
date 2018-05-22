@@ -31,6 +31,23 @@ export class CampDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CampDetailsPage');
+    this.platform.ready().then(() => {
+      this.dataService.getCampDetails().then((details) => {
+        let savedDetails: any = false;
+        if(details && typeof(details) != "undefined"){
+          savedDetails = JSON.parse(details);
+          }
+        let formControls: any = this.campDetailsForm.controls;
+        if(savedDetails){
+          formControls.gateAccessCode.setValue(savedDetails.gateAccessCode);
+          formControls.ammenitiesCode.setValue(savedDetails.ammenitiesCode);
+          formControls.wifiPassword.setValue(savedDetails.wifiPassword);
+          formControls.phoneNumber.setValue(savedDetails.phoneNumber);
+          formControls.departure.setValue(savedDetails.departure);
+          formControls.notes.setValue(savedDetails.notes);
+        }
+      });
+    });
   }
 
   saveForm(){
