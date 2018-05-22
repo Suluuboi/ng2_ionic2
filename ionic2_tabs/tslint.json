@@ -1,0 +1,118 @@
+{
+  "rules": {
+    //
+    //
+    // 可能的错误
+    // 这些规则与 JavaScript 代码中可能的语法错误或逻辑错误有关
+    //
+    "trailing-comma":true, // 禁止行尾有空格
+    "no-conditional-assignment": true, // 不允许在条件表达式中复制.如 if(a=1)
+//    "no-console": [true, "time", "timeEnd", "trace"], // 禁止使用console
+    "no-constant-condition": [true, { "checkLoops": false }], // 禁止将常量作为分支条件判断中的测试表达式，但允许作为循环条件判断中的测试表达式
+    "no-control-regex": true, // 禁止在正则表达式中出现 Ctrl 键的 ASCII 表示，即禁止使用 /\x1f/ 几乎不会遇到这种场景
+    "no-debugger": true, // 不允许使用debugger
+    "no-duplicate-case": true, // 禁止在 switch 语句中出现重复测试表达式的 case
+    "no-empty": [true, "allow-empty-catch"], // 不允许有空函数，除非是空catch
+    "no-empty-character-class": true, // 禁止在正则表达式中使用空的字符集 []
+    "no-ex-assign": true, // 禁止将 catch 的第一个参数 error 重新赋值
+    "no-extra-boolean-cast": true, // 禁止双重否定布尔型转换 如. let a='111'; boolean b = !!a;
+    "no-extra-semi": true, // 禁止不必要的分号
+    "no-inner-declarations": [true, "functions"], // 禁止嵌套块中的函数或变量声明
+    "no-invalid-regexp": true, // 禁止RegExp构造函数中的无效正则表达式字符串
+    "ter-no-irregular-whitespace": [true], // 禁止不规则的空白
+    "no-regex-spaces": true, // 禁止在正则表达式中出现连续的空格
+    "ter-no-sparse-arrays": [true], // 禁止在数组中出现空项，如 let foo = [,,]
+    "no-unexpected-multiline": true, // 禁止出现难以理解的多行表达式  https://eslint.org/docs/rules/no-unexpected-multiline
+    "no-unsafe-finally": true, // 禁止在 finally 中出现 return, throw, break 或 continue
+    "use-isnan": true, // 必须使用 isNaN(foo) 而不是 foo === NaN
+//    "valid-jsdoc": [true], 执行有效的JSDoc注释
+    "valid-typeof": true, // 确保typeof的结果与有效的字符串进行比较,比较的对象必须是 'undefined', 'object', 'boolean', 'number', 'string', 'function' 或 'symbol'
+    //
+    //
+    // 最佳实践
+    // 这些规则通过一些最佳实践帮助你避免问题
+    //
+    "cyclomatic-complexity": [true, 20], // 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity
+    "curly": true, // 所有控制语句必须使用大括号
+    "switch-default": true, // switch 语句必须有 default
+//    "triple-equals": [true, "allow-null-check","allow-undefined-check"], // 必须使用 === 或者 !== 与null,undefined比较除外
+    "forin": true, // 使用for in语句时，强制进行hasOwnProperty检查 https://palantir.github.io/tslint/rules/forin/
+    "no-arg": true, // 禁止使用 caller 或 callee
+    "no-eval": true, // 不允许使用eval
+    "no-switch-case-fall-through": true, // switch 的 case 内必须有 break, return 或 throw
+//    "no-invalid-this": [true, "check-function-in-method"], // 不允许在类之外使用this
+    "label-position": true, // 禁止使用 label,如break outer  https://eslint.org/docs/rules/no-labels
+//    "no-magic-numbers": true, // 禁止使用魔法数字,  如let a = 1000 * 60;应该使用常量定义数字. const SECONDS = 1000 * 60;
+//    "no-multi-spaces": [true], // 禁止出现连续的多个空格
+    "no-unused-expression": [true, "allow-fast-null-checks", "allow-new"], // 不允许使用未使用的表达式,允许使用逻辑运算符来执行快速空检查和允许new
+    "no-construct": true, // 禁止使用 new 来生成 String, Number 或 Boolean
+//    "ter-no-proto": true, // 禁止使用 __proto__ <<该规则还未实现,所以现在不不了,未来版本可能实现>>
+    "no-duplicate-variable": true, // 禁止重复定义变量
+//    "ter-no-script-url": true, // 禁止出现 location.href = 'javascript:void(0)'; <<该规则还未实现,所以现在不不了,未来版本可能实现>>
+//    "ter-no-self-compare": true, // 禁止将自己与自己比较 <<该规则还未实现,所以现在不不了,未来版本可能实现>>
+    "no-string-throw": true, // 禁止 throw 字面量，必须 throw 一个 Error 对象
+    "radix": true, // parseInt时，必须输入radix精度参数
+
+    //
+    //
+    // 变量
+    // 这些规则与变量申明有关
+    //
+//    "no-shadowed-variable": true, // 禁止变量名与上层作用域内的定义过的变量重复
+//    "no-unused-variable": true, // 定义过的变量必须使用, <<该规则还未实现,所以现在不不了,未来版本可能实现>>
+//    "no-use-before-declare": true, // 在定义之前禁止使用变量 <<该规则还未实现,所以现在不不了,未来版本可能实现>>
+
+    //
+    //
+    // 风格问题
+    // 这些规则与代码风格有关，所以是非常主观的
+    //
+    "array-bracket-spacing": [true, "never"], // 数组的括号内的前后禁止有空格
+    "block-spacing": [true, "always"], // 代码块如果在一行内，那么大括号内的首尾必须有空格，比如 function () { alert('Hello') }
+    "brace-style": [true, "1tbs", {"allowSingleLine": true}], // 代码块大括号的样式.有三种风格 https://eslint.org/docs/rules/brace-style
+//    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"], // 变量命名规范 https://palantir.github.io/tslint/rules/variable-name/
+    "ter-computed-property-spacing": [true, "never"], // 用作对象的计算属性时，中括号内的首尾禁止有空格
+//    "eofline": true, // 文件最后一行必须有一个空行
+    "ter-func-call-spacing": [true], // 调用函数的小括号禁止有空格
+    "ter-indent": [true, 2], // 以2个空格缩进
+//    "ter-max-len": [true, 140], // 限制一行代码最大长度
+//    "max-file-line-count": [true, 300], // 限制每个文件的最大行数
+    "new-parens": true, // new 后面的类必须有小括号
+//    "ter-newline-after-var": [true, "always"], // 变量声明后需不需要空一行
+//    "no-bitwise":true, // 不允许使用特殊运算符 &, &=, |, |=, ^, ^=, <<, <<=, >>, >
+    "ter-no-mixed-spaces-and-tabs": [{ "type": "spaces" }], // 使用空格缩进,不允许混合空格和制表符缩进
+    "no-consecutive-blank-lines": [true, 3], // 禁止出现超过三行的连续空行
+    "no-trailing-whitespace": true, // 禁止行尾有空格
+//    "object-curly-spacing": [true, "always"], // 对象字面量只有一行时，大括号内的首尾必须有空格
+    "one-variable-per-declaration": [true, "ignore-for-loop"], // 禁止变量申明时用逗号一次申明多个,如let a = 1, b = 2;除非循环
+//    "object-literal-key-quotes": [true, "always"], // 对象字面量的键名禁止用引号括起来
+    "quotemark": [true, "single"], // 字符串使用单引号,包括变量声明,import导入.
+    "semicolon": ["always"], // 每句结尾强制使用分号
+//    "sort-imports": [true], // import 必须按规则排序
+    "space-in-parens": [true, "never"], // 小括号内的首尾禁止有空格
+    "comment-format": [true, "check-space"], // 单行注释双斜杠(//)后面必须紧跟空格
+    "ter-no-tabs": true, // 禁止使用tab
+//    "prefer-const": true, // 申明后不再被修改的变量必须使用 const 来申明
+
+    //
+    //
+    // ECMAScript 6
+    // 这些规则与 ES6（即通常所说的 ES2015）有关
+    //
+//    "ter-arrow-body-style": [true, "always"], // 箭头函数能够省略 return 的时候，必须省略，比如必须写成 () => 0，禁止写成 () => { return 0 }
+//    "ter-arrow-parens": [true, "as-needed"], // 当箭头函数只有一个参数时必须省略括号
+    "ter-arrow-spacing": [true], // 箭头函数的箭头前后必须要有空格
+//    "object-literal-shorthand": true, // 必须使用 a = {b} 而不是 a = {b: b}
+//    "ter-prefer-arrow-callback": [true], // 必须使用箭头函数作为回调
+    "no-var-keyword": true // 不允许使用var
+
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}
+
+// 所有规则: https://github.com/buzinas/tslint-eslint-rules
+// https://github.com/AlloyTeam/eslint-config-alloy/blob/master/index.js
+// 自动修复
+// tslint --fix -c ./tslint.json 'src/**/*.ts'

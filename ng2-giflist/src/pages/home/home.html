@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      <ion-searchbar color="primary" placeholder="enter subreddit name..." [(ngModel)]="subredditValue" [formControl]="subredditControl" value=""></ion-searchbar>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()"><ion-icon name="settings"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div *ngFor="let post of redditService.posts">
+      <!-- <ion-item (click)="playVideo($event, post)" no-lines style="background-color: #000;"> -->
+      <ion-item no-lines style="background-color: #000;">
+        <img src="assets/imgs/loader.gif" *ngIf="post.showLoader" />
+        <!-- <video loop [src]="post.data.url" [poster]="post.data.snapshot"></video> -->
+        <a link="post.data.secure_media.reddit_video.scrubber_media_url"></a>
+      </ion-item>
+      <ion-list-header (click)="showComments(post)" style="text-align: left;">
+      </ion-list-header>
+    </div>
+
+    <ion-item *ngIf="redditService.loading" no-lines style="text-align: center;">
+      <img src="assets/imgs/loader.gif" style="width: 50px" />
+    </ion-item>
+  </ion-list>
+  <button ion-button full color="light" (click)="loadMore()">Load More...</button>
+</ion-content>

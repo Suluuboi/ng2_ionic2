@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      <img src="assets/imgs/" />
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="playSlideshow()"><ion-icon name="play"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngIf="!phototaken" detail-none (click)="takePhoto()">
+      <img src="assets/imgs/smile.png" />
+    </button>
+    <ion-item-sliding>
+      <ion-item>
+        <img src="http://placehold.it/100X100" />
+        <ion-badge item-right light>{{photos[0].date|daysAgo}} days ago</ion-badge>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only light (click)="removePhoto(photo)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
