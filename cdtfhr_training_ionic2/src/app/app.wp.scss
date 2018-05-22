@@ -1,0 +1,22 @@
+
+.button-wp {
+  min-height: $button-wp-height;
+}
+
+// Light buttons color.
+.button-wp-light {
+  color: color($colors, primary, base);
+}
+
+.col[align-self-stretch] .card-wp {
+  height: calc(100% - #{($card-wp-margin-end + $card-wp-margin-start)});
+}
+
+.bar-buttons core-context-menu .button-clear-wp {
+  color: $toolbar-wp-button-color;
+}
+
+.item-wp ion-spinner[item-start] + .item-inner,
+.item-wp ion-spinner[item-start] + .item-input {
+  @include margin-horizontal(($item-wp-padding-start / 2), null);
+}

@@ -1,0 +1,410 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+// Alignment
+// -------------------------
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.opacity-hide { opacity: 0; }
+.core-big   { font-size: 115%; }
+
+@media only screen and (min-width: 430px) {
+  .core-center-view .scroll-content {
+    display: flex!important;
+    align-content: center !important;
+    align-items: center !important;
+    > * {
+      margin: 0 auto;
+      max-width: 600px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hidden-phone {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+
+
+// Define an alternative way to set a heading in an item without using a heading tag.
+// This is done for accessibility reasons when a heading is semantically incorrect.
+.item .item-heading {
+  @extend h6;
+  margin: 0;
+}
+
+.item-dimmed {
+  opacity: 0.6;
+}
+
+.core-oauth-icon, .item.core-oauth-icon, .list .item.core-oauth-icon {
+  min-height: 32px;
+  img, .label {
+    max-height: 32px;
+    vertical-align: middle;
+  }
+  img {
+    max-width: 32px;
+  }
+  .label {
+    margin-left: 5px;
+    color: $gray-darker;
+  }
+}
+
+.core-bold, .core-bold .label {
+  font-weight: bold;
+}
+
+.core-module-icon {
+  width: auto;
+}
+
+.core-button-spinner {
+  min-height: 44px;
+  min-width: 50px;
+  text-align: center;
+
+  .spinner {
+    margin-top: 8px;
+  }
+}
+
+// Avatar
+// -------------------------
+// Large centered avatar
+.item-avatar-center {
+    text-align: center;
+
+    &.item-complex .item-content {
+        text-align: center;
+        padding-left: 49px;
+    }
+
+    > img:first-child,
+    ion-avatar img {
+        display: block;
+        margin: auto;
+        width: 90px;
+        height: 90px;
+        max-width: 90px;
+        max-height: 90px;
+        margin-bottom: 10px;
+        border-radius : 50%;
+        padding: 4px;
+        border: 1px solid #ddd;
+
+        &.avatar-full {
+            border-radius: 2%;
+            border: 0;
+            max-width: 100%;
+            max-height: 160px;
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+ion-avatar ion-img, ion-avatar img {
+  text-indent: -99999px;
+  background-color: $gray-light;
+}
+
+// Form items
+// -------------------------
+
+.item .core-input-footnote {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-style: italic;
+}
+
+/** Format Text */
+core-format-text[maxHeight], *[core-format-text][maxHeight],
+core-format-text[ng-reflect-max-height], *[core-format-text][ng-reflect-max-height] {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  /* Force display inline */
+  &.inline {
+    display: inline-block;
+    width: auto;
+  }
+
+  // This is to allow clicks in radio/checkbox content.
+  &.core-text-formatted {
+    cursor: pointer;
+    pointer-events: auto;
+
+    .core-show-more {
+      display: none;
+    }
+
+    &:not(.core-shortened) {
+      max-height: none !important;
+    }
+
+    &.core-shortened {
+      color: $gray-darker;
+      overflow: hidden;
+      min-height: 50px;
+
+      .core-show-more {
+        color: color($colors, dark);
+        text-align: right;
+        font-size: 14px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1001;
+        background-color: $white;
+        padding-left: 10px;
+      }
+
+      &:before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) calc(100% - 50px), white calc(100% - 15px));
+        background: -webkit-gradient(left top, left bottom, color-stop(calc(100% - 50px), rgba(255, 255, 255, 0)), color-stop(calc(100% - 15px), white));
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) calc(100% - 50px), white calc(100% - 15px));
+        background: -o-linear-gradient(top, rgba(255, 255, 255, 0) calc(100% - 50px), white calc(100% - 15px));
+        background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) calc(100% - 50px), white calc(100% - 15px));
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 50px), white calc(100% - 15px));
+        z-index: 1000;
+      }
+    }
+  }
+
+  &.core-expand-in-fullview {
+    .core-show-more {
+      @include svg-background-image($item-md-detail-push-svg, true);
+      @include padding-horizontal(null, 18px);
+      @include background-position(end, 0, center);
+
+      background-repeat: no-repeat;
+      background-size: 14px 14px;
+    }
+  }
+}
+
+.core-media-adapt-width {
+  max-width: 100%;
+}
+
+audio.core-media-adapt-width {
+  width: 100%;
+}
+
+.core-adapted-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.core-image-viewer-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: $black;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, .5);
+  text-align: center;
+
+  width: 32px;
+  height: 32px;
+  max-width: 32px;
+  line-height: 32px;
+  font-size: 24px;
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+core-format-text, *[core-format-text] {
+  audio, video, a, iframe {
+    pointer-events: auto;
+  }
+
+  // Fix lists styles in core-format-text.
+  ul, ol {
+    -webkit-padding-start: 40px;
+  }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+
+  .badge {
+    position: initial !important;
+  }
+
+  // Images in ion-card have width 100% and display block. Remove that when the image is in core-format-text.
+  img {
+    width: initial;
+    display: inline;
+  }
+
+  .core-disable-media-adapt,
+  .core-disable-media-adapt .core-media-adapt-width {
+    max-width: none !important;
+    max-height: none !important;
+    width: initial !important;
+    height: initial !important;
+    display: inline-block !important;
+  }
+}
+
+// Message item.
+.item-message {
+  core-format-text > p:only-child {
+    display: inline;
+  }
+}
+
+// Media item, ideal for icons.
+.item-media {
+  min-height: $item-media-height + ($content-padding * 2);
+  > img:first-child {
+    max-width: $item-media-width;
+    max-height: $item-media-height;
+  }
+}
+
+// Ionic fix. Button can occupy all page if not.
+ion-select {
+  position: relative
+}
+
+// File uploader.
+// -------------------------
+
+.core-fileuploader-file-handler {
+    position: relative;
+
+    input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0;
+        outline: none;
+        z-index: 100;
+        cursor: pointer;
+    }
+}
+
+// Atto styles
+// -------------------------
+.atto_image_preview {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.atto_image_preview_box {
+    max-height: 200px;
+    margin-bottom: 1em;
+    overflow: auto;
+}
+
+.editor_atto_content img {
+    cursor: pointer;
+}
+
+.atto_image_size {
+    display: inline-block;
+}
+
+.atto_image_size input[type=checkbox] {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.atto_image_size input[type=text] {
+    width: 3em;
+}
+
+.atto_image_size label {
+    display: inline-block;
+}
+
+.atto_image_button_text-top {
+    vertical-align: text-top;
+    margin: 0 0.5em;
+}
+
+.atto_image_button_middle {
+    vertical-align: middle;
+    margin: 0 0.5em;
+}
+
+.atto_image_button_text-bottom {
+    vertical-align: text-bottom;
+    margin: 0 0.5em;
+}
+
+.atto_image_button_text-top.img-responsive,
+.atto_image_button_middle.img-responsive,
+.atto_image_button_text-bottom.img-responsive {
+    /* If the image is display: block then linking the image to URLs won't work. */
+    display: inline-block;
+    max-width: calc(100% - 1em);
+}
+
+/*rtl:begin:ignore*/
+.atto_image_button_left {
+    float: left;
+    margin: 0 0.5em 0 0;
+    max-width: calc(100% - 1em);
+}
+
+.atto_image_button_right {
+    float: right;
+    margin: 0 0 0 0.5em;
+    max-width: calc(100% - 1em);
+}
+/*rtl:end:ignore*/

@@ -1,0 +1,39 @@
+core-loading {
+    .core-loading-container {
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        clear: both;
+    }
+
+    .core-loading-content {
+        padding-bottom: 1px; /* This makes height be real */
+    }
+
+    &.core-loading-noheight .core-loading-content {
+        height: auto;
+    }
+}
+
+.scroll-content > core-loading > .core-loading-container,
+ion-content > .scroll-content > core-loading > .core-loading-container,
+.core-loading-center .core-loading-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: table;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    clear: both;
+
+    .core-loading-spinner {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
