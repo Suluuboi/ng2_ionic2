@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      账单
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="queryChart($event)">
+        <ion-icon style="color:#387ef5" name="ios-pie-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-item-group class="list_row" >
+      <ion-item-divider>
+          <ion-label  style="text-align:left;font-weight:bold">￥{{sumamount  | number:'.2-2'}}</ion-label>
+          <ion-select style="margin:0;padding:0 6px" interface="popover" [(ngModel)]="typeid_and" (ionChange)="typeChanged($event)">
+            <ion-option *ngFor="let type of billTypes" value="{{type.id}}">{{type.name}}</ion-option>
+          </ion-select>
+      </ion-item-divider>
+      <ion-item-divider color="light">
+          <span >{{month}}月</span>
+          <ion-icon style="float:right;padding-right:8px" (click)="presentMonth()" name="ios-calendar-outline"></ion-icon>
+      </ion-item-divider>
+      
+      <button ion-item padding-left *ngFor="let item of data;let i=index">
+           <ion-avatar item-left>
+           <ion-icon name="{{item.icon}}" style="font-size:2em"></ion-icon>
+           </ion-avatar>
+            <div >
+              <p class="item_title">{{item.name}}</p>
+              <p class="item_time">{{item.remark}}</p>
+            </div>
+            <div class="item_right" item-right>
+              <p class="item_amount">{{item.val | number:'.2-2'}}</p>
+              <p class="item_time">{{item.credate | date:"MM-dd HH:mm"}}</p>
+            </div>
+          </button>
+    </ion-item-group>
+
+
+  </ion-content>

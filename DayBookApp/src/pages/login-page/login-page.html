@@ -1,0 +1,32 @@
+<ion-content>
+    <ion-row>
+      <ion-col text-center>
+        <div style="width:100%;height:20%;">
+          <div class="avator" style="margin:3em auto">
+          <img src="assets/icon/avator.jpg" >
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+   <form [formGroup]="loginForm" (ngSubmit)="login()">
+     <ion-list inset>
+    <ion-item>
+      <ion-label>账号</ion-label>
+      <ion-input type="text"  formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>密码</ion-label>
+      <ion-input type="password" value="" formControlName="password"></ion-input>
+    </ion-item>
+     </ion-list>
+     <div padding>
+      <button ion-button type="submit" color="danger" block>登&nbsp;录</button>
+      </div>
+   </form>
+   <ion-row padding-left padding-right class="forgetPwd">
+     <ion-col>
+        <a (click)="forgetPwd()">忘记密码？</a>
+        <a (click)="register()">注册DayBook</a>
+      </ion-col>
+   </ion-row>
+</ion-content>

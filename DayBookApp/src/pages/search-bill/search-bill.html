@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      月账单
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+   <ion-list>
+      <ion-item>
+          <ion-label>月份</ion-label>
+          <ion-datetime displayFormat="YYYY-MM" pickerFormat="YYYY-MM" [(ngModel)]="credate_yearAndMonth"  doneText="确定" cancelText="取消"></ion-datetime>
+      </ion-item>
+        <button ion-button color="danger" block (click)="query()">查&nbsp;询</button>
+    </ion-list>
+</ion-content>

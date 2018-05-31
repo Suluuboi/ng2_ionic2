@@ -1,0 +1,87 @@
+page-add-bill {
+	.showamount{
+		background:#3e425b;
+		padding:1em;
+		ion-item{
+			background:transparent;
+			border:0;
+			padding:0;
+			margin:0;
+			height:1em;
+			line-height: 1em;
+			
+		}
+		p{
+		color:#FFF;
+		}
+		p.show_p{
+			font-size:0.7em;
+			margin:0;
+			padding:.2em 0;
+		}
+		p.amount{
+			font-size:2.4em;
+			margin:0;
+			padding:0;
+			margin-left:-0.4em;
+			font-weight:bold;
+		}
+		p.deposit{
+			margin:0;
+			padding:.2em 0;
+			font-size:0.7em
+		}
+		ion-row{
+			padding-top:0;
+			padding-bottom: 0;
+			ion-col{
+				padding-top:0;
+				padding-bottom: 0;
+			}
+			.icon_mood{
+				color:#fff;
+				font-size: 2em;
+				margin-top:0.4em
+			}
+		}
+	}
+
+	.add_row{
+		.add_btn{
+			width:100%;
+			font-weight:bold;
+		}
+	}
+	.list_row{
+		*{
+			color:#555;
+		}
+		ion-avatar {
+			ion-icon{
+				font-size:2em;
+				color:darkgoldenrod
+			}
+		}
+		button{
+			padding-left:0;
+		}
+		.item_right p{
+			text-align:right;
+		}
+		ion-icon{
+			color: #f53d3d;
+		}
+		.item_title{
+			font-size:0.9em;
+			font-weight:bold;
+		}
+		.item_amount{
+			font-weight:bold;
+			font-size:0.9em;
+		}
+		.item_time{
+			color:#999;
+			font-size:0.7em;
+		}
+	}
+}

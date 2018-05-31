@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      记一笔
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="bookForm" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label>日期</ion-label>
+            <ion-datetime displayFormat="MM月DD日" pickerFormat="MM DD" formControlName="credate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>类型</ion-label>
+          <ion-select okText="确定" cancelText="取消" formControlName="typeid">
+            <ion-option *ngFor="let type of billTypes" value="{{type.id}}">{{type.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>金额</ion-label>
+            <ion-input type="number" formControlName="val"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>备注</ion-label>
+          <ion-input type="text" formControlName="remark"></ion-input>
+      </ion-item>
+        <button ion-button type="submit" color="danger" block>保&nbsp;存</button>
+    </form>
+</ion-content>
