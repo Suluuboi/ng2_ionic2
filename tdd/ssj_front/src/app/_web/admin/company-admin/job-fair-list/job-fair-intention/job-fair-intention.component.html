@@ -1,0 +1,76 @@
+<div nz-row>
+  <div nz-col [nzSpan]="11">
+      <nz-input [(ngModel)]="searchName" [nzPlaceHolder]="'输入姓名'" style="width: 40%;"></nz-input>
+      <nz-input [(ngModel)]="searchIdcard" [nzPlaceHolder]="'输入身份证号码'" style="width: 40%;"></nz-input>
+      <button nz-button [nzType]="'primary'" (click)="searchTextValueChange()">
+        <span>查询</span>
+      </button>
+  </div>
+  <div nz-col [nzSpan]="2">
+    <button nz-button [nzType]="'primary'" (click)="showModalForEdit()">
+      <span>添加</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="3">
+    <button nz-button [nzType]="'primary'">
+      <a href="/api/company/fair/agreement_template" target="_blank" title="意向性协议模板下载">下载协议模板</a>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="8" id="upload">
+      <input type="file" name="intentions" id="intention" (change)="uploadIntentionFile()">
+      <button nz-button [nzType]="'primary'" id="uploadBtn">
+        <i class="anticon anticon-upload"></i><span>选择上传文件</span>
+      </button>
+      <span class="red">注：严格按照模板文件格式上传</span>
+  </div>
+</div>
+  <nz-table #nzTable *ngIf="_dataSet.length != 0"
+      [nzAjaxData]="_dataSet"
+      [nzTotal]="_data.total"
+      [nzLoading]="_loading"
+      [(nzPageIndex)]="_data.current_page"
+      [(nzPageSize)]="_data.per_page"
+      (nzPageIndexChangeClick)="pageChangeClick($event)">
+    <thead nz-thead>
+      <tr>
+        <th nz-th><span>编号</span></th>
+        <th nz-th><span>姓名</span></th>
+        <th nz-th><span>身份证号码</span></th>
+        <th nz-th><span>联系电话</span></th>
+        <th nz-th><span>意向单位名称</span></th>
+        <th nz-th><span>意向岗位</span></th>
+        <th nz-th><span>单位电话</span></th>
+        <th nz-th><span>操作</span></th>
+      </tr>
+    </thead>
+    <tbody nz-tbody>
+      <tr nz-tbody-tr *ngFor="let data of nzTable.data;let i = index">
+        <td nz-td>{{i+1}}</td>
+        <td nz-td>
+          <a>{{data.name}}</a>
+        </td>
+        <td nz-td>{{data.id_card}}</td>
+        <td nz-td>{{data.phone}}</td>
+        <td nz-td>{{data.desire_company}}</td>
+        <td nz-td>{{data.desire_job}}</td>
+        <td nz-td>{{data.desire_company_phone}}</td>
+        <td nz-td>
+          <div nz-row>
+            <div nz-col [nzSpan]="8" class="tx-center oper">
+              <a href="javascript:;" (click)="showModalForEdit(data)">
+                <span>编辑</span>
+              </a>
+            </div>
+            <div nz-col [nzSpan]="10" class="tx-center oper">
+              <a [routerLink]="['/companyAdmin/intentionReturn/' + data.id, {name: data.name, idcard: data.id_card, phone: data.phone}]">回访记录</a>
+            </div>
+            <div nz-col [nzSpan]="6" class="tx-center oper">
+              <nz-popconfirm [nzTitle]="'确定要删除这个任务吗？'" (nzOnConfirm)="deletedData(i, data.id)" (nzOnCancel)="cancelDeleted()">
+                <a nz-popconfirm>删除</a>
+              </nz-popconfirm>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

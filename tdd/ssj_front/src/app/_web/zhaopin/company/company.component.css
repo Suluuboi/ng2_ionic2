@@ -1,0 +1,41 @@
+a{text-decoration: none;}
+.nav-list{margin-top:10px; overflow: hidden; border-bottom: 2px dashed #eee;}
+.nav-list>li { float: left;margin-right: 10px;line-height: 36px; position: relative;left: 0;top: 0;}
+.nav-list>li>a{ padding: 0 20px;font-size: 16px;}
+.nav-list a { color: #626262;}
+.nav-list>li:hover a{color: #3da5e4;}
+.nav-list>li.com-active{border-bottom: 2px solid #3da5e4;}
+.com-active a{ color:#3da5e4;}
+.com-slogen .icon-dizhi{
+    margin-right: 5px;
+}
+.company_status span{ font-size: 14px; margin-right: 20px;}
+
+.company-logoImg{height: 80px; overflow: hidden;}
+.company-logoImg img{ height: 100%; max-width: 120px;width: 120px;width:auto!important; border: 0;}
+
+.com-title{ line-height: 30px;}
+.com-title h2{ font-size: 18px; line-height: 30px;}
+.com-title h2:hover{ color: #3da5e4;}
+.com-title .isApprove { background: green; color:#fff;}
+
+.com-slogen{font-size: 16px;}
+.com-slogen i{font-size: 20px;}
+
+
+.company-introduce{ padding-left:10px;}
+.comInfoTitle{font-size: 16px; font-weight: 600; margin-top: 20px;}
+.comInfoTitle img{ width: 100px;border: 0;}
+.comInfoTitle p{ width: calc(100% - 120px);}
+.comInfo{ margin-top: 10px;font-size: 14px;}
+.comInfo .anticon{ margin-left: 10px;;margin-right: 10px;}
+@media (max-width: 576px) {
+    .company-logoImg{height: 60px;}
+    .company-logoImg{ max-width: 100px;width: 100px;width:auto!important;}
+    .com-title h2{
+        font-size: 14px;
+    }
+    .com-title{line-height: 24px;}
+    .com-slogen{font-size: 12px;}
+    .com-slogen i{font-size: 14px;}
+}

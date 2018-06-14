@@ -1,0 +1,28 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div class="position">
+      <span>当前位置:&nbsp;&nbsp; 首页 &nbsp;&gt; &nbsp;法律法规</span>
+      <span *ngIf="isData">&nbsp;&gt; &nbsp;{{detail.title}}</span>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <div *ngIf="isData">
+      <div class="title">
+        <h3>{{detail.title}}</h3>
+        <p class="describe tx-center">
+          <span>文件类型：{{detail.type}}</span>
+          <span>时间：{{detail.created_at | date: "yyyy-MM-dd"}}</span>
+          <span>浏览量：{{detail.view_count}}</span>
+        </p>
+      </div>
+      <div class="abstract cl">
+        <h5 class="des fl">摘要:</h5>
+        <p class="description">{{detail.description}}</p>
+      </div>
+      <div class="content">
+        <!-- 将获取的html转为angular认可的安全字符 -->
+        <div [innerHtml]="detail.content | safeHtmlPipe"></div>
+      </div>
+    </div>
+  </div>
+</div>

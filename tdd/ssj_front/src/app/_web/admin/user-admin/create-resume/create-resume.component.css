@@ -1,0 +1,6 @@
+.resume-form>form{margin-bottom: 30px;}
+.resume-refer{ padding-left: 20px; line-height: 30px; font-size: 16px; font-weight: 600;margin-bottom: 30px;color: #626262;}
+.title h3{ font-size: 18px; line-height: 30px; background: #f1f1f1;text-indent: 20px;}
+@media (max-width: 576px) {
+    .ant-form-item-label{ text-align: left;text-indent: 5px;}
+}

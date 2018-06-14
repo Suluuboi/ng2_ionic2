@@ -1,0 +1,16 @@
+.mr50{margin-right: 50px;}
+.editor{ color:#3da5e4;}
+
+.info{ margin-bottom: 30px;}
+.title{ text-indent: 20px; line-height: 30px; font-size: 14px; color: #626262;font-weight: 600; background: #dbeffb;}
+.content{ margin-top:10px;}
+
+.form-content{ margin-bottom: 20px;}
+.form-content>div{ margin-bottom: 10px;}
+
+.content-title{margin-right:10px;font-size:16px;color:#3da5e4;}
+.content-input{ float: left;width: 200px; }
+.datePicker{ float: left; width: 300px;}
+.content-textarea{ float:left; width: 350px;resize: none;}
+/* 自我评价 */
+.self_evaluate{ text-indent: 20px; line-height: 30px;}

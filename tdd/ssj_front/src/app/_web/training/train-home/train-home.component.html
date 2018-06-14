@@ -1,0 +1,24 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div class="search">
+      <search-content class="search-component" (searchValue)="getSearchValue($event)"></search-content>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <div nz-row [nzGutter]="20" class="train-box list">
+      <div nz-col [nzXs]="{span:12}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:6}" [nzXl]="{span:6}" *ngFor="let _list of course">
+        <div class="train-img">
+          <img src={{_list.src}} alt="">
+        </div>
+        <div class="train-des">
+          <h5>{{_list.name}}</h5>
+          <p class="cl">
+            <span class="fl">课时: {{_list._houre}}小时</span>
+            <span class="fr">人数：{{_list.people}}人</span>
+          </p>
+          <p class="_des">{{_list._des}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

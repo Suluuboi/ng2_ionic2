@@ -1,0 +1,85 @@
+<div nz-row class="info">
+  <div nz-col [nzSpan]="24" class="title">工作经历
+    <span class="editor fr mr50" (click)="showModal($event)">添加工作经历</span>
+  </div>
+  <div nz-col [nzSpan]="24" class="content" *ngIf="workExp.length != 0">
+    <div nz-row class="con_row hidden-xs" *ngFor="let deWork of workExp; let i = index">
+      <div nz-col [nzSpan]="6" class="con_left">{{deWork.start_time | date: 'yyyy-MM-dd'}} 至 {{deWork.end_time | date: 'yyyy-MM-dd'}}</div>
+      <div nz-col [nzSpan]="12" class="con_right">
+        <h3>{{deWork.company_name}}
+           <span>{{deWork.position_name}}</span>
+        </h3>
+        <p> {{deWork.job_content}}</p>
+      </div>
+      <div nz-col [nzSpan]="6" class="oper">
+        <a (click)="editWorksExp(deWork.resume_work_id, i)">修改</a>
+        <a (click)="deletWorksExp(deWork.resume_work_id, i)" class="red">删除</a>
+      </div>
+    </div>
+    <div nz-row class="con_row-xs hidden-sm hidden-md hidden-lg hidden-xl" *ngFor="let deWork of workExp; let i = index">
+      <div nz-col [nzSpan]="24">
+        <h3>{{deWork.company_name}}
+           <span>{{deWork.position_name}}</span>
+        </h3>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <span>{{deWork.start_time | date: 'yyyy-MM-dd'}} 至 {{deWork.end_time | date: 'yyyy-MM-dd'}}</span>
+        <a class="fr red" (click)="deletWorksExp(deWork.resume_work_id, i)">删除</a>
+        <a class="fr" (click)="editWorksExp(deWork.resume_work_id, i)">修改</a>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <p> {{deWork.job_content}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 工作经历添加 -->
+<nz-modal [nzVisible]="isAddWorksExp" [nzTitle]="'工作经历'" [nzContent]="workExpContent" (nzOnCancel)="handleCancel($event)"
+  (nzOnOk)="handleOk($event)">
+  <ng-template #workExpContent>
+    <div class="box">
+      <form nz-form [formGroup]="workExpForm" (ngSubmit)="_submitForm()">
+        <div class="form-content">
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <span class="content-title">公司名称</span>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('company_name')">
+              <nz-input [nzSize]="'large'" formControlName="company_name" [nzId]="'company_name'"></nz-input>
+              <div nz-form-explain *ngIf="getFormControl('company_name').dirty&&getFormControl('company_name').hasError('required')">请填写公司名称！</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <span class="content-title">担任职位</span>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('position_name')">
+              <nz-input [nzSize]="'large'" formControlName="position_name" [nzId]="'position_name'"></nz-input>
+              <div nz-form-explain *ngIf="getFormControl('position_name').dirty&&getFormControl('position_name').hasError('required')">请填写担任职位</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <span class="content-title">工作时间</span>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('start_time')">
+              <app-user-date-picker [defaultDate]="dateTime" (workDate)="getUpdateTime($event)"></app-user-date-picker>
+              <div nz-form-explain *ngIf="getFormControl('start_time').dirty&&getFormControl('start_time').hasError('required')">请填写起始时间</div>
+              <div nz-form-explain *ngIf="getFormControl('end_time').dirty&&getFormControl('end_time').hasError('required')">请填写结束时间</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <span class="content-title">工作内容</span>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('job_content')">
+              <nz-input [nzSize]="'large'" formControlName="job_content" [nzId]="'job_content'" [nzType]="'textarea'" [nzRows]="'4'"></nz-input>
+              <div nz-form-explain *ngIf="getFormControl('job_content').dirty&&getFormControl('job_content').hasError('job_content')">The input is not valid E-mail!</div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</nz-modal>
+<!-- 工作经历添加 -->

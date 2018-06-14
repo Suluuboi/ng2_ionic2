@@ -1,0 +1,11 @@
+:host ::ng-deep .ant-calendar-picker {
+    width: 100%;
+}
+form {
+    margin-top: 20px;
+}
+@media(max-width: 576px) {
+    form {
+        margin-top: 0;
+    }
+}

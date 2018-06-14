@@ -1,0 +1,46 @@
+<div class="nav">
+  <div class="row">
+    <div nz-col [nzSpan]="16" class="hidden-xs hidden-sm">
+      <ul class="nav-left cl">
+        <li routerLinkActive="activate" class="fl" *ngFor="let nav of navList">
+          <a [routerLink]="[nav.navUrl]">
+            <span class="nav-t">{{nav.navTitle}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div nz-col [nzXs]="{span: 24}" [nzSm]="{span:24}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" class="nav-right tx-center">
+      <nz-select class="nav-r-1" [(ngModel)]="single" [nzSize]="'large'" [nzPlaceHolder]="'查询项目'">
+        <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value">
+        </nz-option>
+      </nz-select>
+      <nz-input [nzType]="'search'" [nzSize]="'large'" [(ngModel)]="_value" id="nav-r-2"></nz-input>
+      <span class="nav-r-3 hidden-xs hidden-sm">
+        <a class="nav-r-4">登录</a>
+      </span>
+    </div>
+    <div nz-col [nzSpan]="24" class="nav-menu-xs hidden-md hidden-lg hidden-xl">
+      <div nz-row>
+        <div nz-col [nzSpan]="8" class="tx-center">
+          <nz-dropdown [nzTrigger]="'click'" class="drop-menu tx-center">
+            <a href class="ant-dropdown-link" nz-dropdown>
+                导航 <i class="anticon anticon-down"></i>
+            </a>
+            <ul nz-menu>
+              <li nz-menu-item class="tx-center menu-list" *ngFor="let nav of navList">
+                <a [routerLink]="[nav.navUrl]">
+                  <span class="nav-t">{{nav.navTitle}}</span>
+                </a>
+              </li>
+            </ul>
+          </nz-dropdown>
+        </div>
+        <div nz-col [nzSpan]="16" class="tx-right login-xs">
+          <span class="nav-r-3">
+            <a class="nav-r-4">登录</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

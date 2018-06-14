@@ -1,0 +1,46 @@
+.position-title{ font-size: 20px; margin: 20px auto; text-align: center}
+.position-register{
+    padding-top: 20px;
+}
+.sub-title{
+    font-size: 16px;
+    color: #3da5e4;
+}
+.pic-side{
+    margin-bottom: 24px;
+}
+#pic{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 140px;
+  opacity: 0;
+}
+:host ::ng-deep .avatar-uploader,
+:host ::ng-deep .avatar-uploader-trigger,
+:host ::ng-deep .avatar {
+  width: 120px;
+  height: 140px;
+  display: block;
+}
+
+:host ::ng-deep .avatar-uploader {
+  display: block;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 40px;
+}
+:host ::ng-deep .avatar-uploader-trigger {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 28px;
+  color: #999;
+}
+@media (max-width: 576px) {
+  .mb-xs{ margin-bottom: 24px;}
+  .position-title{
+    margin: 0;
+  }
+}

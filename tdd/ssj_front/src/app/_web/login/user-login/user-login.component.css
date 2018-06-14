@@ -1,0 +1,47 @@
+.header{
+    height: 150px;
+    width: 100%;
+    overflow: hidden;}
+    
+.header header img { margin:42px 0 0 350px;}
+
+.content{ width: 100%; background:url(/assets/lib/images/regiser-bg.jpg);height: 569px;  background-size: cover;}
+
+.reg-form{ 
+    background: rgba(255,255,255,0.8); 
+    position: relative;
+    top:100px;
+    padding: 10px 8px;
+    z-index: 1;
+    border-radius:10px;
+}
+.user-reg {
+    font-weight: 600;
+    text-indent: 10px;
+    color: #626262;
+    margin-bottom: 2px;
+}
+
+.msgBox nz-input {
+    width: 60%;
+    float: left;
+}
+
+.msgBox .getMsg {
+    width: 38%;
+    height: 32px;
+}
+
+.btn2{width:100%;background-color: #35a7e5;}
+
+@media (max-width: 576px) {
+    .content{background: none;}
+    .user-reg h4{ text-align: center; }
+    .reg-form{top:0;}
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .user-reg h4{ text-align: center; }
+}
+@media (min-width:769px) and (max-width: 992px) {
+    .user-reg h4{ text-align: center; }
+}

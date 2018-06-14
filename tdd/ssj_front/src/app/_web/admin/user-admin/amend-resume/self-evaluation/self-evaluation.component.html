@@ -1,0 +1,27 @@
+<div class="info">
+  <div class="title">自我评价
+    <span class="editor fr mr50" (click)="showModal($event)">编辑自我评价</span>
+  </div>
+  <div class="content">
+    <p class="self_evaluate">{{selfmsg}}</p>
+  </div>
+</div>
+<nz-modal [nzVisible]="isAddSelfExp" [nzTitle]="'自我评价'" [nzContent]="selfExpContent" (nzOnCancel)="handleCancel($event)"
+  (nzOnOk)="handleOk($event)">
+  <ng-template #selfExpContent>
+    <div class="box">
+      <form nz-form [formGroup]="selfExpForm" (ngSubmit)="_submitForm()">
+        <div class="form-content">
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <span class="content-title">自我评价</span>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('self_evaluation')">
+              <nz-input [nzSize]="'large'" formControlName="self_evaluation" [nzPlaceHolder]="'自我评价'" [nzId]="'self_evaluation'" [nzType]="'textarea'" [nzRows]="'6'"></nz-input>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</nz-modal>

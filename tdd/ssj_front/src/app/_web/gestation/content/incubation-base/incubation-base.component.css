@@ -1,0 +1,11 @@
+.icon-primary{ color: #3da5e4;}
+.content{ margin-top: 30px;font-size: 14px; color:#101010; line-height: 28px; display: flex; align-items: center;}
+img{width: 100%;}
+.tit{ font-size: 16px;}
+.describe p{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

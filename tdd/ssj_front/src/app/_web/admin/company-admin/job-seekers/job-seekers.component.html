@@ -1,0 +1,185 @@
+<div nz-row class="seekers-box">
+  <div nz-col [nzSpan]="24" class="search-conditions hidden-sm hidden-md hidden-lg hidden-xl">
+    <nz-collapseset>
+      <nz-collapse [nzTitle]="'高级搜索'">
+        <form nz-form [nzLayout]="'inline'" [formGroup]="seekersForm" (ngSubmit)="searchSeekers()">
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>期望职位</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <nz-input style="height: 28px;" [nzSize]="'large'" formControlName="name" [nzPlaceHolder]="'期望职位'" [nzId]="'name'"></nz-input>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label for="city_id">工作地点</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <cascader [userType]="'user'" (companyLocation)="getJobWorkAddress($event)"></cascader>
+              <nz-input [nzSize]="'large'" formControlName="city_id" [nzId]="'city_id'" style="display:none;"></nz-input>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6" class="clear">
+              <label>薪资待遇</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <nz-select formControlName="salary_id" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+                <nz-option *ngFor="let salary of jobSalaryArr" [nzLabel]="salary.name" [nzValue]="salary.id">
+                </nz-option>
+              </nz-select>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>工作经验</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <nz-select formControlName="experience_id" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+                <nz-option *ngFor="let workE of workExpArr" [nzLabel]="workE.name" [nzValue]="workE.id">
+                </nz-option>
+              </nz-select>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>性别要求</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <nz-select formControlName="sex" [nzSize]="'large'">
+                <nz-option [nzLabel]="'无要求'" [nzValue]="'all'"></nz-option>
+                <nz-option [nzLabel]="'男'" [nzValue]="'男'"></nz-option>
+                <nz-option [nzLabel]="'女'" [nzValue]="'女'"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label for="minDegree">学历要求</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <nz-select formControlName="education_id" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+                <nz-option *ngFor="let edu of minDegreeArr" [nzLabel]="edu.name" [nzValue]="edu.id"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label for="update">更新时间</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18">
+              <date-picker id="update" (workDate)="getUpdateTime($event)"></date-picker>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="24" class="tx-center">
+              <button nz-button [nzSize]="'large'" [nzType]="'primary'">搜索</button>
+            </div>
+          </div>
+        </form>
+      </nz-collapse>
+    </nz-collapseset>
+  </div>
+  <div nz-col [nzSpan]="24" class="search-conditions hidden-xs">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="seekersForm" (ngSubmit)="searchSeekers()">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label>期望职位</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <nz-input style="height: 28px;" [nzSize]="'large'" formControlName="name" [nzPlaceHolder]="'期望职位'" [nzId]="'name'"></nz-input>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label for="city_id">工作地点</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <cascader [userType]="'user'" (companyLocation)="getJobWorkAddress($event)"></cascader>
+          <nz-input [nzSize]="'large'" formControlName="city_id" [nzId]="'city_id'" style="display:none;"></nz-input>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label>薪资待遇</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <nz-select formControlName="salary_id" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+            <nz-option *ngFor="let salary of jobSalaryArr" [nzLabel]="salary.name" [nzValue]="salary.id">
+            </nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label>工作经验</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <nz-select formControlName="experience_id" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+            <nz-option *ngFor="let workE of workExpArr" [nzLabel]="workE.name" [nzValue]="workE.id">
+            </nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label>性别要求</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <nz-select formControlName="sex" [nzSize]="'large'">
+            <nz-option [nzLabel]="'无要求'" [nzValue]="'all'"></nz-option>
+            <nz-option [nzLabel]="'男'" [nzValue]="'男'"></nz-option>
+            <nz-option [nzLabel]="'女'" [nzValue]="'女'"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label for="minDegree">学历要求</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <nz-select formControlName="education_id" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="'all'"></nz-option>
+            <nz-option *ngFor="let edu of minDegreeArr" [nzLabel]="edu.name" [nzValue]="edu.id"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4">
+          <label for="update">更新时间</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8">
+          <date-picker id="update" (workDate)="getUpdateTime($event)"></date-picker>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4" class="tx-center">
+          <button nz-button [nzSize]="'large'" [nzType]="'primary'">搜索</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div nz-col [nzSpan]="24" class="seekers">
+    <nz-table #nzTable *ngIf="usersInfos.length != 0" [nzAjaxData]="usersInfos" [nzLoading]="_loading" [nzTotal]="dataList.total"
+      [(nzPageIndex)]="dataList.current_page" [(nzPageSize)]="dataList.per_page" (nzPageIndexChangeClick)="pageChangeClick($event)">
+      <thead nz-thead>
+        <tr class="hidden-xs">
+          <th nz-th>姓名</th>
+          <th nz-th>职位意向</th>
+          <th nz-th>工作经验</th>
+          <th nz-th>学历</th>
+          <th nz-th>地区</th>
+          <th nz-th>更新时间</th>
+        </tr>
+      </thead>
+      <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let users of nzTable.data; let i = index">
+          <td nz-td>
+            <span class="seeker-name">
+              <a [routerLink]="['/resume', users.id]" target="_blank">{{users.user.person.name}}</a>
+            </span>
+            <span class="seeker-sex">({{users.user.person.sex}}， {{users.user.person.birthday | ageChange}}岁)</span>
+            <span class="seeker-image hidden-xs">
+              <i class="anticon anticon-solution"></i>
+            </span>
+            <p class="seeker-info-xs hidden-sm hidden-md hidden-lg hidden-xl">
+              <span>{{users.user.person.experience.name}}</span>
+              <span>{{users.user.person.education.name}}</span>
+            </p>
+            <p class="seeker-info-xs hidden-sm hidden-md hidden-lg hidden-xl">
+              <span>{{users.job_name}}</span>
+              <span>{{users.city.name}}</span>
+              <span>{{users.updated_at}}</span>
+            </p>
+          </td>
+          <td nz-td class="hidden-xs">{{users.job_name}}</td>
+          <td nz-td class="hidden-xs">{{users.user.person.experience.name}}</td>
+          <td nz-td class="hidden-xs">{{users.user.person.education.name}}</td>
+          <td nz-td class="hidden-xs">{{users.city.name}}</td>
+          <td nz-td class="hidden-xs">{{users.updated_at}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div class="noData" *ngIf="_isUsers">
+    人才列表为空
+  </div>
+</div>

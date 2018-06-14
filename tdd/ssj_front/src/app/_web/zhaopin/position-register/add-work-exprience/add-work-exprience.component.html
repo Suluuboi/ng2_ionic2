@@ -1,0 +1,36 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+      <div nz-form-item nz-row class="work-exp" *ngFor="let control of formArray; let i=index" style="margin-bottom:0;">
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label [attr.for]="control.name" nz-form-item-required>公司、职位</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14" nzHasFeedback>
+          <nz-input [nzSize]="'large'" [formControlName]="control.name" [nzPlaceHolder]="'填写公司名称和担任职位'" [nzId]="control.name"></nz-input>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="4">
+          <i class="anticon anticon-minus-circle-o dynamic-delete-button" style="margin-left:25px; color:red;" (click)="removeField(control,$event)"></i>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label [attr.for]="control.date" nz-form-item-required>工作时间</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14" nzHasFeedback>
+          <nz-rangepicker [formControlName]="control.date" [nzFormat]="'YYYY/MM/DD'"></nz-rangepicker>
+        </div>
+        <div class="clear" style="padding-bottom:0;"></div>
+        <div nz-form-label nz-col [nzSpan]="6">
+            <label [attr.for]="control.content" nz-form-item-required>工作内容 </label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="14" nzHasFeedback>
+            <nz-input [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'输入工作内容'" [formControlName]="control.content" [nzId]="'control.content'"></nz-input>
+          </div>
+      </div>
+    </form>
+  </div>
+  <div nz-col [nzSpan]="24" class="tx-center">
+    <button nz-button [nzSize]="'large'" [nzType]="'primary'" (click)="createGroup($event)">
+      <i class="anticon anticon-plus-circle-o"></i>
+      <span>添加工作经历</span>
+    </button>
+  </div>
+</div>

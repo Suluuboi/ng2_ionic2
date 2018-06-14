@@ -1,0 +1,64 @@
+<h3 class="resume-refer hidden-xs">简历是求职的利器，好的简历才能更快找到好工作！
+  <span class="red">必填</span>
+</h3>
+<div nz-row class="resume-form">
+  <div nz-col [nzSpan]="24">
+    <form nz-form [formGroup]="userResumeForm" (ngSubmit)="_submitUserResumeForm()">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+          <label for="resumeName" nz-form-item-required>简历名称</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" nzHasFeedback [nzValidateStatus]="getFormControl('resumeName')">
+          <nz-input [nzSize]="'large'" formControlName="resumeName" [nzPlaceHolder]="'简历名称'" [nzId]="'resumeName'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('resumeName').dirty&&getFormControl('resumeName').hasError('required')">请填写简历名称</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+          <label nz-form-item-required>期望职位</label>
+        </div>
+        <div [nzXs]="{span:16}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('jobsName')">
+          <nz-input [nzSize]="'large'" formControlName="jobsName" [nzPlaceHolder]="'如：销售总监,销售经理'" [nzId]="'jobsName'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('jobsName').dirty&&getFormControl('jobsName').hasError('required')">请填写期望职位</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+          <label nz-form-item-required>工作性质</label>
+        </div>
+        <div [nzXs]="{span:16}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('jobNature')">
+          <nz-select formControlName="jobNature" [nzPlaceHolder]="'请选择工作性质'" [nzSize]="'large'">
+            <nz-option *ngFor="let option of jobTypes" [nzLabel]="option.name" [nzValue]="option.id">
+            </nz-option>
+          </nz-select>
+          <div nz-form-explain *ngIf="getFormControl('jobNature').dirty&&getFormControl('jobNature').hasError('required')">请选择工作性质</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+          <label for="jobsAddr" nz-form-item-required>期望城市</label>
+        </div>
+        <div [nzXs]="{span:16}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('jobsAddr')">
+          <cascader [userType]="'user'" (companyLocation)="getJobjobsAddress($event)"></cascader>
+          <nz-input [nzSize]="'large'" formControlName="jobsAddr" [nzId]="'jobsAddr'" style="display:none;"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('jobsAddr').dirty&&getFormControl('jobsAddr').hasError('required')">请选择期望工作地点</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+          <label nz-form-item-required>期望薪资</label>
+        </div>
+        <div [nzXs]="{span:16}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('jobsSalary')">
+          <nz-select formControlName="jobsSalary" [nzPlaceHolder]="'请选择期望薪资'" [nzSize]="'large'">
+            <nz-option *ngFor="let option of salary" [nzLabel]="option.name" [nzValue]="option.id">
+            </nz-option>
+          </nz-select>
+          <div nz-form-explain *ngIf="getFormControl('jobsSalary').dirty&&getFormControl('jobsSalary').hasError('required')">请选择期望薪资</div>
+        </div>
+      </div>
+      <div nz-form-item style="margin-bottom:8px;text-align:center;">
+        <button nz-button [nzSize]="'large'" [nzType]="'primary'">保存</button>
+      </div>
+    </form>
+  </div>
+</div>

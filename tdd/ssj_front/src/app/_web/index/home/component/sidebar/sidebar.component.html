@@ -1,0 +1,14 @@
+<div class="job-fair">
+  <div class="title cl">
+    <h4 class="border-bottom-common fl">新闻列表</h4>
+    <a [routerLink]="['/news/home']" target="_blank" class="more fr">更多</a>
+  </div>
+  <ul class="list" *ngIf="latestNews.length != 0">
+    <li class="cl list-info" *ngFor="let news of latestNews">
+      <i class="list-icon fl"></i>
+      <p class="new-name ellipsis fl">
+        <a [routerLink]="['/news/home/detail', news.id]" title="{{news.name}}" target="_blank">{{news.name}}</a>
+      </p>
+    </li>
+  </ul>
+</div>

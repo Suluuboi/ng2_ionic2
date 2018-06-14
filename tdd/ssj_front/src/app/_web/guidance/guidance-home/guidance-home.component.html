@@ -1,0 +1,18 @@
+<div class="box" nz-row [nzType]="'flex'" [nzJustify]="'space-between'" *ngIf="guidanceInfos.length != 0">
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:11}" [nzMd]="{span:11}" [nzLg]="{span:11}" [nzXl]="{span:11}" *ngFor="let guidance of guidanceInfos">
+    <div class="tit cl">
+      <h4 class="border-bottom-common fl">
+        {{guidance.name}}
+      </h4>
+      <a target="_blank" [routerLink]="['/guide/tabs/affairs', guidance.id]" class="more fr">更多</a>
+    </div>
+    <div class="content">
+      <ul class="list" *ngIf="guidance.affairs.length != 0">
+        <li class="cl" *ngFor="let affair of guidance.affairs">
+          <a target="_blank" [routerLink]="['/guide/tabs/details', affair.id]" title="{{affair.title}}" class="fl">{{affair.title}}</a>
+          <span class="fr">{{affair.created_at | date: 'yyyy-MM-dd'}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

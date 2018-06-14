@@ -1,0 +1,21 @@
+.jobs{border-right: 1px solid #e8e8e8;}
+.list li{ width: 95%; border: 1px solid #e8e8e8; margin-bottom: 20px; padding: 10px 20px;}
+.list li:hover{
+    border: 1px solid #3da5e4;
+    background: #f1f1f1;
+}
+.job-name{ font-size: 14px;}
+.job-name h4{ font-size: 16px; color: #3da5e4; line-height: 30px;}
+.show-time{line-height: 30px;}
+.job-info span{ margin-right: 5px; margin-left: 5px; line-height: 30px; font-size: 15px;}
+.job-info .salary{ margin-left: 0;}
+
+@media (max-width: 576px) {
+    .list li{
+        width: 100%;
+        margin-bottom: 0;
+        padding: 10px;
+        border:0;
+        border-bottom: 1px solid #e8e8e8;
+    }
+}

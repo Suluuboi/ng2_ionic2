@@ -1,0 +1,27 @@
+<ul nz-menu [nzMode]="'inline'" class="handle-list hidden-xs hidden-sm" [nzClickActive]="false" *ngIf="siderList.length != 0">
+  <li class="list-title tx-center">
+    <h3>快捷操作</h3>
+  </li>
+  <li nz-submenu [nzOpen]="'true'" *ngFor="let sider of siderList">
+    <span title class="subMenu-title">{{sider.menuTitle}}</span>
+    <ul>
+      <li [routerLinkActive]="['ant-menu-item-selected']" *ngFor="let sub of sider.subMenu" nz-menu-item>
+        <a [routerLink]="[sub.route]">{{sub.subTitle}}</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<nz-affix>
+  <ul nz-menu [nzMode]="'horizontal'" class="handle-list-xs hidden-md hidden-lg hidden-xl">
+    <li nz-submenu *ngFor="let sider of siderList">
+      <span title class="subMenu-title">{{sider.menuTitle}} &nbsp;
+        <i class="anticon anticon-down"></i>
+      </span>
+      <ul>
+        <li [routerLinkActive]="['ant-menu-item-selected']" *ngFor="let sub of sider.subMenu" nz-menu-item>
+          <a [routerLink]="[sub.route]">{{sub.subTitle}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nz-affix>

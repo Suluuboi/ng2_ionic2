@@ -1,0 +1,60 @@
+  <div nz-row class="box zph row">
+    <!-- 招聘会状态背景图 -->
+    <div class="status-bg" [class.ing]="dataSet.status == '进行中'" [class.end]="dataSet.status == '未开始'"></div>
+    <div nz-col [nzSpan]="24" class="zph-name">
+      <h2>{{dataSet.title}}</h2>
+    </div>
+    <div nz-col [nzSpan]="24" class="zph-theme">
+      <p>
+        <i class="anticon anticon-clock-circle-o"></i>举办时间：{{dataSet.start_time}}至{{dataSet.end_time}} </p>
+      <p>
+        <i class="anticon anticon-environment-o"></i>举办会场：{{dataSet.address}}</p>
+      <p>
+        <i class="anticon anticon-phone"></i>职位类别： {{dataSet.job_type}}</p>
+      <p>
+        <i class="anticon anticon-flag"></i>人员类别： {{dataSet.applicant_type}}</p>
+      <p>
+        <i class="anticon anticon-user"></i>主办单位： {{dataSet.proposer}}</p>
+    </div>
+    <div nz-col [nzSpan]="6" [nzOffset]="6">
+    </div>
+  </div>
+  <div nz-row class="row">
+    <div nz-col [nzSpan]="24" class="title">
+      <h3>参会企业</h3>
+    </div>
+    <div nz-col [nzSpan]="24" class="companys">
+      <div nz-row [nzGutter]="20" class="company" *ngIf="companys.length != 0">
+        <div nz-col [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:8}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="gutter-row" *ngFor="let company of companys">
+          <div class="gutter-box">
+            <div class="company-logo" *ngIf="!company.logo_pic">
+              <img src="/assets/com-images/14793403843.JPG" alt="{{company.name}}" class="logo">
+            </div>
+            <div class="company-logo" *ngIf="company.logo_pic">
+              <img src="{{company.logo_pic}}" alt="{{company.name}}" class="logo">
+            </div>
+            <div class="comapny-name">
+              <h3 class="ellipsis">
+                <a [routerLink]="['/zhaopin/company', company.id]" title="{{company.name}}">{{company.name}}</a>
+              </h3>
+            </div>
+            <div class="company-jobs">
+              <div *ngIf="company.jobs.length != 0">
+                <ng-container *ngFor="let job of company.jobs;let i=index">
+                  <p class="ellipsis" *ngIf="i<5">
+                    <a [routerLink]="['/zhaopin/jobsDetails', job.id]" title="{{job.name}}">{{job.name}}</a>
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="more-jobs">
+              <a [routerLink]="['/zhaopin/company/', company.id, 'jobs']" target="_blank">更多职位>></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="companys.length == 0">
+        暂无企业报名
+      </div>
+    </div>
+  </div>

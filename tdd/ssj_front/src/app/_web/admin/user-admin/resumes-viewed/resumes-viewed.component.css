@@ -1,0 +1,27 @@
+.title{
+    line-height: 40px;
+}
+.content{ line-height: 65px;}
+.content a{ color: #3da5e4;}
+.list{
+    font-size: 14px;
+    text-align: center;
+}
+.list:hover, .title{ background: #f1f1f1;}
+@media(max-width: 576px){
+    .content{ line-height: 28px;}
+    .list{
+        font-size: 14px;
+        text-indent: 10px;
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px dashed #e8e8e8;
+    }
+    .info-xs>a{
+        float: left;
+    }
+    .info-xs>span{
+        float: right;
+        margin-right: 5px;
+    }
+}

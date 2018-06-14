@@ -1,0 +1,68 @@
+.list ::ng-deep .ant-tabs-tab{
+    margin-bottom: 0!important;
+    padding-left: 0!important;
+}
+.search {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.search-content{
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 28px;
+    background: #fff;
+}
+.search-box{
+    padding: 10px 3px;
+    border-bottom: 1px solid #cec2c2;
+    border-left: 1px solid #cec2c2;
+    border-right: 1px solid #cec2c2;
+}
+.search-list{
+    line-height: 28px;
+}
+.search-list:hover{
+    background: #f1f1f1;
+}
+.search-name{
+    width: calc(100% - 70px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size:14px;
+}
+.search-oper, .company-oper{
+    font-size: 12px;
+    text-align: center;
+    color: #108ee9;
+}
+.add{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.list{
+    line-height:30px;
+    margin-top: 30px;
+    z-index: 1;
+}
+.company-name{
+    font-size: 14px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/* 职位多选 */
+th, td{
+    text-align: center!important;
+}
+:host ::ng-deep .ant-btn-primary[disabled]{
+    color: #fff;
+}
+:host ::ng-deep .ant-btn-primary[disabled]:hover{
+    color: #fff;
+}

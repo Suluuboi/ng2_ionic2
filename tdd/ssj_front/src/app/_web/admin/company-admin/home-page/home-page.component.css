@@ -1,0 +1,97 @@
+.home-page{
+    background: #f9f9f9;
+}
+.companyLogo{ position: relative;left:0;top:0;}
+.com-top, .con-list{
+    background-color: #fff;
+    padding: 10px;
+}
+.companyLogo{
+    height: 100px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.companyLogo a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.com-title{line-height: 40px;}
+.com-title h3>span{ font-size: 18px; line-height: 40px; font-weight: 600; }
+.editor, .look-over{ font-size:14px; margin: 0 10px;}
+/* .com-setting{height: 80px; } */
+.com-setting>a{ display: block; font-size: 14px;text-align: center; line-height: 30px; width: 100%;height: 30px;color:#fff;}
+.com-setting>a{background:#3da5e4; border-radius: 2px;}
+.com-setting>a:nth-last-child(1){margin-top:20px;}
+
+.con-content{ margin-top: 30px;}
+.con-list{
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.list-title{
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.list-title::before{
+    content: '';
+    float: left;
+    display: block;
+    width: 5px;
+    height: 18px;
+    margin-top: 6px;
+    margin-right: 15px;
+    background: #3da5e4;
+}
+.list-content:after{ content: "."; display: block; height: 0; visibility: hidden; clear:both;}
+.list-con-box{ width: 33.3%;text-align: center;padding:20px 0;}
+.list-con-box h4{ font-size: 16px; color:#000;}
+.list-con-box p{ line-height: 50px;line-height: 40px;font-size: 14px;}
+.list-con-box .list-count{ font-size: 22px;color: #108ee9;}
+.list-con-box>div{ line-height: 30px; font-size:14px; background: #f1f1f1;}
+.jobs-count{
+    font-size: 26px;line-height: 40px;
+}
+.jobs-des{ line-height: 30px; font-size:14px;}
+
+/*  logo show and upload */
+#logo_pic{
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+:host ::ng-deep .avatar-uploader,
+:host ::ng-deep .avatar-uploader-trigger,
+:host ::ng-deep .avatar {
+    display: block;
+}
+:host ::ng-deep .ant-upload {
+    width: 100%;
+    height: 100%;
+}
+:host ::ng-deep .ant-upload img{
+    width: 100%;
+}
+
+:host ::ng-deep .avatar-uploader {
+    display: block;
+    height: 100px;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+:host ::ng-deep .avatar-uploader-trigger {
+    display: table-cell;
+    height: 100px;
+    vertical-align: middle;
+    font-size: 28px;
+    color: #999;
+}
+@media (max-width: 576px) {
+    .com-title{line-height: 30px;}
+    .com-title h3>span{ font-size: 14px; line-height: 30px;}
+}

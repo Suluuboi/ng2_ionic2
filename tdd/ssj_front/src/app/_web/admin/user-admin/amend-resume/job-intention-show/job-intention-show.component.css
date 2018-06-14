@@ -1,0 +1,14 @@
+.mr50{margin-right: 50px;}
+.editor{ color:#3da5e4;}
+
+.info{ margin-bottom: 20px;}
+.title{ text-indent: 20px; line-height: 30px; font-size: 14px; color: #626262;font-weight: 600; background: #dbeffb;}
+.content{ margin-top:10px;}
+.con{ font-size: 14px;}
+
+.intention{ padding-left: 20px;line-height: 28px;}
+
+@media(max-width: 576px){
+    .intention{ padding-left: 0px;}
+    .content{text-indent: 10px;}
+}

@@ -1,0 +1,25 @@
+.title-border{
+  border-bottom: 1px solid #e8e8e8;
+}
+.title{
+  height: 30px; 
+  line-height: 30px;
+  border-left: 5px solid #3da5e4
+}
+h4{font-size:16px; text-indent:15px;}
+.more{font-size:16px;color:#3da5e4;}
+.program{margin-top:15px;}
+.gutter-box {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.gutter-box:hover{
+  box-shadow: 2px 2px 10px #888888;
+  cursor:pointer;
+}
+.gut-1{height: 100px;padding-top:10px;}
+.gut-1 img{width: 80px; height:80px;border: 0;}
+.gut-2 h5{font-size:16px; line-height: 28px;}
+.gut-3{ text-indent: 2em; color: #626262;line-height: 22px; font-size: 14px;}
+.gut-4{height:30px;line-height: 30px;}

@@ -1,0 +1,271 @@
+<div nz-row class="row project-box">
+  <div nz-col [nzSpan]="24" class="options">
+    <span>行业领域：</span>
+    <nz-radio-group [(ngModel)]="radioValue" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'A'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'B'">
+        <span>服务资讯类</span>
+      </label>
+      <label nz-radio-button [nzValue]="'C'">
+        <span>环保绿化</span>
+      </label>
+      <label nz-radio-button [nzValue]="'D'">
+        <span>电子信息</span>
+      </label>
+      <label nz-radio-button [nzValue]="'E'">
+        <span>材料类</span>
+      </label>
+      <label nz-radio-button [nzValue]="'F'">
+        <span>电子</span>
+      </label>
+      <label nz-radio-button [nzValue]="'G'">
+        <span>数码</span>
+      </label>
+      <label nz-radio-button [nzValue]="'H'">
+        <span>材料
+        </span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'请选择行业领域'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'A'"></nz-option>
+      <nz-option [nzLabel]="'服务资讯类'" [nzValue]="'B'"></nz-option>
+      <nz-option [nzLabel]="'环保绿化'" [nzValue]="'C'"></nz-option>
+      <nz-option [nzLabel]="'电子信息'" [nzValue]="'D'"></nz-option>
+    </nz-select>
+  </div>
+  <div nz-col [nzSpan]="24" class="options">
+    <span>所属产业：</span>
+    <nz-radio-group [(ngModel)]="radioValue1" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'1'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'2'">
+        <span>第一产业</span>
+      </label>
+      <label nz-radio-button [nzValue]="'3'">
+        <span>第二产业</span>
+      </label>
+      <label nz-radio-button [nzValue]="'4'">
+        <span>第三产业</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue1" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'请选择产业'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'0'"></nz-option>
+      <nz-option [nzLabel]="'第一产业'" [nzValue]="'1'"></nz-option>
+      <nz-option [nzLabel]="'第二产业'" [nzValue]="'2'"></nz-option>
+      <nz-option [nzLabel]="'第三产业'" [nzValue]="'3'"></nz-option>
+    </nz-select>
+  </div>
+
+  <div nz-col [nzSpan]="24" class="options">
+    <span>经营模式：</span>
+    <nz-radio-group [(ngModel)]="radioValue2" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'5'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'6'">
+        <span>自产自销</span>
+      </label>
+      <label nz-radio-button [nzValue]="'7'">
+        <span>代购代销</span>
+      </label>
+      <label nz-radio-button [nzValue]="'8'">
+        <span>批发</span>
+      </label>
+      <label nz-radio-button [nzValue]="'9'">
+        <span>零售</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue2" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'经营模式'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'5'"></nz-option>
+      <nz-option [nzLabel]="'自产自销'" [nzValue]="'6'"></nz-option>
+      <nz-option [nzLabel]="'代购代销'" [nzValue]="'7'"></nz-option>
+      <nz-option [nzLabel]="'批发'" [nzValue]="'8'"></nz-option>
+      <nz-option [nzLabel]="'零售'" [nzValue]="'9'"></nz-option>
+    </nz-select>
+  </div>
+
+  <div nz-col [nzSpan]="24" class="options">
+    <span>经营形态：</span>
+    <nz-radio-group [(ngModel)]="radioValue3" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'10'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'11'">
+        <span>股份有限公司</span>
+      </label>
+      <label nz-radio-button [nzValue]="'12'">
+        <span>有限责任公司</span>
+      </label>
+      <label nz-radio-button [nzValue]="'13'">
+        <span>合伙企业</span>
+      </label>
+      <label nz-radio-button [nzValue]="'14'">
+        <span>个人独资企业</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue3" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'经营形态'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'10'"></nz-option>
+      <nz-option [nzLabel]="'股份有限公司'" [nzValue]="'11'"></nz-option>
+      <nz-option [nzLabel]="'有限责任公司'" [nzValue]="'12'"></nz-option>
+      <nz-option [nzLabel]="'合伙企业'" [nzValue]="'13'"></nz-option>
+      <nz-option [nzLabel]="'个人独资企业'" [nzValue]="'14'"></nz-option>
+    </nz-select>
+  </div>
+
+
+  <div nz-col [nzSpan]="24" class="information">
+    <div nz-col [nzSpan]="24" class="hidden-xs">
+      <div nz-row class="info-title">
+        <div nz-col [nzSpan]="8">
+          <span>项目</span>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <span>联系人</span>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <span>行业领域</span>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <span>经营形态</span>
+        </div>
+        <div nz-col [nzSpan]="4">
+          <span>所属产业</span>
+        </div>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24" class="info-list">
+      <div nz-row>
+        <div nz-col [nzXs]="{span: 24}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <div nz-row>
+            <div class="tx-center" nz-col [nzSpan]="6">
+              <img src="/assets/lib/images/test2.jpg">
+            </div>
+            <div nz-col [nzSpan]="18" class="project-des">
+              <h4 class="project-name">
+                <a href="javascript:;">项目名称</a>
+              </h4>
+              <p class="hidden-sm hidden-md hidden-lg hidden-xl">
+                <a [routerLink]="['/gestation/project-details']">王老师</a>
+              </p>
+              <p class="ellipsis">荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是</p>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <a [routerLink]="['/gestation/project-details']">王老师</a>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>电子信息</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>自产自销</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>第三产业</span>
+        </div>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24" class="info-list">
+      <div nz-row>
+        <div nz-col [nzXs]="{span: 24}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <div nz-row>
+            <div class="tx-center" nz-col [nzSpan]="6">
+              <img src="/assets/lib/images/test2.jpg">
+            </div>
+            <div nz-col [nzSpan]="18" class="project-des">
+              <h4 class="project-name">
+                <a href="javascript:;">项目名称</a>
+              </h4>
+              <p class="hidden-sm hidden-md hidden-lg hidden-xl">
+                <a [routerLink]="['/gestation/project-details']">王老师</a>
+              </p>
+              <p class="ellipsis">荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是</p>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <a [routerLink]="['/gestation/project-details']">王老师</a>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>电子信息</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>自产自销</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>第三产业</span>
+        </div>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24" class="info-list">
+      <div nz-row>
+        <div nz-col [nzXs]="{span: 24}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <div nz-row>
+            <div class="tx-center" nz-col [nzSpan]="6">
+              <img src="/assets/lib/images/test2.jpg">
+            </div>
+            <div nz-col [nzSpan]="18" class="project-des">
+              <h4 class="project-name">
+                <a href="javascript:;">项目名称</a>
+              </h4>
+              <p class="hidden-sm hidden-md hidden-lg hidden-xl">
+                <a [routerLink]="['/gestation/project-details']">王老师</a>
+              </p>
+              <p class="ellipsis">荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是</p>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <a [routerLink]="['/gestation/project-details']">王老师</a>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>电子信息</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>自产自销</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>第三产业</span>
+        </div>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24" class="info-list">
+      <div nz-row>
+        <div nz-col [nzXs]="{span: 24}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <div nz-row>
+            <div class="tx-center" nz-col [nzSpan]="6">
+              <img src="/assets/lib/images/test2.jpg">
+            </div>
+            <div nz-col [nzSpan]="18" class="project-des">
+              <h4 class="project-name">
+                <a href="javascript:;">项目名称</a>
+              </h4>
+              <p class="hidden-sm hidden-md hidden-lg hidden-xl">
+                <a [routerLink]="['/gestation/project-details']">王老师</a>
+              </p>
+              <p class="ellipsis">荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是荣获多个国内软件大奖的搜狗输入法是</p>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <a [routerLink]="['/gestation/project-details']">王老师</a>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>电子信息</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>自产自销</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="hidden-xs line-height40">
+          <span>第三产业</span>
+        </div>
+      </div>
+    </div>
+    <div class="page-box" nz-col [nzSpan]="24">
+        <nz-pagination class="tx-center" [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+    </div>
+  </div>
+</div>

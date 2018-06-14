@@ -1,0 +1,80 @@
+<div nz-row class="row">
+  <div nz-col [nzSpan]="24" class="detail-top">
+    <div nz-row class="dHead" *ngIf="jobDetail">
+      <div nz-col [nzSpan]="16" class="jobDetailL" *ngIf="jobDetail">
+        <h5 class="company">{{jobDetail.company_name}}</h5>
+        <h3 class="jobTitle">{{jobDetail.name}}</h3>
+        <div class="treatment">
+          <span class="red">{{jobDetail.salary_text}}</span>
+          <span> / {{jobDetail.experience_text}}</span>
+          <span> / {{jobDetail.education_text}}</span>
+          <span> / {{jobDetail.type_text}}</span>
+        </div>
+        <p>{{jobDetail.address_text}}</p>
+        <div class="features">
+          <span *ngFor="let welfare of jobDetail.welfare_text">{{welfare.name}}</span>
+        </div>
+        <div class="releaseDate">
+          <span>{{jobDetail.created_at | showTime}}</span> 发布</div>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <div class="jobDetailR">
+          <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="collect(jobDetail.id)">
+            <i class="anticon" [class.anticon-star-o]="!jobDetail.is_collection" [class.anticon-star]="jobDetail.is_collection"></i>
+            <span>收藏</span>
+          </button>
+          <button nz-button (click)="sendResume(jobDetail.id)" [nzType]="'primary'" [nzSize]="'large'" *ngIf="!jobDetail.is_exit">
+            <span>投递简历</span>
+          </button>
+          <button nz-button [nzType]="'primary'" [nzSize]="'large'" disabled *ngIf="jobDetail.is_exit">
+            <span>已投递</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:24}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}" class="jobInfoLeft" *ngIf="jobDetail">
+    <div class="jobInfo">
+      <div class="infoTitle">职位描述:</div>
+      <div class="infoConten" [innerHtml]="jobDetail.description | safeHtmlPipe"></div>
+    </div>
+    <div class="jobInfo">
+      <div class="infoTitle">工作地址:</div>
+      <div class="infoConten">
+        <a href="#">{{jobDetail.province_text}}</a> -
+        <a href="#">{{jobDetail.city_text}}</a> -
+        <a href="#">{{jobDetail.district_text}}</a>
+        <!-- <a href="#" class="fr">查看地图</a> -->
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzXs]="{span:0}" [nzSm]="{span:0}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="companyInfoRight hidden-xs hidden-sm">
+    <div class="companyInfo" *ngIf="jobDetail">
+      <div class="comInfoTitle">
+        <img src={{jobDetail.logo}} alt="'公司logo'" />
+        <p>{{jobDetail.company_name}}</p>
+      </div>
+      <p class="comInfo">
+        <i class="anticon anticon-appstore-o"></i>{{jobDetail.industry_text}}
+      </p>
+      <p class="comInfo">
+        <i class="anticon anticon-area-chart"></i>{{jobDetail.company_status_text}}
+      </p>
+      <p class="comInfo">
+        <i class="anticon anticon-home"></i>{{jobDetail.web_url}}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 简历列表对话框 -->
+<nz-modal [nzVisible]="isResumeBox" [nzTitle]="'投递简历'" [nzContent]="ResumeContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)"
+  [nzConfirmLoading]="isSendLoading">
+  <ng-template #ResumeContent>
+    <nz-radio-group [(ngModel)]="resume_id">
+      <label nz-radio *ngFor="let resume of resumes" [nzValue]="resume.id">
+        <span>{{resume.name}}</span>
+      </label>
+    </nz-radio-group>
+  </ng-template>
+</nz-modal>

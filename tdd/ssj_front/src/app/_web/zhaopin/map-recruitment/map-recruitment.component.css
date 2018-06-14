@@ -1,0 +1,120 @@
+.box{
+    border: 1px solid #e8e8e8;
+    margin: 20px 0;
+}
+.search{
+    height: 36px;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.search nz-input{
+    height: 36px;
+    line-height: 34px;
+    font-size: 16px;
+}
+:host ::ng-deep .search nz-input input{
+    height: 36px;
+}
+.btn{
+    line-height: 34px;
+    height: 34px;
+    border-radius: 0;
+}
+:host ::ng-deep .search .ant-input-group-addon{
+    background: #3da5e4;
+}
+:host ::ng-deep .search .ant-input-group-addon nz-select{
+    font-size: 14px;
+    color: #fff;
+}
+:host ::ng-deep .search nz-input .ant-input-group-addon:nth-last-child(1){
+    padding:0;
+}
+/* 地图设置 */
+.map-box{
+    border-top: 1px solid #e8e8e8;
+}
+.map{
+    width: 100%;
+    height: 650px;
+}
+.companys{
+    border-left: 1px solid #e8e8e8;
+}
+/* 弹窗样式 */
+.infoWindow{
+    width: 220px;
+    overflow: hidden;
+}
+.infoWindow .company-name{
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #e8e8e8;
+}
+.infoWindow p{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 26px; 
+}
+.company-name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.info-jobs{width: 232px; height: 180px; overflow-y: auto;}
+.infoWindow p a{ font-size: 14px;}
+.infoWindow p a:hover{ color: #cc4747;}
+
+.title{
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #626262;
+    background: #f1f1f1;
+}
+.company-title{
+    width:100%;
+    line-height: 30px;
+    font-size: 16px;
+    text-indent: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.job-box{
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e8e8e8;
+}
+.jobs{
+    width: 100%;
+    height: 200px;
+    margin-left:12px;
+    overflow: auto
+}
+.jobs>li{
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    line-height: 22px;
+}
+@media (max-width: 576px) {
+    .map{
+        height: 350px;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .map{
+        height: 400px;
+    }
+}
+@media (min-width:769px) and (max-width: 992px) {
+    .map{
+        height: 450px;
+    }
+}

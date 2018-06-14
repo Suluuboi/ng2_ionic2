@@ -1,0 +1,91 @@
+.more{ padding-right: 20px;}
+.content{ width: 100%; padding-top: 20px; padding-bottom: 20px;}
+.con-box>div{
+    height: 455px;
+    overflow: hidden;
+}
+.tit{ line-height: 34px;border-bottom: 2px solid #e8e8e8;padding-top:10px;box-sizing: border-box;}
+.tit h4{ height: 34px;font-size: 16px; font-weight: 600;padding-left: 20px;color:#626262;}
+.tit .more{
+    color: #3da6e3;
+}
+._left_list>div{ margin-top: 10px;overflow: hidden; }
+._left_list>div img{display: block; height: 132px;}
+._left_list>div .des p{
+    line-height: 30px;
+    font-size: 14px;
+    text-indent: 10px;
+}
+.course-box{
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+.course-box:hover{
+    box-shadow: 2px 3px 5px #666;
+}
+.course-name{
+    color: #626262;
+    font-weight: 600;
+}
+.course-count{
+    color: #7f7d7d;
+}
+._left_list>div:hover ._label{ height: 24px;}
+._r_list{
+    height: 408px;
+    padding: 15px 10px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+._r_list>div{
+    line-height: 40px;
+    border-bottom: 1px dashed #e8e8e8;
+}
+._r_list>div:nth-last-child(1){
+    border: 0!important;
+}
+._r_list>div a{ color: #7f7d7d;font-size: 14px;}
+._r_list>div a:hover{ color: #3da5e4;}
+
+
+@media (max-width: 576px) {
+    .content{
+        padding-bottom: 10px;
+    }
+    ._r_list{padding:0 10px;}
+    ._r_list>div{
+        line-height: 26px;
+    }
+    .con-box>div{
+        height: auto;
+    }
+    ._r_list{
+        height: 250px;
+    }
+    .course-box img{
+        margin: 0 auto;
+    }
+    .des p{
+        text-indent: 20px!important;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    ._left_list>div img{height: 78px;}
+    ._left_list>div .des p, ._r_list>div{
+        line-height: 26px;
+    }
+    ._r_list{padding:0 10px;}
+    .con-box>div{
+        height: auto;
+    }
+    ._r_list{
+        height: 255px;
+    }
+    .course-box img{
+        margin: 0 auto;
+    }
+    .des p{
+        text-indent: 20px!important;
+    }
+}

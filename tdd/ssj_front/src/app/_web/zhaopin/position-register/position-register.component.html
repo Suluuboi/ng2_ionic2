@@ -1,0 +1,296 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24" class="position-title">
+    求职登记
+  </div>
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:24}" [nzMd]="{span:18, offset:3}" [nzLg]="{span:16, offset:4}" [nzXl]="{span:16, offset:4}" class="position-register">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+      <div nz-form-item nz-row>
+        <div nz-col [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+          <div nz-row class="pic-side">
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+              <label for="name" nz-form-item-required>姓名</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback>
+              <nz-input [nzSize]="'large'" formControlName="name" [nzPlaceHolder]="'请填写真实姓名'" [nzId]="'name'"></nz-input>
+              <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">姓名不能为空！</div>
+            </div>
+          </div>
+          <div nz-row class="pic-side">
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+              <label nz-form-item-required>性别</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+              <nz-radio-group formControlName="sex">
+                <label nz-radio [nzValue]="'男'">
+                  <span>男</span>
+                </label>
+                <label nz-radio [nzValue]="'女'">
+                  <span>女</span>
+                </label>
+              </nz-radio-group>
+              <div nz-form-explain *ngIf="getFormControl('sex').dirty&&getFormControl('sex').hasError('required')">请选择您的性别！</div>
+            </div>
+          </div>
+          <div nz-row class="pic-side">
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+              <label nz-form-item-required>婚姻状态</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+              <nz-radio-group formControlName="marriage">
+                <label nz-radio [nzValue]="'已婚'">
+                  <span>已婚</span>
+                </label>
+                <label nz-radio [nzValue]="'未婚'">
+                  <span>未婚</span>
+                </label>
+              </nz-radio-group>
+              <div nz-form-explain *ngIf="getFormControl('marriage').dirty&&getFormControl('marriage').hasError('required')">请选择您的婚姻状况！</div>
+            </div>
+          </div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="pic">寸照</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback class="pic-box">
+          <input type="file" id="pic" (change)="handleChange($event)">
+          <nz-upload class="avatar-uploader" nzName="avatar" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload">
+            <i *ngIf="!avatarUrl" class="anticon anticon-plus avatar-uploader-trigger"></i>
+            <img *ngIf="avatarUrl" [src]="avatarUrl" class="avatar">
+          </nz-upload>
+        </div>
+      </div>
+
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="mb-xs">
+          <label for="age" nz-form-item-required>年龄</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" nzHasFeedback class="mb-xs">
+          <nz-input [nzSize]="'large'" formControlName="age" [nzPlaceHolder]="'请输入真实年龄'" [nzId]="'age'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('age').dirty&&getFormControl('age').hasError('required')">年龄不能为空！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="phone" nz-form-item-required>联系电话</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback>
+          <nz-input [nzSize]="'large'" [nzType]="'number'" formControlName="phone" [nzPlaceHolder]="'请输入联系电话'" [nzId]="'phone'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('phone').dirty&&getFormControl('phone').hasError('required')">请填写您的联系电话！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label nz-form-item-required>学历</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18">
+          <nz-radio-group formControlName="education">
+            <label nz-radio [nzValue]="'博士'">
+              <span>博士</span>
+            </label>
+            <label nz-radio [nzValue]="'研究生'">
+              <span>研究生</span>
+            </label>
+            <label nz-radio [nzValue]="'本科'">
+              <span>本科</span>
+            </label>
+            <label nz-radio [nzValue]="'大专'">
+              <span>大专</span>
+            </label>
+            <label nz-radio [nzValue]="'高中、职高'">
+              <span>高中、职高</span>
+            </label>
+            <label nz-radio [nzValue]="'初中及以下'">
+              <span>初中及以下</span>
+            </label>
+          </nz-radio-group>
+          <div nz-form-explain *ngIf="getFormControl('education').dirty&&getFormControl('education').hasError('required')">请选择您的学历信息！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="mb-xs">
+          <label for="height" nz-form-item-required>身高cm</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" nzHasFeedback class="mb-xs">
+          <nz-input [nzSize]="'large'" formControlName="height" [nzPlaceHolder]="'请填写身高'" [nzId]="'height'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('height').dirty&&getFormControl('height').hasError('required')">身高信息必填！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="weight" nz-form-item-required>体重kg</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="weight" [nzPlaceHolder]="'请输入体重'" [nzId]="'weight'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('weight').dirty&&getFormControl('weight').hasError('required')">体重信息必填！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="address" nz-form-item-required>
+            <span>
+              户籍地址
+              <nz-tooltip [nzTitle]="'填写户口所在地详细地址'">
+                <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+              </nz-tooltip>
+            </span>
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="address" [nzPlaceHolder]="'填写户口所在地详细地址'" [nzId]="'address'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('address').dirty&&getFormControl('address').hasError('required')">请填写您户籍地址</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="idcard" nz-form-item-required>
+            身份证号码
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="idcard" [nzPlaceHolder]="'请填写个人身份证号码'" [nzId]="'idcard'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('idcard').dirty&&getFormControl('idcard').hasError('required')">请填写您的身份证号码！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="mb-xs">
+          <label for="e_contact" nz-form-item-required>紧急联系人</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" nzHasFeedback class="mb-xs">
+          <nz-input [nzSize]="'large'" formControlName="e_contact" [nzPlaceHolder]="'请填写紧急联系人姓名'" [nzId]="'e_contact'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('e_contact').dirty&&getFormControl('e_contact').hasError('required')">请填写紧急联系人姓名！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="e_phone" nz-form-item-required>联系电话</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback>
+          <nz-input [nzSize]="'large'" [nzType]="'number'" formControlName="e_phone" [nzPlaceHolder]="'请填写紧急联系人电话号码'" [nzId]="'e_phone'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('e_phone').dirty&&getFormControl('e_phone').hasError('required')">请填写您的联系电话！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="skill_certificate">
+            <span>
+              技能证书
+              <nz-tooltip [nzTitle]="'多个证书用逗号隔开！'">
+                <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+              </nz-tooltip>
+            </span>
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="skill_certificate" [nzPlaceHolder]="'请填写技能证书名称'" [nzId]="'skill_certificate'"></nz-input>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="mb-xs">
+          <label for="industry" nz-form-item-required>
+            岗位工种
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" nzHasFeedback class="mb-xs">
+          <nz-input [nzSize]="'large'" formControlName="industry" [nzPlaceHolder]="'请填写岗位工种'" [nzId]="'industry'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('industry').dirty&&getFormControl('industry').hasError('required')">请填写岗位工种！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+
+          <label for="work_time" nz-form-item-required>
+            工作时间
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="work_time" [nzPlaceHolder]="'请填写期望工作时间'" [nzId]="'work_time'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('work_time').dirty&&getFormControl('work_time').hasError('required')">请填写您的工作时间！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="work_address" nz-form-item-required>
+            工作地点
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="work_address" [nzPlaceHolder]="'请填写期望工作地点'" [nzId]="'work_address'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('work_address').dirty&&getFormControl('work_address').hasError('required')">请填写您求职的工作地点！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="mb-xs">
+          <label for="salary" nz-form-item-required>
+            月收入
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" nzHasFeedback class="mb-xs">
+          <nz-input [nzSize]="'large'" formControlName="salary" [nzPlaceHolder]="'请填写期望月收入'" [nzId]="'salary'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('salary').dirty&&getFormControl('salary').hasError('required')">请填写您的期望收入！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="welfare" nz-form-item-required>
+            福利待遇
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="welfare" [nzPlaceHolder]="'请填写福利待遇'" [nzId]="'welfare'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('welfare').dirty&&getFormControl('welfare').hasError('required')">请填写您期望的福利待遇！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label nz-form-item-required>用工性质</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18">
+          <nz-radio-group formControlName="type">
+            <label nz-radio [nzValue]="1">
+              <span>合同制</span>
+            </label>
+            <label nz-radio [nzValue]="2">
+              <span>劳务工</span>
+            </label>
+            <label nz-radio [nzValue]="3">
+              <span>兼职</span>
+            </label>
+            <label nz-radio [nzValue]="4">
+              <span>小时工</span>
+            </label>
+            <label nz-radio [nzValue]="5">
+              <span>无要求</span>
+            </label>
+          </nz-radio-group>
+          <div nz-form-explain *ngIf="getFormControl('type').dirty&&getFormControl('type').hasError('required')">请选择您需求的用工性质！</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-col [nzSpan]="6">
+          <h3 class="sub-title tx-center">工作经验</h3>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-control nz-col [nzSpan]="24" nzHasFeedback>
+          <add-work-exprience (workExpirences)="getWorkExpirence($event)"></add-work-exprience>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="train">
+            <span>
+              培训意向
+              <nz-tooltip [nzTitle]="'培训意向的专业技能及其等级！'">
+                <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+              </nz-tooltip>
+            </span>
+          </label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="train" [nzPlaceHolder]="'请填写培训意向信息'" [nzId]="'train'"></nz-input>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="note">备注</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+          <nz-input [nzSize]="'large'" formControlName="note" [nzPlaceHolder]="'请填写备注信息'" [nzId]="'note'"></nz-input>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:20px;" class="tx-center">
+        <button nz-button [nzSize]="'large'" [nzType]="'primary'">提交资料</button>
+      </div>
+    </form>
+  </div>
+</div>

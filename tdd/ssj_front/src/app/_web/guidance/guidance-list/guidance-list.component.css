@@ -1,0 +1,21 @@
+a{
+    font-size: 14px;
+}
+.position{
+    background: #f1f1f1;
+    line-height: 40px;
+    font-size: 14px;
+    color: #626262;
+    text-indent: 10px;
+}
+.head th{
+    color: #7f7d7d;
+}
+.ant-table-tbody > tr > td{
+    padding: 5px;
+    border-bottom: 1px dashed #e8e8e8;
+}
+@media (max-width: 576px) {
+    .name{ width: 70%;}
+    .date{ width: 30%;}
+}

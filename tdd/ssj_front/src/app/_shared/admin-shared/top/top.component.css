@@ -1,0 +1,31 @@
+.head-top, a{ font-size: 14px; color:#fff;}
+.head-top .title{
+    font-size: 20px;
+}
+.back-home{text-indent: 10px;}
+.user-info{text-align: right;}
+.user-info>span{
+    display: block;
+    padding-left: 20px;
+}
+.user-info>a{ padding-right: 5px;}
+@media (max-width: 576px) {
+    .user-info>span{
+        width: 80%;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .user-info>span{
+        width: 80%;
+    }
+}
+@media (min-width:769px) and (max-width: 992px) {
+    .user-info>span{
+        width: 85%;
+    }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    .user-info>span{
+        width: 90%;
+    }
+}

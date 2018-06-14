@@ -1,0 +1,12 @@
+.mt10{margin-top: 10px;}
+:host ::ng-deep .ant-checkbox-wrapper{
+    margin-right: 8px;
+    margin-left: 0!important;
+}
+nz-datepicker{width: 100%!important;}
+@media(max-width: 576px){
+    .ant-form-item-label{
+        text-align: left!important;
+        text-indent: 10px;
+    }
+}

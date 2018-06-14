@@ -1,0 +1,47 @@
+<div class="job-fair">
+  <div class="title cl">
+    <h4 class="border-bottom-common fl">最新职位资讯</h4>
+    <a [routerLink]="['/zhaopin']" target="_blank" class="more fr">更多</a>
+  </div>
+  <ul class="newsContent" *ngIf="isJobs">
+    <li class="list-thead hidden-xs hidden-sm hidden-md">
+      <div nz-row class="tx-center">
+        <div nz-col [nzSpan]="6">职位</div>
+        <div nz-col [nzSpan]="8">公司名称</div>
+        <div nz-col [nzSpan]="6">职位类别</div>
+        <div nz-col [nzSpan]="4">发布时间</div>
+      </div>
+    </li>
+    <li class="newsList cl" *ngFor="let job of jobs; let i = index">
+      <div nz-row class="hidden-xs tx-center">
+        <div nz-col [nzSpan]="6" class="news-name ellipsis">
+            <a [routerLink]="['/zhaopin/jobsDetails', job.id]" title="{{job.name}}">{{job.name}}</a>
+        </div>
+        <div nz-col [nzSpan]="8" class="company-name ellipsis">
+            <a [routerLink]="['/zhaopin/company', job.user.company.id]" target="_blank" title="{{job.user.company.name}}">{{job.user.company.name}}</a>
+        </div>
+        <div nz-col [nzSpan]="6" class="ellipsis">
+            <span>{{job.industry.name}}</span>
+        </div>
+        <div nz-col [nzSpan]="4">
+            <span>{{job.created_at | date:"MM-dd-yy"}}</span>
+        </div>
+      </div>
+      <div nz-row class="xs-jobs hidden-sm hidden-md hidden-lg hidden-xl">
+        <div nz-col [nzSpan]="24" class="news-name ellipsis">
+            <a [routerLink]="['/zhaopin/jobsDetails', job.id]" title="{{job.name}}">11{{job.name}}</a>
+        </div>
+        <div nz-col [nzSpan]="16" class="ellipsis">
+            <span>{{job.industry.name}}</span>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <span>{{job.created_at | date:"MM-dd-yy"}}</span>
+        </div>
+        <div nz-col [nzSpan]="24" class="company-name ellipsis">
+            <a [routerLink]="['/zhaopin/company', job.user.company.id]" target="_blank" title="{{job.user.company.name}}">{{job.user.company.name}}</a>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+</div>

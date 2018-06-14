@@ -1,0 +1,163 @@
+<div class="resume">
+  <header class='box header' *ngIf="isResume">
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+      <div class="header-logo" nz-col [nzSpan]="8">
+        <img class="web_logo" src="/assets/lib/images/logoin_logo2.png" alt="网站logo">
+      </div>
+      <div class="base_info" nz-col [nzSpan]="12" [nzOffset]="4">
+        <div>浏览：
+          <span class="orange">{{resumeDetail.view_count}} 次</span>
+        </div>
+        <div>简历更新：
+          <span class="orange">{{resumeDetail.updated_at}}</span>
+        </div>
+        <div>编号：
+          <span class="orange">{{resumeDetail.id}}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class='box content' *ngIf="isResume">
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+      <div nz-col [nzSpan]="8">
+        <h3>{{resumeDetail.user.person.name}}</h3>
+        <p class="base_info">
+          <span>{{resumeDetail.user.person.sex}}</span>|
+          <span>{{resumeDetail.user.person.birthday | ageChange}} 岁</span>|
+          <span>{{resumeDetail.user.person.education.name}}</span>|
+          <span>{{resumeDetail.user.person.experience.name}}</span>
+        </p>
+        <p class="base_info">
+          <span>{{resumeDetail.user.person.email}}</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" [nzOffset]="8" style="display:flex; justify-content: center;">
+        <img class="user-logo" src={{resumeDetail.user.person.head_pic}} alt="个人头像">
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>求职意向</h4>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <p>期望薪资：
+          <span *ngFor="let _s of salary">
+            <ng-container *ngIf="_s.id == resumeDetail.salary_id">{{_s.name}}</ng-container>
+          </span>
+        </p>
+        <p>求职状态： {{resumeDetail.user.person.self_state}}</p>
+        <p>期望从事职位： {{resumeDetail.job_name}}</p>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <p>工作地点： {{resumeDetail.city.name}}</p>
+        <p>期望工作性质： {{resumeDetail.job_type.name}} </p>
+      </div>
+      <div nz-col [nzSpan]="8"></div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.works.length != 0">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>工作经历</h4>
+      </div>
+      <div nz-col [nzSpan]="24" *ngFor="let work of resumeDetail.works">
+        <div nz-col [nzSpan]="6">
+          {{work.start_time}} - {{work.end_time}}
+        </div>
+        <div nz-col [nzSpan]="18">
+          <h5 class="cl">
+            <span>{{work.company_name}}</span>
+            <span>{{work.position_name}}</span>
+          </h5>
+          <p>{{work.job_content}}</p>
+        </div>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.educations.length != 0">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>教育经历</h4>
+      </div>
+      <div nz-col [nzSpan]="24" *ngFor="let edu of resumeDetail.educations">
+        <div nz-col [nzSpan]="6">
+          {{edu.start_time}} - {{edu.end_time}}
+        </div>
+        <div nz-col [nzSpan]="18">
+          <h5 class="cl">
+            <span>{{edu.school_name}}</span>
+            <span>{{edu.major_name}}</span>
+            {{edu.education.name}}
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.trainings.length != 0">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>培训经历</h4>
+      </div>
+      <div nz-col [nzSpan]="24" *ngFor="let train of resumeDetail.trainings">
+        <div nz-col [nzSpan]="6">
+          {{train.start_time}} - {{train.end_time}}
+        </div>
+        <div nz-col [nzSpan]="18">
+          <h5 class="cl">
+            <span>{{train.institution_name}}</span>
+            <span>{{train.course_name}}</span>
+          </h5>
+          <p>{{train.train_content}}</p>
+        </div>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.skills.length != 0">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>职业技能</h4>
+      </div>
+      <div nz-col [nzSpan]="24" *ngFor="let skill of resumeDetail.skills">
+        <div nz-col [nzSpan]="6">
+          {{skill.skill_name}}
+        </div>
+        <div nz-col [nzSpan]="18">
+          掌握情况： {{skill.skill_level}}
+        </div>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.projects.length != 0">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>项目经验</h4>
+      </div>
+      <div nz-col [nzSpan]="24" *ngFor="let project of resumeDetail.projects">
+        <div nz-col [nzSpan]="6">
+          {{project.start_time}} - {{project.end_time}}
+        </div>
+        <div nz-col [nzSpan]="18">
+          <h5 class="cl">
+            <span>{{project.project_name}}</span>
+            <span>{{project.position_name}}</span>
+          </h5>
+          <p>{{project.project_content}}</p>
+        </div>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" *ngIf="resumeDetail.self_evaluation">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>自我评价</h4>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <p>{{resumeDetail.self_evaluation}}</p>
+      </div>
+    </div>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+      <div class="title" nz-col [nzSpan]="24">
+        <h4>联系方式</h4>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <p class="base_info">联系手机： {{resumeDetail.user.phone}}</p>
+        <p class="base_info">电子邮箱： {{resumeDetail.user.person.email}}</p>
+      </div>
+    </div>
+  </div>
+  <footer class='box footer'>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+      <div nz-col [nzSpan]="24" style="text-align: center;">
+        天府菁英网 © 版权所有 {{localUrl}} 本网招聘及简历信息等 ,未经书面授权不得转载
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,8 @@
+<nz-carousel [nzAutoPlay]="true">
+  <div nz-carousel-content class="banner-list" *ngFor="let img of imgs;let i=index;">
+    <a *ngIf="img.url !== null" href="{{img.url}}" target="_blank">
+      <img [src]="'http://localhost/' + img.path" alt="轮播图">
+    </a>
+    <img *ngIf="img.url === null" [src]="'http://localhost/' + img.path" alt="轮播图">
+  </div>
+</nz-carousel>

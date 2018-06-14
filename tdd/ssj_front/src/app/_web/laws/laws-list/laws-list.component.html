@@ -1,0 +1,33 @@
+<div nz-row>
+    <div nz-col [nzSpan]="24">
+      <div class="search">
+        <search-content class="search-component" (searchValue)="getSearchValue($event)"></search-content>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24">
+      <div class="laws">
+        <div *ngIf="laws.length != 0">
+          <ul class="list">
+            <li *ngFor="let law of laws">
+              <h5 class="title">
+                <span>{{law.type}}</span>
+                <a [routerLink]="['/laws/detail', law.id]" target="_blank">{{law.title}}</a>
+              </h5>
+              <p class="profile">
+                发布时间:
+                <span>{{law.created_at}}</span>
+              </p>
+              <p class="des">摘要：
+                <span> {{law.description}}</span>
+              </p>
+            </li>
+          </ul>
+          <nz-pagination class="page-change" [nzPageIndex]="pagiNation.current_page" [nzTotal]="pagiNation.total" nzShowTotal [nzPageSize]="pagiNation.per_page"
+            (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+        </div>
+        <div *ngIf="isNull" class="noData">
+          没有数据
+        </div>
+      </div>
+    </div>
+  </div>

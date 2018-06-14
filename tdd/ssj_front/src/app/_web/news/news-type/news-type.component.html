@@ -1,0 +1,21 @@
+<div class="position hidden-xs hidden-sm">
+  <span>当前位置:&nbsp;&nbsp; 首页 &nbsp;&gt; &nbsp;新闻中心</span>
+</div>
+<div id="box" *ngIf='infoList.length != 0'>
+  <nz-table #nzTable [nzAjaxData]="infoList"
+  [nzLoading]="_loading"
+  [nzTotal]="infos.total"
+  [(nzPageIndex)]="infos.current_page"
+  [(nzPageSize)]="infos.per_page"
+  (nzPageIndexChangeClick)="pageChangeClick($event)">
+    <tbody nz-tbody>
+      <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+        <td nz-td class="name">
+          <a [routerLink]="['/news/home/detail', data.id]">{{data.name}}</a>
+        </td>
+        <td nz-td class="date tx-right">{{data.created_at | date: 'yyyy-MM-dd'}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+<div *ngIf="_loading" class="noData">没有数据</div>

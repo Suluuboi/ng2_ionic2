@@ -1,0 +1,23 @@
+<div class="policy" *ngIf="isTabs">
+  <nz-tabset>
+    <nz-tab
+        *ngFor="let tab of tabs"
+        (nzClick)="changTabId(tab.id)">
+      <ng-template #nzTabHeading>
+        {{tab.name}}
+      </ng-template>
+      <div nz-row class="content">
+        <div nz-col [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" class="list-info cl" *ngFor="let content of tab.articles">
+          <i class="list-icon fl"></i>
+          <a class="ellipsis" [routerLink]="['/news/home/detail', content.id]" target="_blank" title="{{content.name}}">
+            <span class="news-name fl">{{content.name}}</span>
+            <span class="fr">{{content.created_at | date: 'yyyy-MM-dd'}}</span>
+          </a>
+        </div>
+      </div>
+    </nz-tab>
+    <ng-template #nzTabBarExtraContent>
+      <a [routerLink]="['/news/home/type', newsTypeId]" class="more" target="_blank">更多</a>
+    </ng-template>
+  </nz-tabset>
+</div>

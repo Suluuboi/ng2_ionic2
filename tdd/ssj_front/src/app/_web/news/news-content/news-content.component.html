@@ -1,0 +1,31 @@
+<div class="position hidden-xs">
+  <span>当前位置:&nbsp;&nbsp; 首页 &nbsp;&gt; &nbsp;新闻详情</span>
+</div>
+<div nz-row *ngIf="isData">
+  <div nz-col [nzSpan]="24" class="title">
+    <h3>{{detail.data.name}}</h3>
+    <p class="describe tx-center">
+      <span>时间： {{detail.data.created_at | date: "yyyy-MM-dd"}}</span>
+      <span>作者： {{detail.data.author}}</span>
+      <span>浏览量： {{detail.data.view_count}}</span>
+    </p>
+  </div>
+  <div nz-col [nzSpan]="24" class="abstract">
+    <p>{{detail.data.abstract}}</p>
+    <div class="img" *ngIf="detail.data.image != ''">
+      <img src={{detail.data.image}} alt="">
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="content">
+    <!-- 将获取的html转为angular认可的安全字符 -->
+    <div [innerHtml]="detail.data.content | safeHtmlPipe"></div>
+  </div>
+  <div nz-col [nzSpan]="24" class="bottom">
+    <p>上一篇：
+      <a *ngIf="detail.previous_article" [routerLink]="['/news/home/detail', detail.previous_article.id]">{{detail.previous_article.name}}</a>
+    </p>
+    <p>下一篇：
+      <a *ngIf="detail.next_article" [routerLink]="['/news/home/detail', detail.next_article.id]"> {{detail.next_article.name}}</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+:host ::ng-deep .ant-input-group .ant-input{
+    height: 36px;
+    border: 1px solid #3da5e4;
+    outline: none;
+}
+:host ::ng-deep nz-input{
+    width: 80%;
+    border-color: #3da5e4;
+}
+:host ::ng-deep nz-input, .btn{
+    height: 36px;
+    font-size: 14px;
+    line-height: 36px;
+    background-color: #3da5e4;
+}
+:host ::ng-deep .ant-input{
+    height: 36px;
+    border-color: #3da5e4;
+}
+.btn{
+    padding: 0 10px;
+    color: #fff;
+}

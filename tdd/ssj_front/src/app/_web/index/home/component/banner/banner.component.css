@@ -1,0 +1,34 @@
+/*幻灯片  */
+:host ::ng-deep .ant-carousel .slick-slide {
+    text-align: center;
+    height: 360px;
+    color: #fff;
+    overflow: hidden;
+}
+div.nz-overlay-pane{
+    left: 458px!important;
+}
+/*幻灯片*/
+.banner-list {width: 100%;height:100%;}
+.banner-list img{ width: 100%;height:100%;}
+
+@media (max-width: 576px) {
+    :host ::ng-deep .ant-carousel .slick-slide {
+        height: 160px;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    :host ::ng-deep .ant-carousel .slick-slide {
+        height: 230px;
+    }
+}
+@media (min-width:769px) and (max-width: 992px) {
+    :host ::ng-deep .ant-carousel .slick-slide {
+        height: 300px;
+    }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    :host ::ng-deep .ant-carousel .slick-slide {
+        height: 300px;
+    }
+}

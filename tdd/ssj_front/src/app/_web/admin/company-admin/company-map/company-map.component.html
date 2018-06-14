@@ -1,0 +1,33 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24" class="search">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+      <div nz-form-item nz-row [nzGutter]="20">
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}" class="_label">
+          <label for="address" nz-form-item-required>单位地址</label>
+        </div>
+        <div class="_input" nz-form-control nz-col [nzXs]="{span:10}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}"
+          nzHasFeedback [nzValidateStatus]="getFormControl('address')">
+          <nz-input [nzSize]="'large'" formControlName="address" [nzId]="'address'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('address').dirty&&getFormControl('address').hasError('address')">搜索地址不能为空！</div>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}" class="_label mt10">
+          <label for="city">城市名称</label>
+        </div>
+        <div class="_input" nz-form-control nz-col [nzXs]="{span:10}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}"
+          class="mt10">
+          <nz-input [nzSize]="'large'" formControlName="city" [nzType]="'city'" [nzId]="'city'"></nz-input>
+        </div>
+        <div nz-col [nzSpan]="4" class="mt10">
+          <button class="search-btn" nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!validateForm.valid">搜索</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:18}" [nzMd]="{span:16}" [nzLg]="{span:16}" [nzXl]="{span:14}"  class="cl mapOper">
+    <span class="fl">经纬度：{{location}}</span>
+    <button class="fr" (click)="saveCompanyPosition()" nz-button [nzSize]="'large'" [nzType]="'primary'">保存地图</button>
+  </div>
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:18}" [nzMd]="{span:16}" [nzLg]="{span:16}" [nzXl]="{span:14}" class="map">
+    <gd-map [center]="_position" [searchMarks]="geocodes" (position)="getPosition($event)"></gd-map>
+  </div>
+</div>

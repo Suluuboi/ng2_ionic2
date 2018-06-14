@@ -1,0 +1,64 @@
+<div nz-row class="search" id="search">
+  <div nz-col [nzSpan]="8">
+    <nz-input [nzType]="'search'" [nzId]="'search-input'" [nzPlaceHolder]="'输入公司名称'" [(ngModel)]="searchText" (nzOnSearch)="onSearch($event)">
+    </nz-input>
+  </div>
+  <div nz-col [nzSpan]="16" style="height:28px;"></div>
+  <div nz-col [nzSpan]="8" class="search-content" id="search-content">
+    <ul class="search-box">
+      <li class="search-list cl" *ngFor="let result of searchArray">
+        <a href="javascript:;" class="search-name fl">{{result.name}}</a>
+        <span class="search-oper add fr" (click)="addCompanyToJobfair(result.id)">添加</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div nz-row class="list" *ngIf="companys.length !== 0">
+  <nz-tabset [nzTabPosition]="'left'" [nzShowPagination]="'false'" [nzType]="'line'">
+    <nz-tab *ngFor="let company of companys; let i = index">
+      <ng-template #nzTabHeading>
+        <div nz-row style="width: 300px;" (click)="showCompanyJobslist(company.pivot.company_id)">
+          <div nz-col [nzSpan]="18" class="company-name">
+            <a href="javascript:;" title="{{company.name}}">{{company.name}}</a>
+          </div>
+          <div nz-col [nzSpan]="4" [nzOffset]="2" class="company-oper">
+            <nz-popconfirm [nzTitle]="'确定要删除当前单位吗？'" (nzOnConfirm)="deleteCompanyToJobfair(company.pivot.company_id)" (nzOnCancel)="cancel()">
+              <a nz-popconfirm>删除</a>
+            </nz-popconfirm>
+          </div>
+        </div>
+      </ng-template>
+      <div class="job-list">
+        <div style="margin-bottom: 16px;">
+          <button nz-button [disabled]="_disabledButton" [nzType]="'primary'" [nzLoading]="_operating" (click)="_operateData()">添加</button>
+          <span style="margin-left: 8px;" *ngIf="_checkedNumber">选中 {{_checkedNumber}} 条数据</span>
+        </div>
+        <nz-table #nzTable [nzDataSource]="jobs" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
+          [nzIsPagination]="'false'" [nzScroll]="{ y: 400 }" (nzPageSizeChange)="_refreshStatus()">
+          <thead nz-thead>
+            <tr>
+              <th nz-th nzCheckbox>
+                <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+                  全选
+                </label>
+              </th>
+              <th nz-th>
+                <span>职位</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody nz-tbody>
+            <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+              <td nz-td nzCheckbox>
+                <label nz-checkbox [(ngModel)]="data.checked" (ngModelChange)="_refreshStatus($event)">
+                </label>
+              </td>
+              <td nz-td>{{data.name}}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</div>

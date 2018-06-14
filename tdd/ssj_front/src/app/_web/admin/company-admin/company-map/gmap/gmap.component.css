@@ -1,0 +1,8 @@
+#container{ width: 100%; height: 100%;}
+.map{ height: 100%;}
+.info{
+    width: 220px;
+    line-height: 30px;
+}
+.info h4{ font-size: 16px;}
+.info p{ font-size: 14px;}

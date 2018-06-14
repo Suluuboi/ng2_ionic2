@@ -1,0 +1,95 @@
+<div nz-row class="header hidden-xs hidden-sm hidden-md">
+  <div nz-col [nzSpan]="24">
+    <header>
+      <a [routerLink]="['/index']">
+        <img src="./assets/lib/images/logoin_logo2.png" alt="网站logo">
+      </a>
+    </header>
+  </div>
+</div>
+<div class="content" nz-row>
+  <div class="reg-form" nz-col [nzXl]="{span:6, offset: 9}" [nzLg]='{span:8, offset:8}' [nzMd]="{span:12, offset: 6}" [nzSm]="{span:18, offset:3}" [nzXs]="{span:24}">
+    <div class="user-reg">
+      <h4>用户注册</h4>
+    </div>
+    <form nz-form [formGroup]="registeForm" (ngSubmit)="_submitForm()" style="padding-top:20px">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label nz-form-item-required>注册类型</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('select')">
+          <nz-select formControlName="select" [nzSize]="'large'" [nzPlaceHolder]="'请选择用户类型'">
+            <nz-option [nzLabel]="'个人用户'" [nzValue]="'person'"></nz-option>
+            <nz-option [nzLabel]="'单位用户'" [nzValue]="'company'"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="phoneNumber" nz-form-item-required>手机号</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('phoneNumber')">
+          <nz-input [nzSize]="'large'" formControlName="phoneNumber" [nzPlaceHolder]="'请输入手机号码！'" [nzId]="'phoneNumber'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('phoneNumber').dirty&&getFormControl('phoneNumber').hasError('required')">请输入您的手机号码</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="password" nz-form-item-required>密码</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('password')">
+          <nz-input [nzSize]="'large'" formControlName="password" [nzPlaceHolder]="'密码包含数字、字母且不低于6位数'" [nzType]="'password'" [nzId]="'password'"
+            (ngModelChange)="updateConfirmValidator()"></nz-input>
+          <div nz-form-explain *ngIf="checkOption.password" class="errormsg">密码包含数字、字母且不低于6位数!</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="checkPassword" nz-form-item-required>确认密码</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('checkPassword')">
+          <nz-input [nzSize]="'large'" formControlName="checkPassword" [nzType]="'password'" [nzPlaceHolder]="'重复密码'" [nzId]="'checkPassword'"></nz-input>
+          <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('required')">请输入确认密码</div>
+          <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('confirm')">您两次的输入密码不一致</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="checkNumber" nz-form-item-required>验证码</label>
+        </div>
+        <div class="cl" nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('checkNumber')">
+          <nz-input [nzSize]="'large'" formControlName="checkNumber" [nzId]="'checkNumber'" style="float:left;width:50%;"></nz-input>
+          <button type="button" nz-button [nzType]="'primary'" (click)="sendCheckNumber($event)" [nzSize]="'large'" [disabled]="isSending"
+            class="btn1 checkNumber fl">
+            <span *ngIf="!isSending">发送验证码</span>
+            <span *ngIf="isSending">{{_index}}s后重新发送</span>
+          </button>
+          <div nz-form-explain *ngIf="getFormControl('checkNumber').dirty&&getFormControl('checkNumber').hasError('required')">请输入手机短信验证码</div>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:8px;">
+        <div nz-form-control nz-col [nzSm]="{span:18, offset: 3}" [nzXs]="{span:24}">
+          <label nz-checkbox formControlName="agree" class="label">
+            <span>我已阅读并同意</span>
+          </label>
+          <a [routerLink]="['/index']">《网站用户告知书》</a>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:8px;">
+        <div nz-form-control nz-col [nzSm]="{span:18, offset: 3}" [nzXs]="{span:24}">
+          <button nz-button [nzSize]="'large'" [nzType]="'primary'" class="btn2">注册</button>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:8px;">
+        <div nz-form-control nz-col [nzSpan]="24">
+          <div class="register-box">
+            <p>已有账号，请
+              <a [routerLink]="['/login']">登录</a>
+            </p>
+            <a [routerLink]="['/index']">返回网站首页</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

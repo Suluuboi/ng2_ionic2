@@ -1,0 +1,37 @@
+<div class="company-box" *ngIf="isData">
+  <div>
+      <div class="company company-intorduce">
+          <h4>
+            <span class="border-left"></span>
+            公司介绍</h4>
+          <div class="com-intro-content">
+            <div [innerHtml]="companyInfo.description | safeHtmlPipe"></div>
+          </div>
+        </div>
+        <div class="company company-position">
+          <h4>
+            <span class="border-left"></span>
+            公司位置</h4>
+          <div class="position-box">
+            <div class="map-box">
+              <ngx-amap class="map" [center]="_center">
+                <amap-tool-bar></amap-tool-bar>
+                <amap-marker [position]="_center">
+                  <amap-info-window [isOpen]="jobs.length != 0" [offset]="infoWindowOffset">
+                    <div class="infoWindow">
+                      <h4 class="company-name">天府新区人力资源开发服务有限公司</h4>
+                      <p *ngFor="let job of jobs;let i=index">
+                        <a *ngIf="i<5" target="_blank" [routerLink]="['/zhaopin/jobsDetails', job.id]">{{job.name}}</a>
+                      </p>
+                      <p *ngIf="jobs.length > 5">
+                        <a [routerLink]="['/zhaopin/company/' + companyInfo.id + '/jobs']">更多&gt;&gt;</a>
+                      </p>
+                    </div>
+                  </amap-info-window>
+                </amap-marker>
+              </ngx-amap>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

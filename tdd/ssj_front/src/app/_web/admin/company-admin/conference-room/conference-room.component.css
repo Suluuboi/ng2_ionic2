@@ -1,0 +1,15 @@
+.room{
+    padding: 0 20px;
+}
+.title{ line-height: 26px; font-size: 16px; color: #333;margin-bottom: 15px;}
+.content div{
+    color: #108ee9;
+}
+div.oper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@media(max-width: 576px){
+    .room{padding: 0;}
+}

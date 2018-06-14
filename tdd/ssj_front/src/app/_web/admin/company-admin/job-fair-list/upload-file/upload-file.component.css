@@ -1,0 +1,31 @@
+.clearfix>div{
+  height: 30px;
+  line-height: 30px;
+}
+.upload-box{
+  position: relative;
+  left:0; top:0;
+}
+.file-input, .file-btn{
+  position: absolute;
+  left:0; top:0;
+}
+.file-input{
+  z-index: 10;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 125px;
+}
+.file-btn {
+  width: 130px;
+  text-align: left;
+  z-index: 8;
+}
+.file-show{
+  position: absolute;
+  left: 140px;
+  top:0px;
+}
+.footer{
+  height: 30px;
+}

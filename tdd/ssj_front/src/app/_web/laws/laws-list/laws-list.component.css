@@ -1,0 +1,41 @@
+.search{ height: 40px;margin-top: 20px; display: flex; justify-content: center; align-items: center;}
+.search-component{ width: 100%;}
+.laws{ margin-top: 20px;}
+.list{border-top: 1px solid #e8e8e8;}
+.list>li { padding: 10px;border-bottom: 1px solid #e8e8e8;}
+.title{ height: 40px; line-height: 40px;}
+.title a{ font-size: 16px; color: #3da5e4; font-weight: 600;}
+.title span{ padding: 1px 10px; background: #3da5e4; color: #fff;border-radius: 3px; margin-right: 10px;}
+.profile, .link, .des{ font-weight: 600; color:#626262;}
+.list>li>p>span{ color:#626262;}
+.profile>span{ margin-right: 20px;}
+.profile, .link{ line-height: 30px;}
+.des{ line-height: 24px;}
+.des{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.page-change{
+    text-align: center;
+}
+:host ::ng-deep .ant-pagination{
+    margin: 30px;
+}
+@media (max-width: 576px) {
+    .search{margin-top:10px;}
+    .title{height: 30px; line-height: 30px;}
+}
+@media (min-width: 577px) and (max-width: 768px) {
+
+}
+@media (min-width:769px) and (max-width: 992px) {
+
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1201px){
+
+}

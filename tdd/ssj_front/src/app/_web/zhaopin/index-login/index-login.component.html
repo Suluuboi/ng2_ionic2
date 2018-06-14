@@ -1,0 +1,36 @@
+<div>
+  <div class="form">
+    <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="_submitForm()">
+      <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="loginForm.controls.userName">
+          <nz-input formControlName="userName" [nzPlaceHolder]="'输入用户名/手机号/邮箱'" [nzSize]="'large'">
+            <ng-template #prefix>
+              <i class="anticon anticon-user"></i>
+            </ng-template>
+          </nz-input>
+          <div nz-form-explain *ngIf="checkOption.userName" class="errormsg">请输入正确的登录用户名！</div>
+        </div>
+      </div>
+      <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="loginForm.controls.password">
+          <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'请输入密码'" [nzSize]="'large'">
+            <ng-template #prefix>
+              <i class="anticon anticon-lock"></i>
+            </ng-template>
+          </nz-input>
+          <div nz-form-explain *ngIf="checkOption.password">密码格式错误，请重新输入！</div>
+        </div>
+      </div>
+      <div nz-form-item>
+        <div nz-form-control>
+          <label nz-checkbox formControlName="remember">
+            <span>记住密码</span>
+          </label>
+          <a class="login-form-forgot" [routerLink]="['/forgetPwd']" (click)="retrievePassword()">忘记密码?</a>
+          <button class="login-form-button" nz-button [nzType]="'primary'" [nzSize]="'large'">登录</button>
+          <a class="login-form-register" (click)="navToRegister()">注册账号</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+.news{ margin-top: 30px;}
+/* 左侧菜单样式 */
+.list-title{
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    background: #3da5e4;
+    padding-left: 20px;
+}
+.list-title h3{
+    color: #fff;
+}
+.handle-list{text-indent: 15px;}
+.handle-list li{
+    position: relative;
+    left: 0; top: 0;
+}
+.handle-list li .circle{
+    display: block;
+    width: 6px; height: 6px; 
+    border-radius: 100%;
+    background: #626262;
+    position: absolute;
+    left: 12px;
+    top: 18px;
+}
+.handle-list li:nth-last-child(1){
+    border-bottom: 1px solid #e1e1e1;
+}
+.handle-list a{ font-size: 16px; color: #626262;}
+.handleActive{ background-color: #ecf6fd;}
+.handleActive a{ color: #3da5e4;}
+.handleActive .circle{background: #3da5e4!important;}
+.list-xs{background:#3da5e4;}
+.list-title-xs{
+    display: block;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    padding-left: 20px;
+    color: #fff;
+}
+@media (max-width: 576px) {
+    .news{ margin-top: 0px;}
+    .handle-list li{ padding: 0 5px;}
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .news{ margin-top: 0px;}
+}

@@ -1,0 +1,42 @@
+<div class="change-pwd">
+    <div class="form">
+        <form nz-form [formGroup]="changePwdForm" (ngSubmit)="_submitForm()">
+            <div nz-form-item>
+                <div nz-form-label class="fl change-pwd-l">
+                    <label for="password" nz-form-item-required>原始密码</label>
+                </div>
+                <div class="fl change-pwd-r" nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('password')">
+                    <nz-input [nzSize]="'large'" formControlName="password" [nzPlaceHolder]="'输入原始密码'" [nzType]="'password'" [nzId]="'password'"
+                        (ngModelChange)="updateConfirmValidator()"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">输入您的原始密码</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div nz-form-item>
+                <div nz-form-label class="fl change-pwd-l">
+                    <label for="newPassword" nz-form-item-required>新密码</label>
+                </div>
+                <div class="fl change-pwd-r" nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('newPassword')">
+                    <nz-input [nzSize]="'large'" formControlName="newPassword" [nzType]="'password'" [nzPlaceHolder]="'输入新密码'" [nzId]="'newPassword'"
+                        (ngModelChange)="updateConfirmValidator()"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('newPassword').dirty&&getFormControl('newPassword').hasError('required')">请输入新密码</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div nz-form-item>
+                <div nz-form-label class="fl change-pwd-l">
+                    <label for="checkNewPassword" nz-form-item-required>确认密码</label>
+                </div>
+                <div class="fl change-pwd-r" nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('checkNewPassword')">
+                    <nz-input [nzSize]="'large'" formControlName="checkNewPassword" [nzPlaceHolder]="'重复密码'" [nzType]="'password'" [nzId]="'checkNewPassword'"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('checkNewPassword').dirty&&getFormControl('checkNewPassword').hasError('required')">请输入确认密码</div>
+                    <div nz-form-explain *ngIf="getFormControl('checkNewPassword').dirty&&getFormControl('checkNewPassword').hasError('confirm')">两次密码不相同</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div nz-form-item class="subBtn">
+                <button nz-button [nzSize]="'large'" [nzType]="'primary'">确认修改</button>
+            </div>
+        </form>
+    </div>
+</div>

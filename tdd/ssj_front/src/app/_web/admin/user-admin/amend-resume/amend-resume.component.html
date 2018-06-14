@@ -1,0 +1,32 @@
+<div nz-row class="recreate">
+  <div nz-col [nzSpan]="24" class="info_list">
+    <h2 class="hidden-xs">完善简历有助于更好的求职！</h2>
+    <!-- 基本信息 -->
+    <app-user-info-show [userinfo]="userinfo"></app-user-info-show>
+
+    <!-- 求职意向 -->
+    <app-job-intention-show [jobIntention]="jobIntention" [resumeId]="resume_id"></app-job-intention-show>
+
+    <!-- 工作经历 -->
+    <app-works-experience [workexp]="workexp" [resumeId]="resume_id"></app-works-experience>
+
+    <!-- 教育经历 -->
+    <app-education-experience [eduexp]="eduexp" [resumeId]="resume_id"></app-education-experience>
+    
+    <!-- 培训经历 -->
+    <app-training-experience [trainexp]="trainexp" [resumeId]="resume_id"></app-training-experience>
+    
+    <!-- 职业技能 -->
+    <app-skills-experience [skillexp]="skillexp" [resumeId]="resume_id"></app-skills-experience>
+    
+    <!-- 项目经验 -->
+    <app-project-experience [projectexp]="projectexp" [resumeId]="resume_id"></app-project-experience>
+
+    <!-- 其它信息 -->
+    <app-others-information [otherexp]="otherexp" [resumeId]="resume_id"></app-others-information>
+
+    <!-- 自我评价 -->
+    <app-self-evaluation [selfmsg]="selfmsg" [resumeId]="resume_id"></app-self-evaluation>
+    
+  </div>
+</div>

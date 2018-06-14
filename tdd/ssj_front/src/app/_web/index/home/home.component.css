@@ -1,0 +1,28 @@
+.sidebar, .banner{
+    height: 360px;
+    overflow: hidden;
+}
+@media (max-width: 576px) {
+    .banner{
+        height: 160px;
+        overflow: hidden;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .sidebar, .banner{
+        height: 230px;
+        overflow: hidden;
+    }
+}
+@media (min-width:769px) and (max-width: 992px) {
+    .sidebar, .banner{
+        height: 300px;
+        overflow: hidden;
+    }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    .sidebar, .banner{
+        height: 300px;
+        overflow: hidden;
+    }
+}

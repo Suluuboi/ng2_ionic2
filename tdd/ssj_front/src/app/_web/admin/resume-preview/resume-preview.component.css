@@ -1,0 +1,38 @@
+.resume{
+    background: #f9f9f9;
+}
+.box{ width: 900px;margin: 0 auto;}
+.header{background: rgb(235, 231, 231);padding-left: 20px;font-size: 13px;
+    color: #626262;}
+.header-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    background: #fff;
+    border: 1px solid #e8e8e8; padding: 20px;
+    color: #626262;
+}
+.content>div{ margin-top: 20px;}
+h3{
+    padding-left: 10px;
+}
+.title h4{
+    font-size: 16px;
+}
+h3,h4, h5{
+    font-weight: 600;
+    color: #626262;
+}
+h5{font-size: 14px;}
+h5>span{ display: inline-block; float: left; width: 200px; margin-right: 30px;}
+.web_logo{width: 250px; height:30px; border: 0;}
+.base_info>div{ line-height: 30px; fotn-size: 12px;font-weight: 600; float:left; margin-left: 20px;}
+.user-logo{ width: 100px; height: 120px; border: 0; }
+.title{ margin-bottom: 10px; font-size: 16px; font-weight: 600; border-bottom: 2px solid #ccc;}
+.base_info>span{ margin-right: 10px; margin-left: 10px;line-height: 30px;}
+.footer{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

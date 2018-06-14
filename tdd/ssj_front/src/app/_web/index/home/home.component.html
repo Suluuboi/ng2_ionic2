@@ -1,0 +1,15 @@
+<div nz-row [nzGutter]="8" class="row" [nzType]="'flex'">
+  <div nz-col [nzXs]="{span:24, order:2}" [nzSm]="{span:8, order:1}" [nzMd]="{span:8, order:1}" [nzLg]="{span:8, order:1}"
+    [nzXl]="{span:8, order:1}" class="sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div nz-col [nzXs]="{span:24, order:1}" [nzSm]="{span:16, order:2}" [nzMd]="{span:16, order:2}" [nzLg]="{span:16, order:2}"
+    [nzXl]="{span:16, order:2}" class="banner">
+    <app-banner></app-banner>
+  </div>
+</div>
+<div nz-row class="row">
+  <div nz-col [nzSpan]="24">
+    <app-content></app-content>
+  </div>
+</div>

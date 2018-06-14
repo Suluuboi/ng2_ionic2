@@ -1,0 +1,39 @@
+<div nz-row class="box">
+  <!-- 如果有职位则如下显示 -->
+  <div nz-col [nzSpan]="24" class="content" *ngIf="appliedJobs.length != 0">
+    <div nz-row class="con-list hidden-xs">
+      <div nz-col [nzSpan]="12" class="con-title">收藏的职位
+        <span class="org">({{appliedJobs.length}}条)</span>
+      </div>
+      <div nz-col [nzSpan]="2" class="con-title">薪资待遇</div>
+      <div nz-col [nzSpan]="6" class="con-title">工作地址</div>
+      <div nz-col [nzSpan]="4" class="con-title">操作</div>
+    </div>
+    <div nz-row class="con-box con-list" *ngFor="let job of appliedJobs; let i = index">
+      <div nz-col [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}">
+        <div class="_jobDes ellipsis">
+          <p class="cl">
+            <a class="fl" [routerLink]="['/zhaopin/jobsDetails', job.id]" target="_blank">{{job.name}}</a>
+            <a class="fr cancel-xs hidden-sm hidden-md hidden-lg hidden-xl" href="javascript:;" (click)="cancelCollect(job.id, i)">取消收藏</a>
+          </p>
+          <p class="hidden-sm hidden-md hidden-lg hidden-xl cl">
+              <span class="fl">{{job.salary.name}}</span>
+              <span>{{job.province.name}}-{{job.city.name}}</span>
+          </p>
+          <p class="company_name">
+            <a [routerLink]="['/zhaopin/company', job.user.company.id]" target="_blank">{{job.user.company.name}}</a>
+          </p>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="2" class="hidden-xs">{{job.salary.name}}</div>
+      <div nz-col [nzSpan]="6" class="hidden-xs">{{job.province.name}}-{{job.city.name}}</div>
+      <div nz-col [nzSpan]="4" class="hidden-xs">
+        <a href="javascript:;" (click)="cancelCollect(job.id, i)">取消收藏</a>
+      </div>
+    </div>
+  </div>
+  <!-- 如果没有收藏职位，则另显示 -->
+  <div nz-col [nzSpan]="24" class="content" *ngIf="_isAppliedJobs">
+    <div class="noData">您暂时还没有收藏职位！</div>
+  </div>
+</div>

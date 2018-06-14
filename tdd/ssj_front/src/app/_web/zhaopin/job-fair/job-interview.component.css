@@ -1,0 +1,42 @@
+.zph{ padding: 20px 0;}
+.title{
+    line-height: 36px;
+    background: #eee;
+    text-indent: 20px;
+    border-left: 10px solid #3da5e4;
+}
+.content{overflow: hidden;}
+.content>div{
+    height: 155px;
+    margin-top: 15px;
+}
+.bgBook{
+    background: url('/assets/com-images/zph/zph_icon4.png') right -5px top -5px no-repeat;
+    background-size: 63px 63px;
+}
+.bgBookPaused{
+    background: url('/assets/com-images/zph/zph_icon5.png') right -5px top -5px no-repeat;
+    background-size: 63px 63px;
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+}
+.con h2{ line-height: 36px;}
+.con p{ line-height: 30px; font-size: 14px;}
+.con p i{ margin-right: 5px;}
+.detail{ margin-top: 10px;}
+.notData{
+    display: flex;
+    width: 100%; 
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+.img-box img{ height: 100%; border: 0;}
+.describe{ font-size: 20px; font-weight: 600;}
+@media (max-width: 576px) {
+  .zph{ padding: 0;}
+}

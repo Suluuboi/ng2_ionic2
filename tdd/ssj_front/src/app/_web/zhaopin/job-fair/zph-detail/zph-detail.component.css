@@ -1,0 +1,99 @@
+.box{
+    margin-top:30px;
+}
+.box>div{ margin-bottom: 20px;}
+.zph{
+    padding: 0 20px 20px;
+    border: 1px solid #eee;
+    position: relative; left: 0; top: 0;
+}
+.status-bg{
+    width: 63px;
+    height: 63px;
+    overflow: hidden;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background-size: cover;
+}
+.end{
+    background: url('/assets/com-images/zph/zph_icon4.png') center center no-repeat;
+}
+.ing{
+    background: url('/assets/com-images/zph/zph_icon5.png') center center no-repeat;
+}
+.zph-name{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+.zph-theme{
+    padding-left:20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.zph-theme>p{
+    font-size: 14px;
+    line-height: 30px;
+}
+.zph-theme>button{width: 100px;}
+.zph-theme>p>i{ margin-right: 10px;}
+.title{height: 40px; line-height: 40px; background: #f7f7f7;}
+.title h3{ text-indent: 30px; margin-top: 8px; font-size: 14px; line-height: 24px; border-left: 5px solid  #2c81d6;}
+.describe, .companys { padding: 20px;}
+
+.gutter-row{
+    margin-bottom: 20px;
+}
+.gutter-box {
+    padding: 10px 0;
+    width: 100%;
+    height: 240px;
+    border: 1px solid #e8e8e8;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.gutter-box>div{
+    text-align: center;
+}
+.company-logo{
+    height: 60px;
+}
+.company-logo .logo{
+    border:0;
+    width: 140px;
+    height: 60px;
+    overflow: hidden;
+}
+.comapny-name h3{
+    line-height: 26px;
+    padding: 0 10px;
+    font-size: 15px;
+}
+.comapny-name h3 a {
+    color: #333;
+}
+.company-jobs p{
+    width: 100%;
+    padding: 0 10%;
+    line-height: 22px;
+    font-size: 14px;
+}
+.more-jobs{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    left: 50%;
+    margin-left: -32px;
+}
+@media (max-width: 576px) {
+  .zph-theme{ padding: 0;}
+  .gutter-box {
+      border: 0;
+      border-bottom: 1px solid #e8e8e8;
+  }
+  .companys{ padding-top: 0;}
+}

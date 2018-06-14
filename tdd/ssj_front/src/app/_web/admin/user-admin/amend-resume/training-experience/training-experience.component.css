@@ -1,0 +1,28 @@
+.mr50{margin-right: 50px;}
+.editor{ color:#3da5e4;}
+
+.info{ margin-bottom: 30px;}
+.title{ text-indent: 10px; line-height: 30px; font-size: 14px; color: #626262;font-weight: 600; background: #dbeffb;}
+.content{ margin-top:10px;}
+.content>div, .content h3{ font-size: 14px;}
+.con_left{text-align: center;}
+.con_right{ padding: 0 20px;}
+.con_right h3 span{ margin-right: 20px;}
+
+.form-content{ margin-bottom: 20px;}
+.form-content>div{ margin-bottom: 10px;}
+
+.content-title{margin-right:10px;font-size:16px;color:#3da5e4;}
+.datePicker{ float: left; width: 300px;}
+.content-textarea{ float:left; width: 350px;resize: none;}
+.con_row-xs{
+  text-indent: 10px;
+  line-height: 28px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8e8;
+}
+.con_row-xs h3 { font-weight: 600;}
+.con_row-xs h3 span{ margin-left: 20px;}
+@media(max-width:576px){
+  .info{ margin-bottom: 0px;}
+}

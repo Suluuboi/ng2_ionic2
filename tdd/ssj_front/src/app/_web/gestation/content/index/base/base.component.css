@@ -1,0 +1,17 @@
+.title-border{
+  border-bottom: 1px solid #e8e8e8;
+}
+.title{
+    height: 30px; 
+    line-height: 30px;
+    border-left: 5px solid #3da5e4;
+  }
+  h4{font-size:16px; text-indent:15px;}
+  .more{font-size:16px;color:#3da5e4;}
+  .program{margin-top:15px;}
+  .gutter-box {
+    margin-bottom: 10px;
+  }  
+  .gut-1{ width: 100%; overflow: hidden;}
+  .gut-1 img{width:100%;border: 0;}
+  .gut-2{font-size:16px; line-height: 28px; color:#fff;background: #3da5e4;}

@@ -1,0 +1,39 @@
+<div class="conference-box">
+  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
+    <div nz-form-item>
+      <div nz-form-control>
+        <nz-input formControlName="room_name" [nzPlaceHolder]="'会议室名称'" [nzSize]="'large'">
+          <ng-template #prefix>
+            <i class="anticon anticon-user"></i>
+          </ng-template>
+        </nz-input>
+        <div nz-form-explain *ngIf="validateForm.controls.room_name.dirty&&validateForm.controls.room_name.hasError('required')">会议室名称必须填写！</div>
+      </div>
+    </div>
+    <div nz-form-item>
+      <div nz-form-control>
+        <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'会议室密码'" [nzSize]="'large'">
+          <ng-template #prefix>
+            <i class="anticon anticon-lock"></i>
+          </ng-template>
+        </nz-input>
+        <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入会议室密码！</div>
+      </div>
+    </div>
+    <div nz-form-item>
+      <div nz-form-control>
+        <nz-input formControlName="max_count" [nzType]="'number'" [nzPlaceHolder]="'参会人数'" [nzSize]="'large'">
+          <ng-template #prefix>
+            <i class="anticon anticon-user"></i>
+          </ng-template>
+        </nz-input>
+        <div nz-form-explain *ngIf="validateForm.controls.max_count.dirty&&validateForm.controls.max_count.hasError('required')">请输入参会人数限制</div>
+      </div>
+    </div>
+    <div nz-form-item>
+      <div nz-form-control>
+        <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">创建会议室</button>
+      </div>
+    </div>
+  </form>
+</div>

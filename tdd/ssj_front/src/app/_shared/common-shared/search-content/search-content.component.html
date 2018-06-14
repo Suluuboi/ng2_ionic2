@@ -1,0 +1,14 @@
+<div nz-row>
+  <div nz-col  [nzXs]="{span:24}" [nzSm]="{span:12, offset:6}" [nzMd]="{span:12, offset:6}" [nzLg]="{span:12, offset:6}" [nzXl]="{span:12, offset:6}">
+    <nz-input class="searchText" style="float:left;"
+      [nzSize]="'large'"
+      [nzPlaceHolder]="'请输入查询内容'"
+      [(ngModel)]="_value"
+      (keyup)="searchValueChange($event)">
+    </nz-input>
+    <div (click)="searchFunction()" class="btn fl">
+        <i class="anticon anticon-search"></i>
+        搜索
+    </div>
+  </div>
+</div>

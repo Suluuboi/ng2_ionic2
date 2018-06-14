@@ -1,0 +1,16 @@
+.row{ line-height: 48px;}
+.wel{ font-size: 16px; padding: 0 10px;}
+.login-r a{ display: block; float:right; padding: 0 10px; cursor: pointer;color:#626262;}
+.login-r a:hover{text-decoration: underline;}
+span, a{ font-size:16px;}
+@media (max-width: 576px) {
+    .row{line-height: 36px;}
+    .wel{ text-align: center; background: #3da5e4;color:#fff;}
+    span, a{font-size: 14px;}
+    .ant-dropdown-link i{
+        color: #3da5e4;
+        font-size: 20px;
+        font-weight: 600;
+        text-indent: 15px;
+    }
+}

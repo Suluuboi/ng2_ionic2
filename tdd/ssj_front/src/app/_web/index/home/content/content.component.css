@@ -1,0 +1,17 @@
+.home-page{ width: 100%;}
+.content{ background: #fff; margin-top: 10px;}
+.con-list{ width: 100%;height: auto; margin-top: 30px;}
+.con-list img{ width:1200px; border: 0;}
+
+@media (max-width: 576px) {
+    .content, .con-list{margin-top: 0;}
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .content, .con-list{margin-top: 0;}
+}
+@media (min-width:769px) and (max-width: 992px) {
+    .con-list{margin-top: 0;}
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    .con-list{margin-top: 0;}
+}

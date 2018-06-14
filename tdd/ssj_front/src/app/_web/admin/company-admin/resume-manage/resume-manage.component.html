@@ -1,0 +1,174 @@
+<div nz-row class="resume">
+  <div nz-col [nzSpan]="24" class="resume-menu hidden-sm hidden-md hidden-lg hidden-xl">
+    <nz-collapseset>
+      <nz-collapse [nzTitle]="'高级搜索'">
+        <form nz-form [formGroup]="seekersForm" (ngSubmit)="searchSeekers()">
+          <div nz-form-item nz-row class="form-item-xs">
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+              <label>职位名称</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+              <nz-select formControlName="job_id" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+                <nz-option *ngFor="let position of positionInfos" [nzLabel]="position.name" [nzValue]="position.id"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+              <label for="jobPosted">投递时间</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+              <date-picker (workDate)="getPeriodTime($event)"></date-picker>
+            </div>
+          </div>
+          <div nz-form-item nz-row class="form-item-xs">
+            <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+              <label>姓名</label>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+              <nz-input formControlName="name" nzPlaceHolder="请输入姓名"></nz-input>
+            </div>
+            <div nz-form-control nz-col [nzXs]="{span:24}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}" class="tx-center">
+              <button nz-button [nzSize]="'large'" [nzType]="'primary'">搜索</button>
+            </div>
+          </div>
+        </form>
+      </nz-collapse>
+    </nz-collapseset>
+  </div>
+  <div nz-col [nzSpan]="24" class="resume-menu hidden-xs">
+    <form nz-form [formGroup]="seekersForm" (ngSubmit)="searchSeekers()">
+      <div nz-form-item nz-row class="form-item-xs">
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label>职位名称</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <nz-select formControlName="job_id" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+            <nz-option *ngFor="let position of positionInfos" [nzLabel]="position.name" [nzValue]="position.id"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label for="jobPosted">投递时间</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <date-picker (workDate)="getPeriodTime($event)"></date-picker>
+        </div>
+      </div>
+      <div nz-form-item nz-row class="form-item-xs">
+        <div nz-form-label nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+          <label>姓名</label>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:18}" [nzSm]="{span:8}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}">
+          <nz-input formControlName="name" nzPlaceHolder="请输入姓名"></nz-input>
+        </div>
+        <div nz-form-control nz-col [nzXs]="{span:24}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}" class="tx-right">
+          <button nz-button [nzSize]="'large'" [nzType]="'primary'">搜索</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <div class="resume-state" nz-row>
+      <div nz-col [nzXs]="{span:6}" [nzSm]="{span:4}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}" class="tx-right">简历状态：</div>
+      <div nz-col [nzSpan]="20" class="hidden-xs">
+        <nz-radio-group class="fl define-radio-group" [(ngModel)]="finaceRadioValue" (ngModelChange)="stateChange($event)" [nzSize]="'large'">
+          <div class="fl" *ngFor="let status of resumeStatus">
+            <label nz-radio-button [nzValue]="status.value">
+              <span>{{status.label}}</span>
+            </label>
+          </div>
+        </nz-radio-group>
+      </div>
+      <div nz-col [nzSpan]="18" class="hidden-sm hidden-md hidden-lg hidden-xl">
+        <nz-select style="width: 100%;" [(ngModel)]="finaceRadioValue" (ngModelChange)="stateChange($event)" nzPlaceHolder="简历状态">
+          <nz-option *ngFor="let status of resumeStatus" [nzValue]="status.value" [nzLabel]="status.label"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="resume-list">
+    <nz-table #nzTable *ngIf="resumeInfos.length != 0" [nzAjaxData]="resumeInfos" [nzLoading]="_loading" [nzTotal]="dataList.total"
+      [(nzPageIndex)]="dataList.current_page" [(nzPageSize)]="dataList.per_page" (nzDataChange)="_displayDataChange($event)"
+      (nzPageIndexChange)="_refreshStatus()" (nzPageIndexChangeClick)="pageChangeClick($event)">
+      <tbody nz-tbody>
+        <tr>
+          <td nz-td [nzCheckbox]="true">
+            <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+            </label>
+          </td>
+          <td nz-td colspan="4">
+            <div class="oper-together">
+              <button nz-button (click)="_allDownload()" [nzType]="'primary'">
+                <span>下载(excel)</span>
+              </button>
+              <button nz-button (click)="_allDownload()" [nzType]="'primary'">
+                <span>
+                  <nz-popconfirm [nzTitle]="'确定要删除选择简历？'" (nzOnConfirm)="confirmAllDelete()" (nzOnCancel)="cancelAllDelete()">
+                    <a nz-popconfirm style="color:#fff;">删除</a>
+                  </nz-popconfirm>
+                </span>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr nz-tbody-tr *ngFor="let info of nzTable.data; let i = index">
+          <td nz-td [nzCheckbox]="true">
+            <label nz-checkbox [(ngModel)]="info.checked" (ngModelChange)="_refreshStatus()"></label>
+          </td>
+          <td nz-td class="w250">
+            <div class="detail-l">
+              <div class="detail-lt">
+                <a [routerLink]="['/resume', info.id]" target="_blank">{{info.name}}</a>
+                <span style="margin-left: 10px;">{{info.experience}} / {{info.education_name}}</span>
+              </div>
+              <div class="intention hidden-xs">求职意向：
+                <span class="job-intention">{{info.job_name}}</span>
+              </div>
+              <div class="job-position hidden-sm hidden-md hidden-lg hidden-xl"> 申请的职位：
+                <span>{{info.company_job_name}}</span>
+              </div>
+            </div>
+          </td>
+          <td nz-td class="hidden-xs">
+            <div class="detail-r">
+              <div class="job-position"> 申请职位：
+                <span>{{info.company_job_name}}</span>
+              </div>
+              <div class="job-date"> 投递时间：
+                <span>{{info.created_at}}</span>
+              </div>
+            </div>
+          </td>
+          <td nz-td>
+            <div class="state">
+              <div>
+                <span class="title">状态：</span>
+                <span class="job-state" *ngIf="info.status == 'new'">未查看</span>
+                <span class="job-state" *ngIf="info.status == 'viewed'">已查看</span>
+                <span class="job-state" *ngIf="info.status == 'awaiting_communicate'">待沟通</span>
+                <span class="job-state" *ngIf="info.status == 'interviewed'">已邀请面试</span>
+                <span class="job-state" *ngIf="info.status == 'refused'">不合适</span>
+              </div>
+              <div class="oper">
+                <a href="javascript:;" (click)="_viewed(info.id, i)" *ngIf="(info.status == 'new')">查看</a>
+                <a href="javascript:;" (click)="_communicate(info.id, i)" *ngIf="(info.status == 'new') || (info.status == 'viewed')">待沟通</a>
+                <a href="javascript:;" (click)="_inviteView(info.id, i)" *ngIf="(info.status == 'new') || (info.status == 'viewed') || (info.status == 'awaiting_communicate')">邀请面试</a>
+                <a href="javascript:;" (click)="_reject(info.id, i)" *ngIf="(info.status == 'new') || (info.status == 'viewed') || (info.status == 'awaiting_communicate')">不合适</a>
+                <nz-popconfirm [nzTitle]="'确定要删除简历？'" (nzOnConfirm)="confirmDelete(info.id, i)" (nzOnCancel)="cancelDelete()">
+                  <a nz-popconfirm>删除</a>
+                </nz-popconfirm>
+                <a href="/api/company/resume/download?user_job_id={{info.id}}" target="_blank" class="hidden-sm hidden-md hidden-lg hidden-xl">下载</a>
+              </div>
+            </div>
+          </td>
+          <td nz-td class="hidden-xs">
+            <a href="/api/company/resume/download?user_job_id={{info.id}}" target="_blank">下载</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div nz-col [nzSpan]="24" *ngIf="isResumes" class="noData">
+    查看内容为空
+  </div>
+</div>

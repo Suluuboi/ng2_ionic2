@@ -1,0 +1,29 @@
+<div class="video">
+  <div nz-row class="cards" [nzGutter]="20">
+    <div nz-col [nzXs]="{span:12}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" *ngFor="let card of downLoads">
+      <nz-card>
+        <ng-template #body>
+          <div class="custom-image tx-center">
+            <i class="{{card.icon}}"></i>
+          </div>
+          <div class="custom-card tx-center">
+            <h3>{{card.title}}</h3>
+            <p>
+              <a href="{{card.link}}" target="_blank">下载</a>
+            </p>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+  <div nz-row class="btn-box">
+    <div nz-col [nzSpan]="6" [nzOffset]="9" class="tx-center">
+      <button nz-button [nzType]="'primary'">
+        <a href="http://118.116.8.246:443/fm/userMgr/attendmeeting.jsp" target="_blank">
+          <span>进入云视频系统</span>
+          <i class=" anticon anticon-right"></i>
+        </a>
+      </button>
+    </div>
+  </div>
+</div>

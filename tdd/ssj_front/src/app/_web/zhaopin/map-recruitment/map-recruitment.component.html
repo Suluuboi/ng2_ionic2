@@ -1,0 +1,65 @@
+<div nz-row class="row box">
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:16, offset:4}" [nzMd]="{span:12, offset:6}" [nzLg]="{span:12, offset:6}" [nzXl]="{span:12, offset:6}" class="search">
+    <nz-input [(ngModel)]="searchContent" [nzPlaceHolder]="placeholder"(keyup)="keywordsChange($event)">
+      <ng-template #addOnBefore>
+        <nz-select style="width: 80px;" [(ngModel)]="searchType" (ngModelChange)="selectChange($event)">
+          <nz-option [nzLabel]="'公司'" [nzValue]="'company'"></nz-option>
+          <nz-option [nzLabel]="'职位'" [nzValue]="'jobs'"></nz-option>
+        </nz-select>
+      </ng-template>
+      <ng-template #addOnAfter>
+        <button class="btn" nz-button [nzType]="'primary'" (click)="searchClick()">
+          <i class="anticon anticon-search"></i>搜索
+        </button>
+      </ng-template>
+    </nz-input>
+  </div>
+  <div nz-col [nzSpan]="24" class="map-box">
+    <div nz-row>
+      <div nz-col [nzXs]="{span:24}" [nzSm]="{span:18}" [nzMd]="{span:18}" [nzLg]="{span:18}" [nzXl]="{span:18}">
+        <ngx-amap class="map" #map
+          [center]="_center" [zoom]="13"
+          (ready)="onMapReady($event)"
+          (mouseUp)="mouseUpEvent($event)"
+          (zoomend)="zoomChange()">
+          <amap-tool-bar></amap-tool-bar>
+          <amap-marker
+            *ngFor="let company of companys"
+            [position]="[company.lng, company.lat]"
+            (markerClick)="onMarkerClick($event)">
+            <amap-info-window [offset]="infoWindowOffset">
+              <div class="infoWindow">
+                <h4 class="company-name"><a [routerLink]="['/zhaopin/company', company.id]" target="_blank" title="{{company.name}}">{{company.name}}</a></h4>
+                <div class="info-jobs">
+                  <p *ngFor="let job of company.user.company_jobs"><a [routerLink]="['/zhaopin/jobsDetails', job.id]" target="_blank" title="{{job.name}}">{{job.name}}</a></p>
+                </div>
+              </div>
+            </amap-info-window>
+          </amap-marker>
+        </ngx-amap>
+      </div>
+      <div nz-col [nzXs]="{span:0}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}" class="companys hidden-xs">
+        <div *ngIf="companys.length != 0">
+          <h4 class="title">一共查询到<span class="red">{{companys.length}}</span>家单位</h4>
+          <ul>
+            <li class="job-box" *ngFor="let company of companys">
+              <div class="company-title">
+                <h4>
+                  <a [routerLink]="['/zhaopin/company', company.id]" target="_blank" title="{{company.name}}">{{company.name}}</a>
+                </h4>
+              </div>
+              <ul class="jobs">
+                <li *ngFor="let job of company.user.company_jobs">
+                  <a [routerLink]="['/zhaopin/jobsDetails', job.id]" title="{{job.name}}">{{job.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="companys.length == 0">
+          <h4 class="title">该区域暂无职位招聘</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div nz-row class="company-top row">
+    <div nz-col [nzSpan]="24" *ngIf="isData">
+        <div nz-row [nzGutter]="10">
+            <div nz-col [nzXs]="{span:8}" [nzSm]="{span:8}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:2}">
+                <div class="company-logoImg tx-center">
+                    <img src="http://localhost{{companyInfo.logo_pic}}" alt="{{companyInfo.name}}">
+                </div>
+            </div>
+            <div nz-col [nzXs]="{span:16}" [nzSm]="{span:16}" [nzMd]="{span:20}" [nzLg]="{span:20}" [nzXl]="{span:22}">
+                <div class="com-title">
+                    <div class="cl">
+                        <h2 class="fl">{{companyInfo.name}}</h2>
+                        <h4 class="fl" style="margin-left: 100px;" *ngIf="isConferenceRoom">
+                            <a href="{{companyInfo.room_url}}" target="_blank">进入会议室</a>
+                        </h4>
+                    </div>
+                    <p class="company_status">
+                        <span>{{companyInfo.company_status.name}}</span>
+                        <span>{{companyInfo.industry.name}}</span>
+                    </p>
+                    <p class="com-slogen">
+                        <i class="iconfont icon-dizhi"></i>{{companyInfo.address}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div nz-col [nzSpan]="24" *ngIf="isData" class="com-nav">
+        <!-- 公司主页导航 -->
+        <ul class="nav-list cl">
+            <li routerLinkActive="com-active">
+                <a [routerLink]="['./home']">公司主页</a>
+            </li>
+            <li routerLinkActive="com-active">
+                <a [routerLink]="['./jobs']">招聘职位</a>
+            </li>
+        </ul>
+        <!-- 公司主页导航 -->
+    </div>
+    <div nz-col [nzXs]="{span:24}" [nzSm]="{span:24}" [nzMd]="{span:16}" [nzLg]="{span:16}" [nzXl]="{span:16}">
+        <router-outlet></router-outlet>
+    </div>
+    <div nz-col [nzXs]="{span:0}" [nzSm]="{span:0}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}" class="hidden-xs hidden-sm">
+        <div class="company-introduce" *ngIf="isData">
+            <div class="comInfoTitle">
+                <h5>{{companyInfo.name}}</h5>
+            </div>
+            <p class="comInfo">
+                <i class="anticon anticon-appstore-o"></i>{{companyInfo.company_status.name}}
+            </p>
+            <p class="comInfo">
+                <i class="anticon anticon-area-chart"></i>{{companyInfo.industry.name}}
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.ant-layout-header{padding:0;background: #3da5e4!important; color: #fff;}
+.content{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    min-height: 500px;
+    _height: 500px;
+    height: auto!important;
+    background-color: #f9f9f9;
+}
+.ant-layout-header a{ color: #fff;}
+.company-view{
+    background-color: #fff;
+}
+@media (max-width: 576px) {
+    .content{ padding-top: 0;}
+    .ant-layout-header{
+        height: 40px; line-height: 40px;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .content{ padding-top: 0;}
+    .ant-layout-header{
+        height: 40px; line-height: 40px;
+    }
+}

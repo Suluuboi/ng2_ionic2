@@ -1,0 +1,92 @@
+<form nz-form [formGroup]="jobFairManageForm" (ngSubmit)="_submitForm()">
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="proposer" nz-form-item-required>单位名称</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('proposer')">
+      <nz-input [nzSize]="'large'" formControlName="proposer" [nzPlaceHolder]="'成都市XXXXXXX有限公司'" [nzId]="'proposer'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('proposer').dirty&&getFormControl('proposer').hasError('required')">输入单位全称</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="range_time" nz-form-item-required>招聘会时间</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('range_time')">
+      <nz-rangepicker formControlName="range_time" nzShowTime [nzDisabledDate]="_disabledDate" [nzFormat]="'YYYY-MM-DD HH:mm:ss'"></nz-rangepicker>
+      <div nz-form-explain *ngIf="getFormControl('range_time').dirty&&getFormControl('range_time').hasError('required')">招聘会举办时间</div>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="address" nz-form-item-required>举办地点</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('address')">
+      <nz-input [nzSize]="'large'" formControlName="address" [nzId]="'address'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('address').dirty&&getFormControl('address').hasError('required')">举办地点不能为空</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="title" nz-form-item-required>举办主题</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('title')">
+      <nz-input [nzSize]="'large'" formControlName="title" [nzId]="'title'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('title').dirty&&getFormControl('title').hasError('required')">输入举办主题</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="applicant_type" nz-form-item-required>求职人员类别</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('applicant_type')">
+      <nz-input [nzSize]="'large'" formControlName="applicant_type" [nzId]="'applicant_type'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('applicant_type').dirty&&getFormControl('applicant_type').hasError('required')">求职人员类别不能为空</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="job_type" nz-form-item-required>意向性岗位种类</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('job_type')">
+      <nz-input [nzSize]="'large'" formControlName="job_type" [nzId]="'job_type'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('job_type').dirty&&getFormControl('job_type').hasError('required')">意向性岗位种类不能为空</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="contact" nz-form-item-required>联系人</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('contact')">
+      <nz-input [nzSize]="'large'" formControlName="contact" [nzId]="'contact'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('contact').dirty&&getFormControl('contact').hasError('required')">请输入联系人</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="proposer_phone" nz-form-item-required>联系电话</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('proposer_phone')">
+      <nz-input-group [nzSize]="'large'" [nzCompact]="true">
+        <input formControlName="proposer_phone" id="'proposer_phone'" nz-input>
+      </nz-input-group>
+      <div nz-form-explain *ngIf="getFormControl('proposer_phone').dirty&&getFormControl('proposer_phone').hasError('required')">请留下联系号码</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzXs]="{span:8}" [nzSm]="{span:6}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:4}">
+      <label for="company_count" nz-form-item-required>进场企业数</label>
+    </div>
+    <div nz-form-control nz-col [nzXs]="{span:16}" [nzSm]="{span:14}" [nzMd]="{span:12}" [nzLg]="{span:12}" [nzXl]="{span:12}" nzHasFeedback [nzValidateStatus]="getFormControl('company_count')">
+      <nz-input [nzSize]="'large'" formControlName="company_count" [nzId]="'company_count'"></nz-input>
+      <div nz-form-explain *ngIf="getFormControl('company_count').dirty&&getFormControl('company_count').hasError('required')">请输入进场企业数</div>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row style="margin-top:20px;">
+    <div nz-form-control nz-col [nzXs]="{span:24}" [nzSm]="{span:20}" [nzMd]="{span:16}" [nzLg]="{span:16}" [nzXl]="{span:16}" class="tx-center">
+      <button nz-button [nzSize]="'large'" [nzType]="'primary'">{{jobfairOper}}</button>
+    </div>
+  </div>
+</form>

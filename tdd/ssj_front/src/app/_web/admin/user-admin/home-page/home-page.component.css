@@ -1,0 +1,97 @@
+.user-photo{ width: 80px;height:100px;overflow: hidden;position: relative; left: 0; top: 0;}
+.user-photo a{
+    display: block;
+    width: 100%; height:100%;
+}
+.info-title{ font-size: 16px; color:#626262;}
+.info-card, .info-change{ margin-top: 10px;}
+.info-card>span{ display: inline; margin-right: 10px;font-size: 14px;}
+.info-change>div{ margin-right: 20px; font-size: 14px;}
+
+/* 求职信息==》列表 */
+.userHome{
+    background-color: #f9f9f9;
+}
+.user-top, .info-list{
+    padding: 20px 10px;
+    background-color: #fff;
+}
+.home-list{ margin-top: 30px;}
+.info-list{ margin-bottom: 30px;}
+
+.list-title{
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.list-title::before{
+    content: '';
+    float: left;
+    display: block;
+    width: 5px;
+    height: 18px;
+    margin-top: 6px;
+    margin-right: 15px;
+    background: #3da5e4;
+}
+.jobInfo-intro p{text-align: center;}
+.jobs-count{ font-size: 26px;line-height: 40px;}
+.jobs-des{ line-height: 30px; font-size:14px;}
+
+/* 简历信息 */
+.resume-info, .resume-info a{ font-size:14px; line-height: 30px;}
+.resume-oper{display: flex; justify-content: space-around; align-items: center;}
+.resume-oper a{ padding: 0px 10px; line-height: 24px; color: #fff; background: #3da5e4; border-radius: 3px;}
+
+/* 合适的工作 */
+.r-job-list>div{ margin-top: 10px;text-indent: 5px;}
+.r-job-list p {line-height: 28px;}
+.right-job p a{ font-size: 14px;}
+.r-job-salary{font-size:14px; color: #cc4747;}
+.r-job-company{ white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.r-job-company a{ color:#626262;}
+
+/*  logo show and upload */
+#logo_pic{
+    width: 80px;
+    height: 100px;
+    max-width: 80px;
+    max-height: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+:host ::ng-deep .avatar-uploader,
+:host ::ng-deep .avatar-uploader-trigger,
+:host ::ng-deep .avatar {
+    display: block;
+}
+
+:host ::ng-deep .avatar-uploader {
+    display: block;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+:host ::ng-deep .avatar-uploader-trigger {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 28px;
+    color: #999;
+}
+:host ::ng-deep .ant-upload {
+    width: 100%;
+    height: 100%;
+}
+:host ::ng-deep .ant-upload img{
+    width: 100%;
+}
+@media(max-width: 576px){
+    .user-top, .info-list{
+        padding: 10px 0px;
+    }
+    .jobs-des{ line-height: 24px; font-size:12px;}
+    .resume-oper a{ padding: 0px 10px;border-radius: 3px;}
+}

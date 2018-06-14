@@ -1,0 +1,17 @@
+<div class="position ellipsis">
+  <span>当前位置:&nbsp;&nbsp; 办事指南</span>
+  <span *ngIf="isData"> &nbsp;&gt; &nbsp; {{detail.title}}{{detail.title}}</span>
+</div>
+<div nz-row *ngIf="isData">
+  <div nz-col [nzSpan]="24" class="title">
+    <h3>{{detail.title}}</h3>
+    <p class="describe">
+      <span>时间： {{detail.created_at | date: "yyyy-MM-dd"}}</span>
+      <span>浏览量： {{detail.view_count}}</span>
+    </p>
+  </div>
+  <div nz-col [nzSpan]="24" class="content">
+    <!-- 将获取的html转为angular认可的安全字符 -->
+    <div [innerHtml]="detail.content | safeHtmlPipe"></div>
+  </div>
+</div>

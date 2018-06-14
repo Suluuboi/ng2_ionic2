@@ -1,0 +1,11 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <ul class="nav-list row cl">
+      <li routerLinkActive="am-active" *ngFor="let menu of menuList">
+        <a [routerLink]="[menu.route]">
+          <span class="nav-t">{{menu.menuTitle}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

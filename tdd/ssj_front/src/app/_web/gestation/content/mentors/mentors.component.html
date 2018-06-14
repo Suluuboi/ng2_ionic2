@@ -1,0 +1,229 @@
+<div nz-row class="options row">
+  <div nz-col [nzSpan]="24" class="option">
+    <span>所属区域：</span>
+    <nz-radio-group [(ngModel)]="radioValue" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'A'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'B'">
+        <span>天府新区</span>
+      </label>
+      <label nz-radio-button [nzValue]="'C'">
+        <span>高新区</span>
+      </label>
+      <label nz-radio-button [nzValue]="'D'">
+        <span>金牛区</span>
+      </label>
+      <label nz-radio-button [nzValue]="'E'">
+        <span>清白江区</span>
+      </label>
+      <label nz-radio-button [nzValue]="'F'">
+        <span>龙泉驿区</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'请选择所属区域'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'A'"></nz-option>
+      <nz-option [nzLabel]="'天府新区'" [nzValue]="'B'"></nz-option>
+      <nz-option [nzLabel]="'高新区'" [nzValue]="'C'"></nz-option>
+      <nz-option [nzLabel]="'金牛区'" [nzValue]="'D'"></nz-option>
+    </nz-select>
+  </div>
+  <div nz-col [nzSpan]="24" class="option">
+    <span>服务领域：</span>
+    <nz-radio-group [(ngModel)]="radioValue1" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'1'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'2'">
+        <span>电子信息</span>
+      </label>
+      <label nz-radio-button [nzValue]="'3'">
+        <span>环保绿化</span>
+      </label>
+      <label nz-radio-button [nzValue]="'4'">
+        <span>机械能源类</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'请选择服务领域'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'1'"></nz-option>
+      <nz-option [nzLabel]="'电子信息'" [nzValue]="'2'"></nz-option>
+      <nz-option [nzLabel]="'环保绿化'" [nzValue]="'3'"></nz-option>
+      <nz-option [nzLabel]="'机械能源类'" [nzValue]="'4'"></nz-option>
+    </nz-select>
+  </div>
+
+  <div nz-col [nzSpan]="24" class="option">
+    <span>服务方式：</span>
+    <nz-radio-group [(ngModel)]="radioValue2" [nzSize]="'large'" class="hidden-xs">
+      <label nz-radio-button [nzValue]="'5'">
+        <span>全部</span>
+      </label>
+      <label nz-radio-button [nzValue]="'6'">
+        <span>项目评估</span>
+      </label>
+      <label nz-radio-button [nzValue]="'7'">
+        <span>法律咨询</span>
+      </label>
+      <label nz-radio-button [nzValue]="'8'">
+        <span>咨询诊断</span>
+      </label>
+      <label nz-radio-button [nzValue]="'9'">
+        <span>培训授课</span>
+      </label>
+    </nz-radio-group>
+    <nz-select [(ngModel)]="radioValue" (ngModelChange)="industrySelectChange($event)" [nzPlaceHolder]="'请选择服务方式'" class="hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-option [nzLabel]="'全部'" [nzValue]="'5'"></nz-option>
+      <nz-option [nzLabel]="'项目评估'" [nzValue]="'6'"></nz-option>
+      <nz-option [nzLabel]="'法律咨询'" [nzValue]="'7'"></nz-option>
+      <nz-option [nzLabel]="'咨询诊断'" [nzValue]="'8'"></nz-option>
+    </nz-select>
+  </div>
+</div>
+
+<div nz-row class="information row">
+  <div nz-col [nzSpan]="24" class="info-list">
+    <div nz-row>
+      <div class="info-img tx-center" nz-col [nzXs]="{span: 8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+        <img src="/assets/lib/images/test2.jpg">
+      </div>
+      <div nz-col [nzXs]="{span: 16}" [nzSm]="{span:10}" [nzMd]="{span:10}" [nzLg]="{span:10}" [nzXl]="{span:10}">
+        <p>
+          <span>王老师</span>
+        </p>
+        <p>
+          <span>成都天府新区人力资源开发服务有限公司</span>
+        </p>
+        <p>
+          <span>信息技术部开发工程师</span>
+        </p>
+        <p>
+          <span>初级职称</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" class="hidden-xs">
+        <p>
+          <span>服务领域：</span>11111111111111
+        </p>
+        <p>
+          <span>服务方式：</span>11111111111
+        </p>
+        <p>
+          <span>文化程度：</span>1111111111
+        </p>
+        <p>
+          <span>政治面貌：</span>1111111111
+        </p>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="info-list">
+    <div nz-row>
+      <div class="info-img tx-center" nz-col [nzXs]="{span: 8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+        <img src="/assets/lib/images/test2.jpg">
+      </div>
+      <div nz-col [nzXs]="{span: 16}" [nzSm]="{span:10}" [nzMd]="{span:10}" [nzLg]="{span:10}" [nzXl]="{span:10}">
+        <p>
+          <span>王老师</span>
+        </p>
+        <p>
+          <span>成都天府新区人力资源开发服务有限公司</span>
+        </p>
+        <p>
+          <span>信息技术部开发工程师</span>
+        </p>
+        <p>
+          <span>初级职称</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" class="hidden-xs">
+        <p>
+          <span>服务领域：</span>11111111111111
+        </p>
+        <p>
+          <span>服务方式：</span>11111111111
+        </p>
+        <p>
+          <span>文化程度：</span>1111111111
+        </p>
+        <p>
+          <span>政治面貌：</span>1111111111
+        </p>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="info-list">
+    <div nz-row>
+      <div class="info-img tx-center" nz-col [nzXs]="{span: 8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+        <img src="/assets/lib/images/test2.jpg">
+      </div>
+      <div nz-col [nzXs]="{span: 16}" [nzSm]="{span:10}" [nzMd]="{span:10}" [nzLg]="{span:10}" [nzXl]="{span:10}">
+        <p>
+          <span>王老师</span>
+        </p>
+        <p>
+          <span>成都天府新区人力资源开发服务有限公司</span>
+        </p>
+        <p>
+          <span>信息技术部开发工程师</span>
+        </p>
+        <p>
+          <span>初级职称</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" class="hidden-xs">
+        <p>
+          <span>服务领域：</span>11111111111111
+        </p>
+        <p>
+          <span>服务方式：</span>11111111111
+        </p>
+        <p>
+          <span>文化程度：</span>1111111111
+        </p>
+        <p>
+          <span>政治面貌：</span>1111111111
+        </p>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="info-list">
+    <div nz-row>
+      <div class="info-img tx-center" nz-col [nzXs]="{span: 8}" [nzSm]="{span:6}" [nzMd]="{span:6}" [nzLg]="{span:6}" [nzXl]="{span:6}">
+        <img src="/assets/lib/images/test2.jpg">
+      </div>
+      <div nz-col [nzXs]="{span: 16}" [nzSm]="{span:10}" [nzMd]="{span:10}" [nzLg]="{span:10}" [nzXl]="{span:10}">
+        <p>
+          <span>王老师</span>
+        </p>
+        <p>
+          <span>成都天府新区人力资源开发服务有限公司</span>
+        </p>
+        <p>
+          <span>信息技术部开发工程师</span>
+        </p>
+        <p>
+          <span>初级职称</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" class="hidden-xs">
+        <p>
+          <span>服务领域：</span>11111111111111
+        </p>
+        <p>
+          <span>服务方式：</span>11111111111
+        </p>
+        <p>
+          <span>文化程度：</span>1111111111
+        </p>
+        <p>
+          <span>政治面貌：</span>1111111111
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div nz-col [nzSpan]="24" class="border0 page-box">
+    <nz-pagination class="tx-center" [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+  </div>
+
+</div>

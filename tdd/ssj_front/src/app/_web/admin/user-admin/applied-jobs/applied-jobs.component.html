@@ -1,0 +1,87 @@
+<div nz-row class="box">
+  <div nz-col [nzSpan]="24" class="title">
+    <div nz-row>
+      <div nz-col [nzSpan]="4" class="_label tx-right">
+        <span>状态：</span>
+      </div>
+      <div nz-col [nzSpan]="8" class="_input">
+        <nz-select [(ngModel)]="resumeStatus" (ngModelChange)="statusChange($event)" [nzSize]="'large'">
+          <nz-option [nzLabel]="'全部'" [nzValue]="'all'"></nz-option>
+          <nz-option [nzLabel]="'投递成功'" [nzValue]="'new'"></nz-option>
+          <nz-option [nzLabel]="'被查看'" [nzValue]="'viewed'"></nz-option>
+          <nz-option [nzLabel]="'待沟通'" [nzValue]="'awaiting_communicate'"></nz-option>
+          <nz-option [nzLabel]="'邀请面试'" [nzValue]="'interviewed'"></nz-option>
+          <nz-option [nzLabel]="'不合适'" [nzValue]="'refused'"></nz-option>
+        </nz-select>
+      </div>
+      <div nz-col [nzSpan]="4" class="_label tx-right">
+        <span>时间：</span>
+      </div>
+      <div nz-col [nzSpan]="8" class="_input">
+        <nz-select [(ngModel)]="resumeDate" (ngModelChange)="dateChange($event)" [nzSize]="'large'">
+          <nz-option [nzLabel]="'全部'" [nzValue]="'all'"></nz-option>
+          <nz-option [nzLabel]="'2个月内'" [nzValue]="'2个月内投递'"></nz-option>
+          <nz-option [nzLabel]="'2个月之前'" [nzValue]="'2个月前投递'"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+  <!-- 如果有职位则如下显示 -->
+  <div nz-col [nzSpan]="24" class="content">
+    <div class="con-box">
+      <nz-table #nzTable *ngIf="jobsInfos.length != 0" [nzAjaxData]="jobsInfos" [nzLoading]="_loading" [nzTotal]="dataList.total"
+        [(nzPageIndex)]="dataList.current_page" [(nzPageSize)]="dataList.per_page" (nzPageIndexChangeClick)="pageChangeClick($event)">
+        <thead nz-thead>
+          <tr class="hidden-xs">
+            <th nz-th>职位(共计{{dataList.data.length}}个)</th>
+            <th nz-th>单位</th>
+            <th nz-th>
+              状态
+            </th>
+            <th nz-th>
+              时间
+            </th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let jobs of nzTable.data; let i = index" class="hidden-xs">
+            <td nz-td>
+              <a [routerLink]="['/zhaopin/jobsDetails', jobs.company_job_id]" style="color:#3da5e4;">{{jobs.company_job.name}}</a>
+            </td>
+            <td nz-td>
+              <a [routerLink]="['/zhaopin/company', jobs.company.company.id]" style="color:#3da5e4;">{{jobs.company.company.name}}</a>
+            </td>
+            <td nz-td>
+              <span class="job-state" *ngIf="jobs.status == 'new'">未查看</span>
+              <span class="job-state" *ngIf="jobs.status == 'viewed'">已查看</span>
+              <span class="job-state" *ngIf="jobs.status == 'awaiting_communicate'">待沟通</span>
+              <span class="job-state" *ngIf="jobs.status == 'interviewed'">已邀请面试</span>
+              <span class="job-state red" *ngIf="jobs.status == 'refused'">不合适</span>
+            </td>
+            <td nz-td>{{jobs.created_at}}</td>
+          </tr>
+          <tr nz-tbody-tr *ngFor="let jobs of nzTable.data; let i = index" class="hidden-sm hidden-md hidden-lg hidden-xl">
+            <td nz-td class="cl jobs-xs">
+              <a class="fl" [routerLink]="['/zhaopin/jobsDetails', jobs.company_job_id]" style="color:#3da5e4;">{{jobs.company_job.name}}</a>
+              <p class="fr">
+                <span class="job-state" *ngIf="jobs.status == 'new'">未查看</span>
+                <span class="job-state" *ngIf="jobs.status == 'viewed'">已查看</span>
+                <span class="job-state" *ngIf="jobs.status == 'awaiting_communicate'">待沟通</span>
+                <span class="job-state" *ngIf="jobs.status == 'interviewed'">已邀请面试</span>
+                <span class="job-state red" *ngIf="jobs.status == 'refused'">不合适</span>
+              </p>
+              <p class="clear cl">
+                <a class="fl" [routerLink]="['/zhaopin/company', jobs.company.company.id]" style="color:#3da5e4;">{{jobs.company.company.name}}</a>
+                <span class="fr">{{jobs.created_at}}</span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <!-- 如果没有申请职位，则另显示 -->
+    <div *ngIf="_isAppliedJobs" class="noData">
+      暂时没有符合条件的职位信息！
+    </div>
+  </div>
+</div>

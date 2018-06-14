@@ -1,0 +1,51 @@
+.search-conditions form>div>div{ margin-bottom: 10px;}
+.search-conditions{
+    padding: 20px 0;
+}
+
+/* 人才列表 */
+.seekers{ padding-bottom: 30px; }
+.seeker-top{ margin-top: 20px;background: #999;}
+.seeker-title{float:left;text-align: center;}
+/* 求职者的搜索列表 */
+.seeker-name a, .seeker-sex, .seeker-image{ font-size: 14px;}
+.seeker-name{ color:#3da5e4;}
+.seeker-intention{ color: #cc4747;}
+:host ::ng-deep .seekers nz-table thead tr th{
+    font-size: 14px;
+    color: #626262;
+    font-weight: 600;
+    background: #f0f0f0;
+}
+:host ::ng-deep .ant-radio-button-wrapper-checked:first-child{
+    border-color: #3da5e4;
+    background:#3da5e4;
+    color: #fff!important;
+}
+:host ::ng-deep .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+    padding: 16px 0;
+    text-align: center;
+}
+@media(max-width: 576px){
+    .search-conditions{
+        padding:0;
+    }
+    :host ::ng-deep .ant-collapse-content{
+        padding:0;
+    }
+    :host ::ng-deep .ant-form-inline .ant-form-item{
+        margin-right: 0;
+    }
+    :host ::ng-deep .ant-collapse-header, .ant-collapse-header i{
+        color: #3da5e4!important;
+    }
+    :host ::ng-deep .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+        text-align: left;
+        text-indent: 20px;
+    }
+    .seeker-info-xs span{
+        line-height: 22px;
+        color:#626262;
+        margin-right: 10px;
+    }
+}

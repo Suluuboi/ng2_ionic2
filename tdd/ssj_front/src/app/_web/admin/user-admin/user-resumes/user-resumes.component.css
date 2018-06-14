@@ -1,0 +1,33 @@
+.prompt{
+    padding-left: 20px;
+}
+.list {padding-bottom: 20px;}
+.list>div{ height: 120px; margin-top: 10px; border: 1px solid #ddd;}
+.resume-type{ height: 118px; padding: 10px 8px;font-size:16px; background: #ccc; color: #fff;}
+.resume-introduce{
+    text-indent: 10px;
+}
+.resume-name{ width: 100%; overflow: hidden; line-height: 30px;}
+.resume-name a{ font-size: 16px;}
+.resume-progress, .resume-detail{ line-height: 30px;height: 30px; font-size: 14px; margin-top: 10px;}
+.resume-detail>span{ margin-right: 40px;}
+.resume-oper { height: 100%; display: flex; justify-content: space-around;flex-wrap: wrap;align-items: center;flex-direction: column;}
+.resume-oper>a{ padding: 5px 10px; border: 1px solid #ddd; margin: 10px;}
+
+/* 默认简历样式设置 */
+.defaultResume{ background: #3da5e4!important; }
+.prompt>p{ line-height: 30px; font-size: 14px;}
+.download{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+a.oper-xs{
+    font-size: 12px!important;
+    margin-right: 10px!important;
+}
+@media(max-width: 576px){
+    .resume-oper>a{ padding: 3px 5px; margin: 0px;}
+}

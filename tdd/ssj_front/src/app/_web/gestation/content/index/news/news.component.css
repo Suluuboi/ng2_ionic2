@@ -1,0 +1,29 @@
+.title-border{
+border-bottom: 1px solid #e8e8e8;
+}
+.news-box>div{
+max-height: 220px;
+overflow: hidden;
+}
+.title{
+      height: 30px; 
+      line-height: 30px;
+      color: #626262;
+      border-left: 5px solid #3da5e4;
+}
+h4{font-size:16px; text-indent:15px;}
+.more{font-size:16px;;color:#3da5e4;margin-right:10px ;}
+.news{max-height: 200px;font-size: 14px;height: 30px;line-height: 30px;padding: 10px;}
+.news-title{ color: #626262;}
+.news-title:hover{ color:#3da5e4;}
+i.anticon-caret-right{
+      color: #3499DA;
+}
+@media(max-width: 576px){
+   .more{
+      margin-right: 0;
+   }
+   .news-box>div{
+         margin-top: 20px;
+   }
+}

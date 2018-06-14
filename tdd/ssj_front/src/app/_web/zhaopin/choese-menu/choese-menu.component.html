@@ -1,0 +1,408 @@
+<div nz-row class="searchClass">
+  <div nz-col [nzXs]="{span:23, offset:1}" [nzSm]="{span:23, offset:1}" [nzMd]="{span:23, offset:1}" [nzLg]="{span:16, offset:4}"
+    [nzXl]="{span:16, offset:4}">
+    <div class="search-box fl">
+      <nz-input-group class="search-input" [nzSize]="'large'" [nzCompact]="true">
+        <input placeholder="搜索您的职位" [(ngModel)]="searchName" (keyup)="searchValueChange($event)" nz-input>
+        <button nz-button (click)="searchJobsList()" [nzType]="'primary'" class="search-btn">
+          <i class="anticon anticon-search"></i>
+          <span>搜索</span>
+        </button>
+      </nz-input-group>
+    </div>
+    <div class="fl search-map hidden-xs">
+      <a [routerLink]="['/zhaopin/map']" target="_blank">地图找工作</a>
+    </div>
+    <div class="fl jobs-reg hidden-xs">
+      <a [routerLink]="['/zhaopin/positionRegister']" routerLinkActive="router-link-active" target="_blank">求职登记</a>
+    </div>
+    <nz-dropdown [nzTrigger]="'click'" class="trigger hidden-sm hidden-md hidden-lg hidden-xl fr">
+      <a href class="ant-dropdown-link" nz-dropdown>
+        求职
+        <i class="anticon anticon-down"></i>
+      </a>
+      <ul nz-menu>
+        <li nz-menu-item>
+          <a [routerLink]="['/zhaopin/map']" target="_blank">地图找工作</a>
+        </li>
+        <li nz-menu-item>
+          <a [routerLink]="['/zhaopin/positionRegister']" routerLinkActive="router-link-active" target="_blank">求职登记</a>
+        </li>
+      </ul>
+    </nz-dropdown>
+  </div>
+</div>
+<div class="search-menu">
+  <nz-collapseset class="hidden-sm hidden-md hidden-lg hidden-xl">
+    <nz-collapse [nzTitle]="'高级搜索'">
+      <ul class="search-list">
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">工作地点:</div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+              <div class="sm-list more-address">
+                <div class="select-box">
+                  <nz-select [(ngModel)]="provinceValue" (ngModelChange)="provinceChange($event)" [nzPlaceHolder]="'请选择省份'">
+                    <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                    <nz-option *ngFor="let pro of province" [nzLabel]="pro.name" [nzValue]="pro.id"></nz-option>
+                  </nz-select>
+                  <nz-select [(ngModel)]="citiesValue" (ngModelChange)="citiesChange($event)" [nzPlaceHolder]="'请选择城市'">
+                    <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                    <nz-option *ngFor="let city of cities" [nzLabel]="city.name" [nzValue]="city.id"></nz-option>
+                  </nz-select>
+                </div>
+                <div *ngIf="district.length != 0">
+                  <nz-radio-group class="fl define-radio-group" [(ngModel)]="districtValue" [nzSize]="'large'">
+                    <div class="fl">
+                      <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('district_id')">
+                        <span>不限</span>
+                      </label>
+                    </div>
+                    <div class="fl" *ngFor="let _district of district">
+                      <label nz-radio-button nzValue="{{_district.id}}" (click)="districtChange(_district.id)">
+                        <span>{{_district.name}}</span>
+                      </label>
+                    </div>
+                  </nz-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">工作经验:</div>
+            </div>
+            <div nz-col class="hidden-xs" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+              <div class="sm-list">
+                <nz-radio-group class="cl define-radio-group" [(ngModel)]="workExpValue" [nzSize]="'large'">
+                  <div class="fl">
+                    <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('experience_id')">
+                      <span>不限</span>
+                    </label>
+                  </div>
+                  <div class="fl" *ngFor="let exp of experience">
+                    <label nz-radio-button nzValue="{{exp.id}}" (click)="workExpChange(exp.id)">
+                      <span>{{exp.name}}</span>
+                    </label>
+                  </div>
+                </nz-radio-group>
+              </div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" class="hidden-sm hidden-md hidden-xl hidden-lg">
+              <div class="sm-list select-type">
+                <nz-select [(ngModel)]="workExpValue" (ngModelChange)="workExpSelectChange($event)" [nzPlaceHolder]="'请选择工作经验'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let exp of experience" [nzLabel]="exp.name" [nzValue]="exp.id"></nz-option>
+                </nz-select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">学历要求:</div>
+            </div>
+            <div nz-col class="hidden-xs" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+              <div class="sm-list">
+                <nz-radio-group class="cl define-radio-group" [(ngModel)]="degreeValue" [nzSize]="'large'">
+                  <div class="fl">
+                    <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('education_id')">
+                      <span>不限</span>
+                    </label>
+                  </div>
+                  <div class="fl" *ngFor="let collage of collages">
+                    <label nz-radio-button nzValue="{{collage.id}}" (click)="degreeChange(collage.id)">
+                      <span>{{collage.name}}</span>
+                    </label>
+                  </div>
+                </nz-radio-group>
+              </div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" class="hidden-sm hidden-md hidden-xl hidden-lg">
+              <div class="sm-list select-type">
+                <nz-select [(ngModel)]="degreeValue" (ngModelChange)="degreeSelectChange($event)" [nzPlaceHolder]="'请选择工作经验'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let collage of collages" [nzLabel]="collage.name" [nzValue]="collage.id"></nz-option>
+                </nz-select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">行业领域:</div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+              <div class="sm-list select-type">
+                <nz-select [(ngModel)]="industryValue" (ngModelChange)="industryChange($event)" [nzPlaceHolder]="'请选择职位类别'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let inds of industry" [nzLabel]="inds.name" [nzValue]="inds.id"></nz-option>
+                </nz-select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">职位类别:</div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+              <div class="sm-list select-type">
+                <nz-select [(ngModel)]="jobTypeValue" (ngModelChange)="jobTypeChange($event)" [nzPlaceHolder]="'请选择职位类别'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let _type of jobType" [nzLabel]="_type.name" [nzValue]="_type.id"></nz-option>
+                </nz-select>
+                <nz-select [(ngModel)]="jobTypeChildValue" (ngModelChange)="childTypeChange($event)" [nzPlaceHolder]="'请选择二级职位类别'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let childType of jobTypeChild" [nzLabel]="childType.name" [nzValue]="childType.id"></nz-option>
+                </nz-select>
+                <nz-select [(ngModel)]="jobTypeGrandChildValue" (ngModelChange)="grandChildTypeChange($event)" [nzPlaceHolder]="'请选择三级职位类别'">
+                  <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                  <nz-option *ngFor="let grandChildType of jobTypeGrandChild" [nzLabel]="grandChildType.name" [nzValue]="grandChildType.id"></nz-option>
+                </nz-select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div nz-row>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">排序方式:</div>
+            </div>
+            <div nz-col [nzXs]="{span:17}" [nzSm]="{span:5}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:3}">
+              <nz-radio-group class="define-radio-group" [(ngModel)]="sortValue" [nzSize]="'large'">
+                <div class="fl">
+                  <label nz-radio-button nzValue="0" (click)="defaultChange()">
+                    <span>默认</span>
+                  </label>
+                </div>
+                <div class="fl latest">
+                  <label nz-radio-button nzValue="1" (click)="sortValueChange('zx')">
+                    <span>最新</span>
+                  </label>
+                </div>
+              </nz-radio-group>
+            </div>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:0}" [nzMd]="{span:2, offset:0}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">月薪:</div>
+            </div>
+            <div nz-col class="last-select" [nzXs]="{span:17}" [nzSm]="{span:3}" [nzMd]="{span:3}" [nzLg]="{span:3}" [nzXl]="{span:3}">
+              <nz-select [(ngModel)]="salaryValue" (ngModelChange)="salaryValueChange($event)" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+                <nz-option *ngFor="let sal of salary" [nzLabel]="sal.name" [nzValue]="sal.id"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:0}" [nzMd]="{span:3, offset:0}" [nzLg]="{span:2,offset:0}"
+              [nzXl]="{span:2, offset:0}">
+              <div class="sm-title">工作性质:</div>
+            </div>
+            <div nz-col class="last-select" [nzXs]="{span:17}" [nzSm]="{span:3}" [nzMd]="{span:3}" [nzLg]="{span:3}" [nzXl]="{span:3}">
+              <nz-select [(ngModel)]="jobClassValue" (ngModelChange)="jobClassChange($event)" [nzSize]="'large'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+                <nz-option *ngFor="let jobC of jobCategory" [nzLabel]="jobC.name" [nzValue]="jobC.id"></nz-option>
+              </nz-select>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nz-collapse>
+  </nz-collapseset>
+  <ul class="search-list hidden-xs">
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">工作地点:</div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+          <div class="sm-list more-address">
+            <div class="select-box">
+              <nz-select [(ngModel)]="provinceValue" (ngModelChange)="provinceChange($event)" [nzPlaceHolder]="'请选择省份'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                <nz-option *ngFor="let pro of province" [nzLabel]="pro.name" [nzValue]="pro.id"></nz-option>
+              </nz-select>
+              <nz-select [(ngModel)]="citiesValue" (ngModelChange)="citiesChange($event)" [nzPlaceHolder]="'请选择城市'">
+                <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+                <nz-option *ngFor="let city of cities" [nzLabel]="city.name" [nzValue]="city.id"></nz-option>
+              </nz-select>
+            </div>
+            <div *ngIf="district.length != 0">
+              <nz-radio-group class="fl define-radio-group" [(ngModel)]="districtValue" [nzSize]="'large'">
+                <div class="fl">
+                  <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('district_id')">
+                    <span>不限</span>
+                  </label>
+                </div>
+                <div class="fl" *ngFor="let _district of district">
+                  <label nz-radio-button nzValue="{{_district.id}}" (click)="districtChange(_district.id)">
+                    <span>{{_district.name}}</span>
+                  </label>
+                </div>
+              </nz-radio-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">工作经验:</div>
+        </div>
+        <div nz-col class="hidden-xs" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+          <div class="sm-list">
+            <nz-radio-group class="cl define-radio-group" [(ngModel)]="workExpValue" [nzSize]="'large'">
+              <div class="fl">
+                <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('experience_id')">
+                  <span>不限</span>
+                </label>
+              </div>
+              <div class="fl" *ngFor="let exp of experience">
+                <label nz-radio-button nzValue="{{exp.id}}" (click)="workExpChange(exp.id)">
+                  <span>{{exp.name}}</span>
+                </label>
+              </div>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" class="hidden-sm hidden-md hidden-xl hidden-lg">
+          <div class="sm-list select-type">
+            <nz-select [(ngModel)]="workExpValue" (ngModelChange)="workExpSelectChange($event)" [nzPlaceHolder]="'请选择工作经验'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let exp of experience" [nzLabel]="exp.name" [nzValue]="exp.id"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">学历要求:</div>
+        </div>
+        <div nz-col class="hidden-xs" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+          <div class="sm-list">
+            <nz-radio-group class="cl define-radio-group" [(ngModel)]="degreeValue" [nzSize]="'large'">
+              <div class="fl">
+                <label nz-radio-button nzValue="0" (click)="defaultSearchOptions('education_id')">
+                  <span>不限</span>
+                </label>
+              </div>
+              <div class="fl" *ngFor="let collage of collages">
+                <label nz-radio-button nzValue="{{collage.id}}" (click)="degreeChange(collage.id)">
+                  <span>{{collage.name}}</span>
+                </label>
+              </div>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" class="hidden-sm hidden-md hidden-xl hidden-lg">
+          <div class="sm-list select-type">
+            <nz-select [(ngModel)]="degreeValue" (ngModelChange)="degreeSelectChange($event)" [nzPlaceHolder]="'请选择工作经验'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let collage of collages" [nzLabel]="collage.name" [nzValue]="collage.id"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">行业领域:</div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+          <div class="sm-list select-type">
+            <nz-select [(ngModel)]="industryValue" (ngModelChange)="industryChange($event)" [nzPlaceHolder]="'请选择职位类别'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let inds of industry" [nzLabel]="inds.name" [nzValue]="inds.id"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">职位类别:</div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" [nzSm]="{span:20}" [nzMd]="{span:20}" [nzLg]="{span:22}" [nzXl]="{span:22}">
+          <div class="sm-list select-type">
+            <nz-select [(ngModel)]="jobTypeValue" (ngModelChange)="jobTypeChange($event)" [nzPlaceHolder]="'请选择职位类别'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let _type of jobType" [nzLabel]="_type.name" [nzValue]="_type.id"></nz-option>
+            </nz-select>
+            <nz-select [(ngModel)]="jobTypeChildValue" (ngModelChange)="childTypeChange($event)" [nzPlaceHolder]="'请选择二级职位类别'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let childType of jobTypeChild" [nzLabel]="childType.name" [nzValue]="childType.id"></nz-option>
+            </nz-select>
+            <nz-select [(ngModel)]="jobTypeGrandChildValue" (ngModelChange)="grandChildTypeChange($event)" [nzPlaceHolder]="'请选择三级职位类别'">
+              <nz-option [nzLabel]="'不限'" [nzValue]="'0'"></nz-option>
+              <nz-option *ngFor="let grandChildType of jobTypeGrandChild" [nzLabel]="grandChildType.name" [nzValue]="grandChildType.id"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div nz-row>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:1}" [nzMd]="{span:3, offset:1}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">排序方式:</div>
+        </div>
+        <div nz-col [nzXs]="{span:17}" [nzSm]="{span:5}" [nzMd]="{span:4}" [nzLg]="{span:4}" [nzXl]="{span:3}">
+          <nz-radio-group class="define-radio-group" [(ngModel)]="sortValue" [nzSize]="'large'">
+            <div class="fl">
+              <label nz-radio-button nzValue="0" (click)="defaultChange()">
+                <span>默认</span>
+              </label>
+            </div>
+            <div class="fl latest">
+              <label nz-radio-button nzValue="1" (click)="sortValueChange('zx')">
+                <span>最新</span>
+              </label>
+            </div>
+          </nz-radio-group>
+        </div>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:0}" [nzMd]="{span:2, offset:0}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">月薪:</div>
+        </div>
+        <div nz-col class="last-select" [nzXs]="{span:17}" [nzSm]="{span:3}" [nzMd]="{span:3}" [nzLg]="{span:3}" [nzXl]="{span:3}">
+          <nz-select [(ngModel)]="salaryValue" (ngModelChange)="salaryValueChange($event)" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+            <nz-option *ngFor="let sal of salary" [nzLabel]="sal.name" [nzValue]="sal.id"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col [nzXs]="{span:6, offset:1}" [nzSm]="{span:3, offset:0}" [nzMd]="{span:3, offset:0}" [nzLg]="{span:2,offset:0}"
+          [nzXl]="{span:2, offset:0}">
+          <div class="sm-title">工作性质:</div>
+        </div>
+        <div nz-col class="last-select" [nzXs]="{span:17}" [nzSm]="{span:3}" [nzMd]="{span:3}" [nzLg]="{span:3}" [nzXl]="{span:3}">
+          <nz-select [(ngModel)]="jobClassValue" (ngModelChange)="jobClassChange($event)" [nzSize]="'large'">
+            <nz-option [nzLabel]="'不限'" [nzValue]="0"></nz-option>
+            <nz-option *ngFor="let jobC of jobCategory" [nzLabel]="jobC.name" [nzValue]="jobC.id"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

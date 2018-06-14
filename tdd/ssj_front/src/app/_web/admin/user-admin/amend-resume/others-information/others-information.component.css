@@ -1,0 +1,28 @@
+.mr50{margin-right: 50px;}
+.editor{ color:#3da5e4;}
+
+.info{ margin-bottom: 30px;}
+.title{ text-indent: 20px; line-height: 30px; font-size: 14px; color: #626262;font-weight: 600; background: #dbeffb;}
+.content{ margin-top:10px;}
+.content>div, .content h3{ font-size: 14px;}
+.con_row:after{ content:'.'; height: 0;display: block;visibility: hidden;overflow: hidden;clear:both;}
+.con_left{text-align: center;}
+.con_right{padding: 0 20px;}
+.con_right h3 span{ margin-right: 20px;}
+
+.form-content{ margin-bottom: 20px;}
+.form-content>div{ margin-bottom: 10px;}
+
+.content-title{margin-right:10px;font-size:16px;color:#3da5e4;}
+.content-input{ float: left;width: 200px; }
+.datePicker{ float: left; width: 300px;}
+.content-textarea{ float:left; width: 350px;resize: none;}
+/* 其他信息 */
+.other_title, .other_con{text-indent: 20px; line-height: 30px;font-size: 14px;}
+.other_title{ font-weight: 600;}
+/* 其他信息 */
+@media(max-width:576px){
+    .oper-xs{
+        text-align: right;
+    }
+}

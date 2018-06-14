@@ -1,0 +1,28 @@
+.form{
+  min-height: 232px;
+  display: flex;
+  flex: column;
+  flex-direction: column;
+  justify-content: center;
+}
+/* loginForm */
+:host ::ng-deep .ant-form-item-control nz-input{
+  width: 300px;
+}
+.login-form {
+  max-width: 300px;
+  margin :  0 auto;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+.msgBox nz-input{
+  width: 150px!important;
+  margin-right: 10px;
+}
+.getMsg{ height: 32px; width: 110px;}

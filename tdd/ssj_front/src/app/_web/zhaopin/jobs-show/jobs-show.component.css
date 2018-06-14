@@ -1,0 +1,17 @@
+a{ font-size: 14px;}
+.job-title a, .company-title a{font-size: 16px;}
+.job-list-l>div, .job-list-m>div{ height:30px; line-height: 30px;}
+.company-features{ height: 30px; line-height: 30px;}
+.company-features>span{margin-right: 5px;padding:3px 5px; border:1px solid #e8e8e8;border-radius: 3px;}
+.company-slogan{text-align: center;}
+.job-list-salary{color: #cc4747; margin-right:10px;}
+.company-logo{height: 60px; text-align:center; overflow: hidden;}
+.company-logo-img{height: 100%;width:100px;}
+@media (max-width: 576px) {
+    .job-title>span{
+        float: right;
+    }
+    .job-title a, .company-title a{font-size: 14px;}
+    .company-logo{height: 45px;}
+    .company-logo-img{width:75px;}
+}

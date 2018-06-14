@@ -1,0 +1,60 @@
+.options{padding-top:50px;}
+.options span{font-size:16px;}
+.option{margin-bottom:10px;}
+.info-img{ overflow: hidden;}
+img{max-width: 150px;max-height: 150px; overflow: hidden;}
+.information{
+    margin-top: 30px!important;
+    border-top: 1px solid #e8e8e8;
+}
+.info-list{
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+}
+.info-list:hover{
+    background-color: #faf1f1;
+}
+.info-list>div{
+    display: flex;
+    align-items: center;
+}
+.border0{
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+.page-box{
+    margin-top: 30px;
+}
+.info-list p{
+    line-height: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+:host ::ng-deep .ant-radio-button-wrapper-checked{
+    background-color: #3da5e4!important;
+    border-color: #3da5e4!important;
+    color:#fff!important;
+}
+nz-select{
+    min-width: 180px;
+    width: auto!important;
+    width: 180px;
+}
+
+@media(max-width: 576px){
+    .options{
+        padding-top: 10px;
+    }
+    .option{
+        padding-left: 10px;
+    }
+    .info-list{
+        margin-top: 0px!important;
+    }
+    .info-list p{
+        line-height: 22px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,8 @@
+<div nz-row class="search-box row">
+  <div nz-col [nzSpan]="24">
+    <choese-menu [searchOptionsIsNull]="isNull" (searchOptions)="getSearchOptions($event)"></choese-menu>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <jobs-show [searchOptions]="options" (setOptionsNull)="setOptionsNull($event)"></jobs-show>    
+  </div>
+</div>

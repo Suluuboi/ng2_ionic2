@@ -1,0 +1,22 @@
+<div class="job-fair">
+  <div class="title cl">
+    <h4 class="border-bottom-common fl">招聘会</h4>
+    <a target="_blank" [routerLink]="['/zhaopin/zph']" target="_blank" class="more fr">更多</a>
+  </div>
+  <div class="list" *ngIf="infos.length != 0" nz-row [nzGutter]="20">
+    <div nz-col class="gutter-row"
+        [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:8}" [nzLg]="{span:8}" [nzXl]="{span:8}"
+        *ngFor="let info of infos">
+      <div class="gutter-box">
+        <div class="fair-name cl">
+          <h5>
+            <a target="_blank" [routerLink]="['/zhaopin/zph/detail', info.id]" title="{{info.title}}">{{info.title}}</a>
+            <i class="fr iconfont icon-zhaopinzhongxin"></i>
+          </h5>
+        </div>
+        <div class="fair-date">时间： {{info.start_time | date: 'yy-MM-dd HH:mm'}} 至 {{info.end_time | date: 'yy-MM-dd HH:mm'}}</div>
+        <div class="fair-address">地点： {{info.address}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+nz-radio-group{ font-size: 14px!important;}
+.search-active{background: #3da5e4;color: #fff;border-radius: 5px;}
+.search-box{
+    width: 65%;
+}
+.search-map, .jobs-reg{
+    width: 10%;
+    margin-left: 5%;
+}
+.search-input input{
+    width: 80%;height: 40px;border: 1px solid #3da5e4;
+}
+.search-btn{
+    height: 40px;width: 20%;line-height:40px;font-size: 14px;
+}
+.search-menu{background:#fff;border:1px solid #fff;}
+.search-list{ margin-bottom: 20px;}
+.search-list>li{font-size:14px;line-height: 30px;margin-top:  10px;}
+
+.sm-title{font-weight: 600;}
+.more-address{
+    min-height: 38px;
+    _height: 38px;
+    height: auto!important;
+}
+.sm-choese span{padding: 0 10px;margin: 0 5px; border:1px solid #ccc;}
+
+/* 模拟单选框样式 */
+.define-radio-group>div{ margin-right: 5px; margin-bottom: 6px;}
+.ant-radio-button-wrapper-checked:first-child {background:#3da5e4;color: #fff!important;border-color: #3da5e4;}
+
+/* 模拟单选框样式 */
+
+
+/* 职位搜索分类 */
+.searchClass {padding-top: 20px; height: 80px;}
+.ant-select{height: 40px;}
+.select-box nz-select{
+    min-width: 90px;
+    width: auto!important;
+    width: 90px;
+}
+.select-type nz-select{
+    min-width: 180px;
+    width: auto!important;
+    width: 180px;
+}
+
+.last-select nz-select{
+    min-width: 100px;
+    width: auto!important;
+    width: 100px;
+}
+.search-right div{ line-height: 30px; font-size: 14px;}
+.search-map, .jobs-reg{ line-height: 38px; text-align: center; border-radius: 5px; border: 1px solid #3da5e4;}
+.search-map a, .jobs-reg a{
+    color: #3da5e4;
+}
+.search-sort{padding:0 10px;}
+:host ::ng-deep .ant-select-selection--single{
+    height: 32px;
+}
+:host ::ng-deep .ant-select-selection__rendered{
+    line-height: 32px;
+}
+
+.trigger{
+    line-height: 40px;
+    font-size: 16px;
+    padding-right: 30px;
+}
+
+@media (max-width: 576px) {
+    .search-box{
+        width: 70%;
+    }
+    .search-input input{
+        width: 70%;
+    }
+    .search-btn{
+        width: 30%;
+    }
+    .last-select nz-select{
+        min-width: 180px;
+        width: auto!important;
+        width: 180px;
+    }
+    .latest{
+        margin-left: 50px;
+    }
+    .search-list li>div{
+        height: 32px;
+    }
+    .define-radio-group>div{margin-bottom: 0;}
+    .searchClass {padding-top: 0px; height: 50px;}
+}

@@ -1,0 +1,23 @@
+<div id="container">
+    <ngx-amap class="map"
+        [center]="_center"
+        [zoom]="14"
+        (mapClick)="onMapClick($event)">
+        <amap-tool-bar></amap-tool-bar>
+        <amap-marker *ngIf="_center.length != 0" [position]="_center"></amap-marker>
+        <amap-marker
+            *ngFor="let mark of marks; let i = index"
+            [position]="mark"
+            (markerClick)="onMarkerClick($event, i)">
+            <amap-info-window
+                *ngFor="let con of searchMarks; let i = index"
+                [isOpen]="'i==0'"
+                [offset]="infoWindowOffset">
+                <div class="info">
+                    <h4>{{con.formatted_address}}</h4>
+                    <p>{{con.province}}-{{con.city}}-{{con.district}}</p>
+                </div>
+            </amap-info-window>
+        </amap-marker>
+    </ngx-amap>
+</div>

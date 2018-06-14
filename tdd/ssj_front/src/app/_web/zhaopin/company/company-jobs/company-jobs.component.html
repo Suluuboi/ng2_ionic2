@@ -1,0 +1,22 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24" class="jobs" *ngIf="jobs.length != 0">
+    <ul class="list">
+      <li *ngFor="let job of jobs">
+        <div class="job-name cl">
+          <h4 class="fl">
+            <a target="_blank" [routerLink]="['/zhaopin/jobsDetails', job.id]">{{job.name}}</a>&nbsp;&nbsp;&nbsp;[&nbsp;{{job.city.name}}&nbsp;]</h4>
+          <span class="show-time fr"> {{job.created_at | date: 'yyyy-MM-dd'}} 发布</span>
+        </div>
+        <div class="job-info">
+          <span class="salary red">{{job.salary.name}}</span>
+          <span class="work-exp">经验 {{job.experience.name}}</span> /
+          <span> {{job.education.name}} </span> /
+          <span> {{job.job_type.name}} </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div nz-col [nzSpan]="24" class="jobs noData" *ngIf="isJobs">
+    暂时没有职位招聘
+  </div>
+</div>

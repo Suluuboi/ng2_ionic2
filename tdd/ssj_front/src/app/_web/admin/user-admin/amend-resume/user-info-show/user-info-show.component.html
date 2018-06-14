@@ -1,0 +1,33 @@
+<div nz-row class="info">
+  <div nz-col [nzSpan]="24" class="title">基本信息
+    <span class="editor fr mr50" (click)="navToUserInfo()">编辑基本信息</span>
+  </div>
+  <div nz-col [nzSpan]="24" class="content">
+    <div nz-row class="con">
+      <div nz-col [nzSpan]="16" class="info-msg">
+        <h4>{{userInfo.name}}</h4>
+        <p>
+          <span>{{userInfo.sex}}</span>
+          |
+          <span>{{userInfo.birthday | ageChange}}岁</span>
+          |
+          <span>成都{{userInfo.userName}}</span>
+          |
+          <span>{{userInfo.education}}</span>
+          |
+          <span>{{userInfo.experience}}</span> 
+        </p>
+        <p>
+          <span>{{userInfo.idcard}}</span>
+          |
+          <span>{{userInfo.email}}</span>
+          |
+          <span>{{userInfo.self_state}}</span>
+        </p>
+      </div>
+      <div nz-col [nzSpan]="8" class="head_pic">
+        <img src={{userInfo.head_pic}} alt="'个人头像资料'">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div nz-row nzType="flex" class="oper-xs">
+  <div nz-col [nzXs]="{span:3, order: 2}" [nzSm]="{span:4, order: 1}" [nzMd]="{span:2, order: 1}" [nzLg]="{span:2, order: 1}"
+    [nzXl]="{span:2, order: 1}" class="tx-center">
+    <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+    </label>
+  </div>
+  <div nz-col [nzXs]="{span:21, order: 3}" [nzSm]="{span:14, order: 2}" [nzMd]="{span:16, order: 2}" [nzLg]="{span:16, order: 2}"
+    [nzXl]="{span:16, order: 2}">
+    <div class="operAll">
+      <span (click)="extendAllJobs()">延长有效期</span>
+      <span (click)="reloadChoeseJobs()">刷新职位</span>
+      <span (click)="pauseAllJobs()">一键暂停招聘</span>
+    </div>
+  </div>
+  <div nz-col [nzXs]="{span:24, order: 1}" [nzSm]="{span:6, order: 3}" [nzMd]="{span:6, order: 3}" [nzLg]="{span:6, order: 3}"
+    [nzXl]="{span:6, order: 3}" class="tx-right search-xs">
+    <nz-input id="jobs-search" [nzType]="'search'" [nzPlaceHolder]="'输入查询条件'" [(ngModel)]="searchConditions" (keyup)="searchJobsForName($event)"></nz-input>
+  </div>
+</div>
+<div nz-row class="recruiting">
+  <div nz-col [nzSpan]="24">
+    <nz-table *ngIf="jobList.length != 0" #nzTable [nzAjaxData]="jobList" [nzLoading]="_loading" [nzTotal]="dataList.total" [(nzPageIndex)]="dataList.current_page"
+      [(nzPageSize)]="dataList.per_page" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
+      (nzPageIndexChangeClick)="pageChangeClick($event)">
+      <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let jobs of nzTable.data; let i = index">
+          <td nz-td [nzCheckbox]="true">
+            <label nz-checkbox [(ngModel)]="jobs.checked" (ngModelChange)="_refreshStatus()"></label>
+          </td>
+          <td nz-td colspan="3" class="jobs-info-xs">
+            <div class="jobsInfo fl">
+              <div class="jobsInfo-title">
+                <h3 class="fl">
+                  <a [routerLink]="['/zhaopin/jobsDetails', jobs.job_id]" target="_blank">{{jobs.name}}</a>
+                </h3>
+                <div class="jobsOper-xs hidden-sm hidden-md hidden-lg hidden-xl fl">
+                  <nz-dropdown [nzTrigger]="'click'">
+                    <a nz-dropdown>
+                      职位管理
+                      <i class="anticon anticon-down"></i>
+                    </a>
+                    <ul nz-menu>
+                      <li nz-menu-item>
+                        <a href="javascript:;" (click)="editJobInfo(jobs.job_id)">修改</a>
+                      </li>
+                      <li nz-menu-item>
+                        <a [routerLink]="['/zhaopin/jobsDetails', jobs.job_id]" target="_blank">预览</a>
+                      </li>
+                      <li nz-menu-item>
+                        <a href="javascript:;" (click)="reloadJobs(jobs.job_id, i)">刷新</a>
+                      </li>
+                      <li nz-menu-item>
+                        <nz-popconfirm [nzTitle]="'确定要删除该职位？'" (nzOnConfirm)="confirm(jobs.job_id,i)" (nzOnCancel)="cancel()">
+                          <a nz-popconfirm>删除</a>
+                        </nz-popconfirm>
+                      </li>
+                    </ul>
+                  </nz-dropdown>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="jobsInfo-des">
+                <span class="jobs-des-list">简历总数：
+                  <a [routerLink]="['/companyAdmin/resumeManage', {job_id: jobs.job_id}]">{{jobs.user_jobs_count.length}}</a>
+                </span>
+                <span class="jobs-des-list hidden-xs">浏览数：{{jobs.view_count}}</span>
+                <span class="jobs-des-list">招聘状态：
+                  <span>{{jobs.pause_text}}</span>
+                  <a href="javascript:;" *ngIf="jobs.pause_text === '已暂停'" (click)="continueToRecruit(jobs.job_id, i)">
+                    <span>开启</span>
+                  </a>
+                  <a href="javascript:;" *ngIf="jobs.pause_text === '招聘中'" (click)="recruitmentFreeze(jobs.job_id, i)">
+                    <span>暂停</span>
+                  </a>
+                </span>
+                <br>
+                <span class="jobs-des-list">截止日期: {{jobs.end_time}}
+                  <a href="javascript:;" (click)="showModal(jobs.job_id)">延期</a>
+                </span>
+                <span class="jobs-des-list hidden-xs hidden-sm">更新时间：{{jobs.updated_at}}</span>
+              </div>
+            </div>
+          </td>
+          <td nz-td class="hidden-xs">
+            <div class="jobsOper fr">
+              <span>
+                <a href="javascript:;" (click)="editJobInfo(jobs.job_id)">修改</a>
+              </span>
+              <span>
+                <a [routerLink]="['/zhaopin/jobsDetails', jobs.job_id]" target="_blank">预览</a>
+              </span>
+              <span>
+                <a href="javascript:;" (click)="reloadJobs(jobs.job_id, i)">刷新</a>
+              </span>
+              <span>
+                <nz-popconfirm [nzTitle]="'确定要删除该职位？'" (nzOnConfirm)="confirm(jobs.job_id,i)" (nzOnCancel)="cancel()">
+                  <a nz-popconfirm>删除</a>
+                </nz-popconfirm>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+<div class="noData" *ngIf="_isJobs">
+  职位列表为空
+</div>
+<!-- 修改过期时间 -->
+<nz-modal [nzVisible]="isExtended" [nzTitle]="'延长职位过期时间'" [nzContent]="modalContent" (nzOnCancel)="extendedCancel($event)"
+  (nzOnOk)="extendedOk($event)" [nzConfirmLoading]="isConfirmLoading">
+  <ng-template #modalContent>
+    <span class="_date_box fl">选择过期时间：</span>
+    <nz-datepicker [(ngModel)]="extendedDate" [nzPlaceHolder]="'过期时间'" [nzDisabledDate]="_disabledDate" [nzShowTime]="'true'"
+      [nzFormat]="'YYYY-MM-DD HH:mm:ss'"></nz-datepicker>
+  </ng-template>
+</nz-modal>
+<!-- 修改过期时间 -->
+<nz-modal [nzVisible]="isExtendedAll" [nzTitle]="'延长职位过期时间'" [nzContent]="jobsAll" (nzOnCancel)="extendedAllCancel($event)"
+  (nzOnOk)="extendedAllOk($event)">
+  <ng-template #jobsAll>
+    <span class="_date_box fl">选择过期时间：</span>
+    <nz-datepicker [(ngModel)]="extendedAllDate" [nzPlaceHolder]="'过期时间'" [nzDisabledDate]="_disabledDate" [nzShowTime]="'true'"
+      [nzFormat]="'YYYY-MM-DD HH:mm:ss'"></nz-datepicker>
+  </ng-template>
+</nz-modal>

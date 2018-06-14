@@ -1,0 +1,13 @@
+<div nz-row class="head-top row cl">
+  <div nz-col [nzMd]="{span:6}" [nzLg]="{span:8}" [nzXl]="{span:8}" class="title hidden-xs hidden-sm">
+    <span>管理控制中心</span>
+  </div>
+  <div nz-col [nzXs]="{span:5}" [nzSm]="{span:5}" [nzMd]="{span:2, offset:2}" [nzLg]="{span:2, offset: 4}" [nzXl]="{span:2, offset: 4}" class="back-home">
+    <a [routerLink]="['/index']">回到首页</a>
+  </div>
+  <div nz-col [nzXs]="{span:19}" [nzSm]="{span:19}" [nzMd]="{span:12}" [nzLg]="{span:10}" [nzXl]="{span:10}" class="user-info cl" *ngIf="isLogin">
+    <span class="ellipsis fl" *ngIf="userInfo.name">您好,{{userInfo.name}}</span>
+    <span class="ellipsis fl" *ngIf="!userInfo.name">您好,{{userInfo.phone}}</span>
+    <a (click)="loginOut()" class="fr">[退出]</a>
+  </div>
+</div>

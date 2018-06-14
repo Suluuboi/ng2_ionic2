@@ -1,0 +1,61 @@
+.position{
+    line-height: 40px;
+    font-size: 14px;
+    color: #626262;
+    text-indent: 10px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.title{
+    margin-top: 30px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px dashed #e8e8e8;
+}
+.title h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #626262;
+}
+.describe{
+    font-size: 14px;
+}
+.abstract{
+    margin-top: 20px;
+}
+.describe span{ margin-right: 30px;}
+.content{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+:host ::ng-deep .content img{
+    width: 100%; overflow: hidden;
+}
+:host ::ng-deep .content p{
+    width: 100%!important;
+}
+.des{ text-indent: 2em;}
+.des, .description{
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 600;
+    color: #626262;
+    padding-right: 15px;
+}
+
+@media (max-width: 576px) {
+    .content{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .describe span{ margin-right: 5px;}
+    .title{ margin-top: 0px;}
+    .title h3{
+        font-size: 16px;
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .content{
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+}

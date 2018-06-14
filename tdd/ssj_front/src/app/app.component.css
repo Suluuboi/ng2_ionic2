@@ -1,0 +1,9 @@
+:host ::ng-deep .ant-back-top-content{
+    background-color: #3da5e4;
+}
+@media(max-width: 576px){
+    :host ::ng-deep .ant-back-top{
+        right: 20px!important;
+    }
+}
+    

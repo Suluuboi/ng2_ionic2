@@ -1,0 +1,60 @@
+.video{
+    overflow: hidden;
+}
+.video>div.cards{
+    margin: 100px auto 30px;
+}
+.cards>div{
+  margin-bottom: 20px;
+}
+nz-card{
+    margin:0 auto;
+}
+:host ::ng-deep .custom-image{
+    font-size: 150px;
+    color:#108ee9;
+}
+:host ::ng-deep .custom-card {
+  padding: 10px 16px;
+}
+
+:host ::ng-deep .custom-card h3{
+  font-size: 18px;
+}
+:host ::ng-deep .custom-card p {
+  color: #999;
+  font-size:18px;
+}
+
+:host ::ng-deep .ant-card-body {
+  padding: 0;
+}
+.btn-box{
+  margin-bottom:30px;
+}
+@media (max-width: 576px) {
+  .video>div.cards{
+      margin: 30px auto 10px;
+  }
+  :host ::ng-deep .custom-image{
+    font-size: 50px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .video>div.cards{
+      margin: 30px auto 10px;
+  }
+  :host ::ng-deep .custom-image{
+    font-size: 50px;
+  }
+}
+@media (min-width:769px) and (max-width: 992px) {
+  .video>div.cards{
+      margin: 30px auto 20px;
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .video>div.cards{
+      margin: 50px auto 30px;
+  }
+}

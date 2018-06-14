@@ -1,0 +1,55 @@
+a:link, a:visited, a:hover, a:active{ color: #108ee9;}
+.jobsInfo{ width: 500px;}
+.jobsInfo-title{ padding-left: 10px;}
+.jobsInfo-title a{ font-size: 16px;}
+.jobsInfo-title label{ margin-top: 3px; margin-left: 10px;}
+
+.jobsInfo-des{margin-top: 5px;}
+.jobsInfo-des span{line-height: 30px; padding: 0 10px;}
+
+.jobsOper { width: 100px;margin-right: 100px;}
+.jobsOper span{ display: block; width:50%;float:left;line-height: 30px;text-align: center;}
+.jobsOper::after{content:".";display:block;width: 0;height:100%;visibility: hidden;overflow: hidden;clear:both;}
+/* 全选操作 */
+.operAll span{ padding: 5px 10px; border-radius: 3px; margin: 0 5px; color: #fff;background: #3da5e4;cursor: pointer;}
+.jobsOper-xs{
+    margin-left: 20px;
+}
+/* 分页 */
+.page{ margin: 20px 0;}
+
+/* 过期时间样式 */
+._date_box{
+    display: block;
+    width: 100px;
+    line-height: 30px;
+    font-size: 14px;margin-right: 10px;
+}
+:host ::ng-deep .ant-modal{
+    max-width: 400px!important;
+}
+.oper-xs{ line-height: 30px;}
+@media(max-width: 576px){
+    .search-xs{
+        text-align: center!important;
+        margin-bottom: 8px;
+    }
+    .search-xs nz-input{
+        width: 60%;
+    }
+    .operAll{
+        text-align: right;
+    }
+    :host ::ng-deep .jobsOper-xs a.ant-dropdown-trigger{
+        color: #626262;
+        font-size: 14px;
+    }
+    :host ::ng-deep .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    :host ::ng-deep .ant-table-thead > tr > th.ant-table-selection-column, .ant-table-tbody > tr > td.ant-table-selection-column{
+        width: 40px;
+        min-width: 40px;
+    }
+}

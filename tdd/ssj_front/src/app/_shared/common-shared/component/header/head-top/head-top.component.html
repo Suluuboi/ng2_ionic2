@@ -1,0 +1,32 @@
+<div class="row">
+  <div nz-row>
+    <div nz-col [nzXs]="{span: 24}" [nzSm]="{span: 12}" [nzMd]="{span: 12}" [nzLg]="{span: 12}" class="wel">您好，欢迎访问天府新区公共就业服务网</div>
+    <div nz-col [nzXs]="{span: 4}" class="toggle-menu hidden-sm hidden-md hidden-lg hidden-xl">
+      <nz-dropdown [nzTrigger]="'click'">
+          <a href class="ant-dropdown-link" nz-dropdown>
+            <i class="anticon anticon-menu-unfold"></i>
+          </a>
+          <ul nz-menu>
+            <li nz-menu-item *ngFor="let menu of menuList">
+              <a [routerLink]="[menu.route]">
+                <span class="nav-t">{{menu.menuTitle}}</span>
+              </a>
+            </li>
+          </ul>
+        </nz-dropdown>
+    </div>
+    <div nz-col [nzXs]="{span: 20}" [nzSm]="{span: 12}" [nzMd]="{span: 12}" [nzLg]="{span: 12}" class='text-right login-r'>
+      <a *ngIf="_islogin" (click)="loginOut()" href="javascript:;" class="login-out">
+        <span>[退出]</span>
+      </a>
+      <a *ngIf="_islogin" (click)="navToUserCenter()" title="进入用户中心">
+        <span *ngIf="currentInfo.name">{{currentInfo.name}}</span>
+        <span *ngIf="!currentInfo.name">{{currentInfo.phone}}</span>
+      </a>
+      <a *ngIf="!_islogin" (click)="showModalForLoginComponent()" href="javascript:;">
+        <span>登录</span>
+      </a>
+      <a *ngIf="!_islogin" [routerLink]="['/register']">注册</a>
+    </div>
+  </div>
+</div>

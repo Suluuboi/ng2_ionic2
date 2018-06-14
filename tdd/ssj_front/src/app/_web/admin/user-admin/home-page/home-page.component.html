@@ -1,0 +1,81 @@
+<div nz-row class="userHome" *ngIf="isUserInfos">
+  <div nz-col [nzSpan]="24" class="user-top">
+    <div nz-row [nzGutter]="20" class="info">
+      <div nz-col [nzSpan]="8" class="user-photo">
+        <input type="file" id="logo_pic" (change)="handleChange($event)">
+        <nz-upload class="avatar-uploader" nzName="avatar" [nzShowUploadList]="false">
+          <i *ngIf="!avatarUrl" class="anticon anticon-plus avatar-uploader-trigger"></i>
+          <img *ngIf="avatarUrl" [src]="avatarUrl" class="avatar">
+        </nz-upload>
+      </div>
+      <div nz-col [nzSpan]="16" class="user-info">
+        <div class="info-title">您好！亲爱的： {{userInfos.user.name}}</div>
+        <div class="info-card fr">
+          <span class="fl"><i class="anticon anticon-mobile"></i>{{userInfos.user.phone}}</span>
+          <span class="fl"><i class="anticon anticon-mail"></i>{{userInfos.user.email}}</span>
+          <span class="fl"><i class="anticon anticon-idcard"></i>{{userInfos.user.idcard}}</span>
+        </div>
+        <div class="info-change">
+          <div class="info-editor">
+            <a [routerLink]="['/userAdmin/userInfo']">
+              <i class="anticon anticon-edit"></i> 编辑
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" class="home-list">
+    <div class="info-list">
+      <div class="list-title">求职信息</div>
+      <div nz-row class="jobInfo-intro">
+          <div nz-col [nzSpan]="6">
+            <p class="jobs-count"><a [routerLink]="['/userAdmin/appliedJobs']">{{userInfos.job_info.interviewed_count}}</a></p>
+            <p class="jobs-des">面试通知</p>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <p class="jobs-count"><a [routerLink]="['/userAdmin/viewed']">{{userInfos.job_info.resume_viewed_count}}</a></p>
+            <p class="jobs-des">谁看了我的简历</p>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <p class="jobs-count"><a [routerLink]="['/userAdmin/appliedJobs']">{{userInfos.job_info.job_count}}</a></p>
+            <p class="jobs-des">职位申请记录</p>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <p class="jobs-count"><a [routerLink]="['/userAdmin/collect']">{{userInfos.job_info.collection_count}}</a></p>
+            <p class="jobs-des">职位收藏记录</p>
+          </div>
+      </div>
+    </div>
+    <div class="info-list">
+        <div class="list-title">简历信息</div>
+        <div class="resume-info" *ngIf='userInfos.resume_info'>
+          <div nz-row>
+            <div nz-col [nzSpan]="16">
+                <p class="resume-name">我的简历(默认):<a [routerLink]="['/resume', userInfos.resume_info.id]" target="_blank">{{userInfos.resume_info.name}}</a></p>
+                <p class="resume-count">简历被查看次数: <span class="scan-count">{{userInfos.resume_info.view_count}}</span>次</p>
+            </div>
+            <div nz-col [nzSpan]="8" class="resume-oper">
+              <a [routerLink]="['/userAdmin/resume/edit', userInfos.resume_info.id]">修改</a>
+              <a [routerLink]="['/resume', userInfos.resume_info.id]" target="_blank">预览</a>
+            </div>
+          </div>
+        </div>
+        <div class="resume-info" *ngIf='!userInfos.resume_info'>
+          <p>暂无简历，立即<a [routerLink]="['/userAdmin/resume']">创建</a></p>
+        </div>
+    </div>
+    <div class="info-list" *ngIf="userInfos.jobs.length != 0">
+        <div class="list-title">推荐职位</div>
+        <div class="right-job">
+          <div nz-row [nzGutter]="10" class="r-job-list">
+              <div nz-col [nzXs]="12" [nzSm]="6" [nzMd]="12" [nzLg]="6" [nzXl]="6" *ngFor="let job of userInfos.jobs">
+                <p class="r-job-name"><a [routerLink]="['/zhaopin/jobsDetails', job.id]">{{job.name}}</a></p>
+                <p class="r-job-salary">{{job.salary.name}}</p>
+                <p class="r-job-company"><a [routerLink]="['/zhaopin/company', job.user.company.uid]" title="{{job.user.company.name}}">{{job.user.company.name}}</a></p>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

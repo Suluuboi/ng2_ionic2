@@ -1,0 +1,21 @@
+<div nz-row class="news">
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:24}" [nzMd]="{span:5}" [nzLg]="{span:5}" [nzXl]="{span:5}">
+    <div class="list-title hidden-xs">
+      <h3>新闻中心</h3>
+    </div>
+    <ul nz-menu class="handle-list hidden-xs hidden-sm">
+      <li routerLinkActive="handleActive" *ngFor="let type of typeList" nz-menu-item>
+        <span class="circle"></span>
+        <a [routerLink]="['./type', type.id]">{{type.name}}</a>
+      </li>
+    </ul>
+    <ul nz-menu [nzMode]="'horizontal'" class="hidden-md hidden-lg hidden-xl">
+      <li routerLinkActive="handleActive" *ngFor="let type of typeList" nz-menu-item>
+        <a [routerLink]="['./type', type.id]">{{type.name}}<i class="anticon anticon-down"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div nz-col [nzXs]="{span:24}" [nzSm]="{span:24}" [nzMd]="{span:18, offset:1}" [nzLg]="{span:18, offset:1}" [nzXl]="{span:18, offset:1}" class="company-view">
+    <router-outlet></router-outlet>
+  </div>
+</div>

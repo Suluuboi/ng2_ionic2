@@ -1,0 +1,58 @@
+.company-box{ background: #fff;padding: 30px 10px 0;}
+.company-box>div{border-right: 1px solid #e8e8e8;}
+.company-box .company{margin-bottom: 30px; min-height: 20px; _height: 20px;height: auto!important; padding-right: 20px;}
+.company>h4{ width: 100px;height: 40px;line-height: 40px;font-size: 16px;background: #fff;}
+.company>h4 .border-left{
+    display: inline;
+    border-left: 5px solid #3da5e4;
+    margin-right: 15px;
+}
+.com-intro-content{
+    padding: 20px 0;font-size: 14px;
+    text-indent: 2em;
+}
+/* 高德地图引入 */
+.map-box{
+    width: 600px;
+    height: 400px;
+    margin-left: 40px;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+}
+.map{ height: 100%;}
+.infoWindow{
+    width: 249px;
+    min-height: 30px;
+    height:auto!important;
+    height:30px;
+}
+.infoWindow .company-name{
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+.company-name{ width:249px;}
+.infoWindow p{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 26px; 
+    text-indent: 15px;
+}
+.infoWindow p a{ font-size: 14px; color: #337ab3;}
+.infoWindow p a:hover{color: #cc4747;}
+
+@media (max-width: 576px) {
+    .map-box{
+        width: 100%;
+        height: 300px;
+        margin-left: 0px;
+        margin-top: 0px;
+        border: 1px solid #ccc;
+    }
+    .company-box, .company-box .company{
+        padding: 0;
+    }
+}

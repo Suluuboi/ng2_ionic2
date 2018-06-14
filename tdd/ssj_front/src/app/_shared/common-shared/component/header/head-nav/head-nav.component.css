@@ -1,0 +1,29 @@
+a{ text-decoration: none;}
+.nav-list>li {line-height: 49px;padding:0 20px;text-align: center; float: left;}
+.nav-list>li>a{
+    display: block;
+    font-size: 16px;
+    color: #626262;
+    align-items: center;
+}
+.nav-list>li:hover {background: #bbb8b8;}
+.nav-list>li:hover  a{color: #fff;}
+.nav-list>li:hover span.nav-icon{background-position-y: -40px;}
+
+/* 选中当前路由的样式 */
+/*********
+主导航样式类名:am-active
+**********/
+.am-active a, .am-active {background: #3da5e4!important; color: #fff!important;}
+.am-active a .nav-icon{ background-position-y: -40px; }
+
+.ant-menu-horizontal,.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
+    border-bottom: 1px solid #456dab;
+}
+
+@media (max-width: 576px) {
+    
+}
+@media (min-width: 577px) and (max-width: 768px) {
+    .nav-list>li{padding: 0 15px;}
+}

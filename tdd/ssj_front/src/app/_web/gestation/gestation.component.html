@@ -1,0 +1,14 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24" class="hidden-xs">
+    <app-gestation-header></app-gestation-header>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <app-gestation-nav></app-gestation-nav>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <router-outlet></router-outlet>
+  </div>
+  <div nz-col [nzSpan]="24" class="tx-center footer" style="color:#fff;margin-top: 20px;">
+      <app-footer></app-footer>
+  </div>
+</div>

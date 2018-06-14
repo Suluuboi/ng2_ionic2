@@ -1,0 +1,30 @@
+<div nz-row class="zph row">
+  <div nz-col [nzSpan]="24" class="hidden-xs">
+    <h2 class="title">正在召开的招聘会</h2>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <div nz-row class="content" *ngIf="zphList.length !== 0" [nzGutter]="20">
+      <div nz-col [nzXs]="{span:24}" [nzSm]="{span:12}" [nzMd]="{span:12}" [nzLg]="{span:8}" [nzXl]="{span:8}" *ngFor="let info of zphList">
+        <div class="con fl" [class.bgBook]="info.status == '未开始'" [class.bgBookPaused]="info.status == '进行中'">
+          <h2>
+            <a [routerLink]="['./detail', info.id]">{{info.title}}</a>
+          </h2>
+          <p>
+            <i class="anticon anticon-clock-circle-o"></i>举办时间：{{info.start_time}}至{{info.end_time}}</p>
+          <p>
+            <i class="anticon anticon-appstore-o"></i>会场地址：{{info.address}}</p>
+        </div>
+      </div>
+    </div>
+    <div nz-row class="notData" *ngIf="isJobfair">
+      <div nz-col [nzSpan]="24" class="box">
+        <div class="img-box tx-center">
+          <img src="./assets/com-images/zph/search-no.gif" alt="'很抱歉，还没有发布招聘会的相关信息'">
+        </div>
+        <div class="describe tx-center error">
+          <h4>很抱歉，还没有发布招聘会的相关信息</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
